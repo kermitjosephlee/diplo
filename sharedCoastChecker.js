@@ -24,6 +24,11 @@ function sharedCoastChecker(territory, coast = null) {
 			.borderingTerritories;
 	}
 
+	if (isMaritime && isTerrestrial) {
+		return gameMap.filter((each) => each.shortName === territory)[0]
+			.borderingTerritories;
+	}
+
 	const waterTerritoriesShortNames = waterChecker(territory);
 	const landTerritoriesShortNames = landChecker(territory);
 	const landTerritories = gameMap.filter((each) =>
@@ -48,26 +53,21 @@ function sharedCoastChecker(territory, coast = null) {
 		.includes(territory);
 
 	if (isSourceExceptional) {
+		console.log("source exceptional");
 	}
 
-	const isDestinationExceptional = exceptionalCoastTerritories.map((each) =>
-		sharedCoastTerritoriesShortNames.includes(each.shortName)
-	);
-
-	console.log(
-		"poops",
-		exceptionalCoastTerritories.map((each) => each.shortName)
-	);
+	const isDestinationExceptional = exceptionalCoastTerritories
+		.map((each) => sharedCoastTerritoriesShortNames.includes(each.shortName))
+		.includes(true);
 
 	if (isDestinationExceptional) {
-		console.log("dest exceptional");
 		return exceptionalDestinationHandler(
 			territory,
 			sharedCoastTerritoriesShortNames
 		);
 	}
 
-	return sharedCoastTerritoriesShortNames;
+	return [...sharedCoastTerritoriesShortNames];
 }
 
 exports.sharedCoastChecker = sharedCoastChecker;
