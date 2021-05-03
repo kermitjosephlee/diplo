@@ -9,6 +9,7 @@ const { landChecker } = require("./landChecker");
 const {
 	exceptionalDestinationHandler,
 } = require("./exceptionalDestinationHandler");
+const { exceptionalSourceHandler } = require("./exceptionalSourceHandler");
 
 function sharedCoastChecker(territory, coast = null) {
 	const isMaritime = maritimeTerritories
@@ -53,7 +54,7 @@ function sharedCoastChecker(territory, coast = null) {
 		.includes(territory);
 
 	if (isSourceExceptional) {
-		console.log("source exceptional");
+		return exceptionalSourceHandler(territory, coast);
 	}
 
 	const isDestinationExceptional = exceptionalCoastTerritories

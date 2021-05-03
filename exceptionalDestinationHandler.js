@@ -19,8 +19,6 @@ function exceptionalDestinationHandler(
 		currentTerritory.borderingTerritories.includes(each.shortName)
 	);
 
-	console.log("exceptionalCoasts", exceptionalCoasts);
-
 	const exceptionalShortName = exceptionalCoasts.shortName;
 
 	return coastNameAppender(
