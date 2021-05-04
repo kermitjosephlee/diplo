@@ -1,6 +1,6 @@
 const { nations } = require("./nations");
-const { coasts } = require("./coasts");
 const { RUS, FRA, GER, ENG, ITA, TUR, AUS } = nations;
+const { coasts } = require("./coasts");
 const { NORTH, SOUTH, EAST } = coasts;
 
 const gameMap = [
@@ -42,7 +42,7 @@ const gameMap = [
 	},
 	{
 		id: 4,
-		name: "St Petersberg",
+		name: "St_Petersburg",
 		shortName: "STP",
 		borderingTerritories: ["BAR", "NWY", "FIN", "BOT", "LVN", "MOS"],
 		isMaritime: false,
@@ -808,7 +808,7 @@ const gameMap = [
 	},
 	{
 		id: 66,
-		name: "Sevastapol",
+		name: "Sevastopol",
 		shortName: "SEV",
 		borderingTerritories: ["UKR", "RUM", "BLA", "ARM", "MOS"],
 		isMaritime: false,
@@ -915,7 +915,9 @@ const gameMap = [
 ];
 
 function currentTerritory(territoryShortName) {
-	const [current] = gameMap.filter((each) => each.shortName === territory);
+	const [current] = gameMap.filter(
+		(each) => each.shortName === territoryShortName
+	);
 	return current;
 }
 

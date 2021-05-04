@@ -1,4 +1,6 @@
-const mapString = `<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+const mapString = (
+	positions
+) => `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg [
 <!ENTITY Switzerland "219,376">
 <!ENTITY Adriatic_Sea "296,441">
@@ -94,7 +96,7 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 <defs>
 <style type="text/css">
 <![CDATA[
-	.l, .Unowned	{fill:#FFFFDD; stroke:black; stroke-linejoin:round}
+	.l, .Unowned, .undefined	{fill:#FFFFDD; stroke:black; stroke-linejoin:round}
 	.w		{fill:#99CCFF; stroke:black; stroke-linejoin:round}
 	.s		{fill:#DDDDDD; stroke:black; stroke-linejoin:round}
 
@@ -518,6 +520,12 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 <use id="SC" xlink:href="#sc" class="Unowned"/>
 </defs>
 
+${positions}
+
+</svg>
+`;
+
+const remainingString = `
 <g title="Budapest"><use xlink:href="#sc" class="Austria" transform="translate(&scBudapest;)"/></g>
 <g title="Trieste"><use xlink:href="#sc" class="Austria" transform="translate(&scTrieste;)"/></g>
 <g title="Vienna"><use xlink:href="#sc" class="Austria" transform="translate(&scVienna;)"/></g>

@@ -3,7 +3,7 @@ const nations = {
 	FRA: "France",
 	GER: "Germany",
 	ITA: "Italy",
-	AUS: "Austria-Hungary",
+	AUS: "Austria",
 	TUR: "Turkey",
 	RUS: "Russia",
 };
