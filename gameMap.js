@@ -42,7 +42,7 @@ const gameMap = [
 	},
 	{
 		id: 4,
-		name: "St_Petersburg",
+		name: "St Petersburg",
 		shortName: "STP",
 		borderingTerritories: ["BAR", "NWY", "FIN", "BOT", "LVN", "MOS"],
 		isMaritime: false,
@@ -169,7 +169,7 @@ const gameMap = [
 		isTerrestrial: true,
 		isSupplyCenter: false,
 		occupyingUnits: [],
-		initialNation: null,
+		initialNation: ENG,
 		coasts: null,
 	},
 	{
@@ -341,7 +341,7 @@ const gameMap = [
 		isTerrestrial: true,
 		isSupplyCenter: false,
 		occupyingUnits: [],
-		initialNation: GER,
+		initialNation: null,
 	},
 	{
 		id: 28,
@@ -909,7 +909,7 @@ const gameMap = [
 		isTerrestrial: true,
 		isSupplyCenter: true,
 		occupyingUnits: [],
-		initialNation: null,
+		initialNation: TUR,
 		coasts: null,
 	},
 ];

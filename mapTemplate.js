@@ -107,8 +107,16 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	.France 	{fill:#00FFFF; stroke:black}
 	.Germany	{fill:#808080; stroke:black}
 	.Italy  	{fill:#00FF00; stroke:black}
-	.Russia 	{fill:#008000; stroke:black}
+	.Russia 	{fill:#C300FF; stroke:black}
 	.Turkey 	{fill:#FFFF00; stroke:black}
+
+  .Austria_shade	{fill:#FFA1A1; stroke:black}
+	.England_shade	{fill:#A1A1FF; stroke:black}
+	.France_shade	{fill:#A1FFFF; stroke:black}
+	.Germany_shade	{fill:#C7C7C7; stroke:black}
+	.Italy_shade	{fill:#A1FFA1; stroke:black}
+	.Russia_shade	{fill:#E9A1FF; stroke:black}
+	.Turkey_shade	{fill:#FFFFA1; stroke:black}
 ]]>
 </style>
 </defs>
