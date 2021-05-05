@@ -13,3 +13,5 @@ Still a WIP.
 Ultimately, this will be a node server on some sort of db (probably Postgres) to keep track of the orders and adjudicate the movements. Might have a snazzy React front-end for issuing orders, showing current and previous map states, and most likely a websockets chat feature.
 
 Thought of using this as a way to plug into Slack and/or Discord to have daily order issuings and current chats.
+
+asdf
