@@ -122,7 +122,7 @@ function mapShader(positionalMap) {
 function mapBuilder() {
 	const positions = mapPositionMaker();
 
-	const fileName = "./testMap.svg";
+	const fileName = `./maps/${Date.now()}.svg`;
 
 	const mapWithPositionsAndShades = mapShader(mapString(positions));
 
