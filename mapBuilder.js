@@ -7,6 +7,8 @@ const fs = require("fs");
 const { mapUnitPlacer } = require("./mapUnitPlacer");
 const { initialUnits } = require("./initialUnits");
 
+const { currentMapMaker } = require("./currentMapMaker");
+
 function mapSummaryMaker() {
 	let summaryString = "";
 
@@ -131,6 +133,7 @@ function mapBuilder() {
 	return fs.writeFile(fileName, mapWithPositionsAndShades, "UTF-8", (err) => {
 		if (err) console.log("Error while writing file: ", err);
 		console.log(`successfully written to ${fileName}`);
+		currentMapMaker();
 	});
 }
 
