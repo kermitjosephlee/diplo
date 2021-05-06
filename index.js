@@ -1,12 +1,3 @@
-const {
-	gameMap,
-	supplyCenters,
-	maritimeTerritories,
-	terrestrialTerritories,
-	exceptionalCoastTerritories,
-} = require("./gameMap");
-const { waterChecker } = require("./waterChecker");
-const { landChecker } = require("./landChecker");
 const { sharedCoastChecker } = require("./sharedCoastChecker");
 const { availableMovements } = require("./availableMovements");
 

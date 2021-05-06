@@ -4,6 +4,8 @@ const { currentTerritory, supplyCenters, gameMap } = require("./gameMap");
 const { nations } = require("./nations");
 
 const fs = require("fs");
+const { mapUnitPlacer } = require("./mapUnitPlacer");
+const { initialUnits } = require("./initialUnits");
 
 function mapSummaryMaker() {
 	let summaryString = "";
@@ -120,21 +122,16 @@ function mapShader(positionalMap) {
 }
 
 function mapBuilder() {
-	const positions = mapPositionMaker();
+	const positions = mapPositionMaker() + mapUnitPlacer(initialUnits);
 
 	const fileName = `./maps/${Date.now()}.svg`;
 
 	const mapWithPositionsAndShades = mapShader(mapString(positions));
 
-	return fs.writeFileSync(
-		fileName,
-		mapWithPositionsAndShades,
-		"UTF-8",
-		(err) => {
-			if (err) console.log("Error while writing file: ", err);
-			console.log(`successfully written to ${fileName}`);
-		}
-	);
+	return fs.writeFile(fileName, mapWithPositionsAndShades, "UTF-8", (err) => {
+		if (err) console.log("Error while writing file: ", err);
+		console.log(`successfully written to ${fileName}`);
+	});
 }
 
 mapBuilder();
