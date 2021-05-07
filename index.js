@@ -1,6 +1,8 @@
 const { gameMap, exceptionalCoastTerritories } = require("./constants/gameMap");
 const { availableMovements } = require("./movementHelpers/availableMovements");
 const { actionTypes } = require("./movementHelpers/actionTypes");
+const { ordersTemplates } = require("./orders/ordersTemplates");
+const { ordersValidator } = require("./orders/ordersValidator");
 const readline = require("readline");
 const rl = readline.createInterface({
 	input: process.stdin,
@@ -26,35 +28,45 @@ rl.question("What is the location unit? ", function (territory) {
 			rl.question(
 				`What would you like it to do? (M)ove, (H)old, (C)onvoy, (S)upport? `,
 				function (action) {
+					const ordersObj = ordersTemplates(action.toUpperCase());
 					if (isActionValid(action.toUpperCase())) {
 						if (action.toUpperCase() === "H") {
-							console.log(
-								"orders: ",
-								`${territory} ${unitType} to ${actionTypes[action]}`
-							);
+							ordersObj.origin = territory;
+							ordersObj.unitType = unitType;
+							ordersValidator(ordersObj);
 							rl.close();
 						}
 						if (action.toUpperCase() === "C") {
 							rl.question(
-								`Convoy to where ${availableMovements(
-									territory
-								)} *** still need to build algorithm for convoy chaining`,
-								(dest) => {
-									console.log(
-										"orders: ",
-										`${territory} ${unitType} to convoy to ${dest}`
+								`What unit to convoy ${availableMovements(territory)}`,
+								function (origin) {
+									rl.question(
+										`Convoy to where ${availableMovements(
+											territory
+										)} *** still need to build algorithm for convoy chaining`,
+										function (dest) {
+											ordersObj.currentLocation = territory;
+											ordersObj.origin = origin;
+											ordersObj.destination = dest;
+											ordersObj.unitType = unitType;
+											ordersObj.coast = null;
+											ordersObj.actionType = "C";
+											ordersValidator(ordersObj);
+											rl.close();
+										}
 									);
-									rl.close();
 								}
 							);
 						}
 						if (action.toUpperCase() === "S") {
-							rl.question(`Support what unit?`, (supportingUnit) => {
-								rl.question(`to where? `, (dest) => {
-									console.log(
-										"orders: ",
-										`${territory} supports ${supportingUnit} to ${dest}`
-									);
+							rl.question(`Support what unit?`, function (supportingUnit) {
+								rl.question(`to where? `, function (dest) {
+									ordersObj.origin = territory;
+									ordersObj.destination = dest;
+									ordersObj.supportingUnit = supportingUnit;
+									ordersObj.actionType = dest === territory ? "H" : "M";
+									ordersObj.unitType = unitType;
+									ordersValidator(ordersObj);
 									rl.close();
 								});
 							});
@@ -63,13 +75,14 @@ rl.question("What is the location unit? ", function (territory) {
 							rl.question(
 								`Move where: ${availableMovements(territory, unitType)}? `,
 								function (dest) {
-									console.log("orders: ", `${territory} to move to ${dest}`);
+									ordersObj.origin = territory;
+									ordersObj.destination = dest;
+									ordersObj.unitType = unitType;
+									ordersValidator(ordersObj);
 									rl.close();
 								}
 							);
 						}
-						// console.log("something wrong happened, try again");
-						// rl.close();
 					}
 				}
 			);
