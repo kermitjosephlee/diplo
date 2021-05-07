@@ -1,4 +1,7 @@
-const { gameMap, exceptionalCoastTerritories } = require("./gameMap");
+const {
+	gameMap,
+	exceptionalCoastTerritories,
+} = require("../constants/gameMap");
 
 function coastNameAppender(territory, coasts, shortNames) {
 	const coastsArr = coasts.map((coast) => `${territory} - ${coast.location}`);

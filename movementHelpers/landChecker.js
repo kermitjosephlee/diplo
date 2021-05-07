@@ -2,7 +2,7 @@ const {
 	gameMap,
 	terrestrialTerritories,
 	exceptionalCoastTerritories,
-} = require("./gameMap");
+} = require("../constants/gameMap");
 
 const terrestrialTerritoriesShortNames = terrestrialTerritories.map(
 	(item) => item.shortName

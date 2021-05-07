@@ -1,4 +1,4 @@
-const { gameMap } = require("./gameMap");
+const { gameMap } = require("../constants/gameMap");
 
 function exceptionalSourceHandler(territory, coast = "NORTH") {
 	const [currentTerritory] = gameMap.filter(

@@ -1,5 +1,4 @@
-const { initialUnits } = require("./initialUnits");
-const { gameMap } = require("./gameMap");
+const { gameMap } = require("../constants/gameMap");
 
 function mapUnitPlacer(units) {
 	let unitString = "";

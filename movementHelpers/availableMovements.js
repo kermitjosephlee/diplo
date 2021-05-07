@@ -1,7 +1,7 @@
 const { landChecker } = require("./landChecker");
 const { waterChecker } = require("./waterChecker");
 const { sharedCoastChecker } = require("./sharedCoastChecker");
-const { exceptionalCoastTerritories } = require("./gameMap");
+const { exceptionalCoastTerritories } = require("../constants/gameMap");
 
 function availableMovements(territory, unitType, coast = null) {
 	const isExceptional = exceptionalCoastTerritories

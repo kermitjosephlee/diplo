@@ -1,5 +1,4 @@
 const { sharedCoastChecker } = require("./sharedCoastChecker");
-const { availableMovements } = require("./availableMovements");
 
 const territory = process.argv[2].toUpperCase();
 const unitType = process.argv[3].toUpperCase();
@@ -10,8 +9,3 @@ if (process.argv.length > 4) {
 }
 
 console.log("sharedCoastCHecker", sharedCoastChecker(territory, coast));
-
-// console.log(
-// 	"availableMovements",
-// 	availableMovements(territory, unitType, coast)
-// );

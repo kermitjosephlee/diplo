@@ -3,7 +3,7 @@ const {
 	maritimeTerritories,
 	terrestrialTerritories,
 	exceptionalCoastTerritories,
-} = require("./gameMap");
+} = require("../constants/gameMap");
 const { waterChecker } = require("./waterChecker");
 const { landChecker } = require("./landChecker");
 const {

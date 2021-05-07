@@ -1,4 +1,4 @@
-const { maritimeTerritories, gameMap } = require("./gameMap");
+const { maritimeTerritories, gameMap } = require("../constants/gameMap");
 
 const maritimesTerritoriesShortNames = maritimeTerritories.map(
 	(item) => item.shortName
