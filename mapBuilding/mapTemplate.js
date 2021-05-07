@@ -121,8 +121,8 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	.France 	{fill:var(--France); 	stroke:black}
 	.Germany	{fill:var(--Germany); stroke:black}
 	.Italy  	{fill:var(--Italy); 	stroke:black}
-	.Russia 	{fill:var(--Russia); stroke:black}
-	.Turkey 	{fill:var(--Turkey); stroke:black}
+	.Russia 	{fill:var(--Russia); 	stroke:black}
+	.Turkey 	{fill:var(--Turkey); 	stroke:black}
 
   .Austria_shade	{fill:#FFA1A1; stroke:black}
 	.England_shade	{fill:#A1A1FF; stroke:black}

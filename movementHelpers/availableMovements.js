@@ -1,9 +1,12 @@
 const { landChecker } = require("./landChecker");
 const { waterChecker } = require("./waterChecker");
 const { sharedCoastChecker } = require("./sharedCoastChecker");
-const { exceptionalCoastTerritories } = require("../constants/gameMap");
+const {
+	exceptionalCoastTerritories,
+	gameMap,
+} = require("../constants/gameMap");
 
-function availableMovements(territory, unitType, coast = null) {
+function availableMovements(territory, unitType = null, coast = null) {
 	const isExceptional = exceptionalCoastTerritories
 		.map((each) => each.shortName)
 		.includes(territory);
@@ -25,7 +28,8 @@ function availableMovements(territory, unitType, coast = null) {
 			]),
 		];
 
-	return null;
+	return gameMap.filter((each) => each.shortName === territory)[0]
+		.borderingTerritories;
 }
 
 exports.availableMovements = availableMovements;
