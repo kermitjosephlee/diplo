@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kermitjosephlee/diplo/issues"
   },
-  "homepage": "https://github.com/kermitjosephlee/diplo#readme"
+  "homepage": "https://github.com/kermitjosephlee/diplo#readme",
+  "devDependencies": {
+    "mocha": "^8.4.0"
+  }
 }
