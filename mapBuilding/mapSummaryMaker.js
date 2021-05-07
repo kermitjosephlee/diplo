@@ -1,7 +1,7 @@
 const { supplyCenters } = require("../constants/gameMap");
 
 function mapSummaryMaker() {
-	let summaryString = "";
+	let summaryString = "\n";
 
 	let ownershipList = {
 		England: 0,

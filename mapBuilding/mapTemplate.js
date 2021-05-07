@@ -85,7 +85,7 @@ const mapString = (
 <!ENTITY Western_Mediterranean "140,492">
 <!ENTITY Yorkshire "161,254">
 ]>
-<svg viewBox="0 0 610 560" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg viewBox="0 0 610 560" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="map">
 <title>Diplomacy</title>
 <desc>
 Variant SVG coding 2006 by Martin Asal
@@ -101,15 +101,28 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	.s		{fill:#222; stroke:black; stroke-linejoin:round}
 	.summary 	{fill:#EEE; stroke:black; stroke-linejoin:round}
 
+	:root {
+		--Austria: 	hsl(0, 100%, 50%);
+		--England: 	hsl(240,100%,50%);
+		--France:		hsl(180,100%,50%);
+		--Germany: 	hsl(0,0%,50%);
+		--Italy:		hsl(120,100%,50%);
+		--Russia:		hsl(285,100%,50%);
+		--Turkey: 	hsl(60,100%,50%);
+		--Hover:		hsl(39, 100%, 50%);
+	}
+
+	#map a:hover .unit {fill: var(--Hover)}
+
 	text		{font-family:Courier,Helvetica,sans-serif; font-size:7px}
 
-	.Austria	{fill:#FF0000; stroke:black}
-	.England	{fill:#0000FF; stroke:black}
-	.France 	{fill:#00FFFF; stroke:black}
-	.Germany	{fill:#808080; stroke:black}
-	.Italy  	{fill:#00FF00; stroke:black}
-	.Russia 	{fill:#C300FF; stroke:black}
-	.Turkey 	{fill:#FFFF00; stroke:black}
+	.Austria	{fill:var(--Austria); stroke:black}
+	.England	{fill:var(--England); stroke:black}
+	.France 	{fill:var(--France); 	stroke:black}
+	.Germany	{fill:var(--Germany); stroke:black}
+	.Italy  	{fill:var(--Italy); 	stroke:black}
+	.Russia 	{fill:var(--Russia); stroke:black}
+	.Turkey 	{fill:var(--Turkey); stroke:black}
 
   .Austria_shade	{fill:#FFA1A1; stroke:black}
 	.England_shade	{fill:#A1A1FF; stroke:black}

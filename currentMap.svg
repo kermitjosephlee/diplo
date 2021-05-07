@@ -83,7 +83,7 @@
 <!ENTITY Western_Mediterranean "140,492">
 <!ENTITY Yorkshire "161,254">
 ]>
-<svg viewBox="0 0 610 560" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg viewBox="0 0 610 560" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="map">
 <title>Diplomacy</title>
 <desc>
 Variant SVG coding 2006 by Martin Asal
@@ -99,15 +99,28 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	.s		{fill:#222; stroke:black; stroke-linejoin:round}
 	.summary 	{fill:#EEE; stroke:black; stroke-linejoin:round}
 
+	:root {
+		--Austria: 	hsl(0, 100%, 50%);
+		--England: 	hsl(240,100%,50%);
+		--France:		hsl(180,100%,50%);
+		--Germany: 	hsl(0,0%,50%);
+		--Italy:		hsl(120,100%,50%);
+		--Russia:		hsl(285,100%,50%);
+		--Turkey: 	hsl(60,100%,50%);
+		--Hover:		hsl(39, 100%, 50%);
+	}
+
+	#map a:hover .unit {fill: var(--Hover)}
+
 	text		{font-family:Courier,Helvetica,sans-serif; font-size:7px}
 
-	.Austria	{fill:#FF0000; stroke:black}
-	.England	{fill:#0000FF; stroke:black}
-	.France 	{fill:#00FFFF; stroke:black}
-	.Germany	{fill:#808080; stroke:black}
-	.Italy  	{fill:#00FF00; stroke:black}
-	.Russia 	{fill:#C300FF; stroke:black}
-	.Turkey 	{fill:#FFFF00; stroke:black}
+	.Austria	{fill:var(--Austria); stroke:black}
+	.England	{fill:var(--England); stroke:black}
+	.France 	{fill:var(--France); 	stroke:black}
+	.Germany	{fill:var(--Germany); stroke:black}
+	.Italy  	{fill:var(--Italy); 	stroke:black}
+	.Russia 	{fill:var(--Russia); stroke:black}
+	.Turkey 	{fill:var(--Turkey); stroke:black}
 
   .Austria_shade	{fill:#FFA1A1; stroke:black}
 	.England_shade	{fill:#A1A1FF; stroke:black}
@@ -564,6 +577,7 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 <g title="Summary">
 	<rect class="summary" width="148" height="100"/>
 	<text x="10" y="12">Spring 1901</text>
+
 	<text x="10" y="22">England: 3</text>
 	<text x="10" y="32">France: 3</text>
 	<text x="10" y="42">Germany: 3</text>
@@ -573,27 +587,29 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	<text x="10" y="82">Turkey: 3</text>
 	<text x="10" y="92">unclaimed: 12</text>
 </g>
-<g title="Edinburgh"><use xlink:href="#F" id="Edinburgh" class="England" transform="translate(&Edinburgh;)"/></g>
-<g title="Liverpool"><use xlink:href="#A" id="Liverpool" class="England" transform="translate(&Liverpool;)"/></g>
-<g title="London"><use xlink:href="#F" id="London" class="England" transform="translate(&London;)"/></g>
-<g title="Brest"><use xlink:href="#F" id="Brest" class="France" transform="translate(&Brest;)"/></g>
-<g title="Paris"><use xlink:href="#A" id="Paris" class="France" transform="translate(&Paris;)"/></g>
-<g title="Marseilles"><use xlink:href="#A" id="Marseilles" class="France" transform="translate(&Marseilles;)"/></g>
-<g title="Kiel"><use xlink:href="#F" id="Kiel" class="Germany" transform="translate(&Kiel;)"/></g>
-<g title="Berlin"><use xlink:href="#A" id="Berlin" class="Germany" transform="translate(&Berlin;)"/></g>
-<g title="Munich"><use xlink:href="#A" id="Munich" class="Germany" transform="translate(&Munich;)"/></g>
-<g title="Venice"><use xlink:href="#A" id="Venice" class="Italy" transform="translate(&Venice;)"/></g>
-<g title="Rome"><use xlink:href="#A" id="Rome" class="Italy" transform="translate(&Rome;)"/></g>
-<g title="Naples"><use xlink:href="#F" id="Naples" class="Italy" transform="translate(&Naples;)"/></g>
-<g title="Trieste"><use xlink:href="#F" id="Trieste" class="Austria" transform="translate(&Trieste;)"/></g>
-<g title="Vienna"><use xlink:href="#A" id="Vienna" class="Austria" transform="translate(&Vienna;)"/></g>
-<g title="Budapest"><use xlink:href="#A" id="Budapest" class="Austria" transform="translate(&Budapest;)"/></g>
-<g title="Constantinople"><use xlink:href="#A" id="Constantinople" class="Turkey" transform="translate(&Constantinople;)"/></g>
-<g title="Smyrna"><use xlink:href="#A" id="Smyrna" class="Turkey" transform="translate(&Smyrna;)"/></g>
-<g title="Ankara"><use xlink:href="#F" id="Ankara" class="Turkey" transform="translate(&Ankara;)"/></g>
-<g title="Warsaw"><use xlink:href="#A" id="Warsaw" class="Russia" transform="translate(&Warsaw;)"/></g>
-<g title="Moscow"><use xlink:href="#A" id="Moscow" class="Russia" transform="translate(&Moscow;)"/></g>
-<g title="Sevastopol"><use xlink:href="#F" id="Sevastopol" class="Russia" transform="translate(&Sevastopol;)"/></g>
-<g title="St Petersburg (sc)"><use xlink:href="#F" id="St_Petersburg" class="Russia" transform="translate(&St_Petersburg__sc;)"/></g>
+
+<a xlink:href="https://www.google.com"><g title="Edinburgh"><use xlink:href="#F" id="Edinburgh" class="England unit" transform="translate(&Edinburgh;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Liverpool"><use xlink:href="#A" id="Liverpool" class="England unit" transform="translate(&Liverpool;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="London"><use xlink:href="#F" id="London" class="England unit" transform="translate(&London;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Brest"><use xlink:href="#F" id="Brest" class="France unit" transform="translate(&Brest;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Paris"><use xlink:href="#A" id="Paris" class="France unit" transform="translate(&Paris;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Marseilles"><use xlink:href="#A" id="Marseilles" class="France unit" transform="translate(&Marseilles;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Kiel"><use xlink:href="#F" id="Kiel" class="Germany unit" transform="translate(&Kiel;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Berlin"><use xlink:href="#A" id="Berlin" class="Germany unit" transform="translate(&Berlin;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Munich"><use xlink:href="#A" id="Munich" class="Germany unit" transform="translate(&Munich;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Venice"><use xlink:href="#A" id="Venice" class="Italy unit" transform="translate(&Venice;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Rome"><use xlink:href="#A" id="Rome" class="Italy unit" transform="translate(&Rome;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Naples"><use xlink:href="#F" id="Naples" class="Italy unit" transform="translate(&Naples;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Trieste"><use xlink:href="#F" id="Trieste" class="Austria unit" transform="translate(&Trieste;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Vienna"><use xlink:href="#A" id="Vienna" class="Austria unit" transform="translate(&Vienna;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Budapest"><use xlink:href="#A" id="Budapest" class="Austria unit" transform="translate(&Budapest;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Constantinople"><use xlink:href="#A" id="Constantinople" class="Turkey unit" transform="translate(&Constantinople;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Smyrna"><use xlink:href="#A" id="Smyrna" class="Turkey unit" transform="translate(&Smyrna;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Ankara"><use xlink:href="#F" id="Ankara" class="Turkey unit" transform="translate(&Ankara;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Warsaw"><use xlink:href="#A" id="Warsaw" class="Russia unit" transform="translate(&Warsaw;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Moscow"><use xlink:href="#A" id="Moscow" class="Russia unit" transform="translate(&Moscow;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Sevastopol"><use xlink:href="#F" id="Sevastopol" class="Russia unit" transform="translate(&Sevastopol;)"/></g></a>
+<a xlink:href="https://www.google.com">
+					<g title="St Petersburg (sc)"><use xlink:href="#F" id="St_Petersburg" class="Russia unit" transform="translate(&St_Petersburg__sc;)"/></g></a>
 
 </svg>
