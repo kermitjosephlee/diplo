@@ -1,4 +1,5 @@
 const { gameMap } = require("../constants/gameMap");
+const { nameUnderscoreReplacer } = require("./nameUnderscoreReplacer");
 
 function mapUnitPlacer(units) {
 	let unitString = "\n";
@@ -38,7 +39,9 @@ function mapUnitPlacer(units) {
 						each.unitType === "Army" ? "A" : "F"
 					}" id="${each.name}" class="${
 						each.nation
-					} unit" transform="translate(&${each.name};)"/></g></a>`;
+					} unit" transform="translate(&${nameUnderscoreReplacer(
+						each.name
+					)};)"/></g></a>`;
 			}
 		});
 

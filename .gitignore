@@ -1,2 +1,4 @@
 .env
 maps/
+turns/currentGames/
+./currentMap.svg
