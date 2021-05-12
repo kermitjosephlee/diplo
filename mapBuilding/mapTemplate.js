@@ -97,19 +97,31 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 <style type="text/css">
 <![CDATA[
 	.l, .Unowned, .undefined	{fill:#FFFFFF; stroke:black; stroke-linejoin:round}
-	.w		{fill:#99CCFF; stroke:black; stroke-linejoin:round}
-	.s		{fill:#222; stroke:black; stroke-linejoin:round}
+	.w				{fill:#99CCFF; stroke:black; stroke-linejoin:round}
+	.s				{fill:#222; stroke:black; stroke-linejoin:round}
 	.summary 	{fill:#EEE; stroke:black; stroke-linejoin:round}
 
 	:root {
-		--Austria: 	hsl(0, 100%, 50%);
-		--England: 	hsl(240,100%,50%);
-		--France:		hsl(180,100%,50%);
-		--Germany: 	hsl(0,0%,50%);
-		--Italy:		hsl(120,100%,50%);
-		--Russia:		hsl(285,100%,50%);
-		--Turkey: 	hsl(60,100%,50%);
-		--Hover:		hsl(39, 100%, 50%);
+		--highlight_saturation: 	50%;
+		--background_saturation: 	90%;
+
+		--Austria: 	hsl(0, 		100%, var(--highlight_saturation));
+		--England: 	hsl(240,	100%,	var(--highlight_saturation));
+		--France:		hsl(180,	100%,	var(--highlight_saturation));
+		--Germany: 	hsl(0,		0%,		var(--highlight_saturation));
+		--Italy:		hsl(120,	100%,	var(--highlight_saturation));
+		--Russia:		hsl(285,	100%,	var(--highlight_saturation));
+		--Turkey: 	hsl(60,		100%,	var(--highlight_saturation));
+
+		--Hover:		hsl(39, 100%, var(--highlight_saturation));
+
+		--Austria_shade:	hsl(0, 		100%, 	var(--background_saturation));
+		--England_shade:	hsl(240, 	100%, 	var(--background_saturation));
+		--France_shade:		hsl(180, 	100%, 	var(--background_saturation));
+		--Germany_shade: 	hsl(0, 		0%, 		var(--background_saturation));
+		--Italy_shade: 		hsl(120,	100%, 	var(--background_saturation));
+		--Russia_shade:		hsl(285, 	100%, 	var(--background_saturation));
+		--Turkey_shade:		hsl(60, 	100%, 	var(--background_saturation));
 	}
 
 	#map a:hover .unit {fill: var(--Hover)}
@@ -124,13 +136,13 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	.Russia 	{fill:var(--Russia); 	stroke:black}
 	.Turkey 	{fill:var(--Turkey); 	stroke:black}
 
-  .Austria_shade	{fill:#FFA1A1; stroke:black}
-	.England_shade	{fill:#A1A1FF; stroke:black}
-	.France_shade		{fill:#A1FFFF; stroke:black}
-	.Germany_shade	{fill:#C7C7C7; stroke:black}
-	.Italy_shade		{fill:#A1FFA1; stroke:black}
-	.Russia_shade		{fill:#E9A1FF; stroke:black}
-	.Turkey_shade		{fill:#FFFFA1; stroke:black}
+  .Austria_shade	{fill:var(--Austria_shade); stroke:black}
+	.England_shade	{fill:var(--England_shade); stroke:black}
+	.France_shade		{fill:var(--France_shade); 	stroke:black}
+	.Germany_shade	{fill:var(--Germany_shade); stroke:black}
+	.Italy_shade		{fill:var(--Italy_shade); 	stroke:black}
+	.Russia_shade		{fill:var(--Russia_shade); 	stroke:black}
+	.Turkey_shade		{fill:var(--Turkey_shade); 	stroke:black}
 ]]>
 </style>
 </defs>
@@ -545,58 +557,5 @@ ${positions}
 
 </svg>
 `;
-
-const remainingString = `
-<g title="Budapest"><use xlink:href="#sc" class="Austria" transform="translate(&scBudapest;)"/></g>
-<g title="Trieste"><use xlink:href="#sc" class="Austria" transform="translate(&scTrieste;)"/></g>
-<g title="Vienna"><use xlink:href="#sc" class="Austria" transform="translate(&scVienna;)"/></g>
-<g title="Edinburgh"><use xlink:href="#sc" class="England" transform="translate(&scEdinburgh;)"/></g>
-<g title="Liverpool"><use xlink:href="#sc" class="England" transform="translate(&scLiverpool;)"/></g>
-<g title="London"><use xlink:href="#sc" class="England" transform="translate(&scLondon;)"/></g>
-<g title="Brest"><use xlink:href="#sc" class="France" transform="translate(&scBrest;)"/></g>
-<g title="Marseilles"><use xlink:href="#sc" class="France" transform="translate(&scMarseilles;)"/></g>
-<g title="Paris"><use xlink:href="#sc" class="France" transform="translate(&scParis;)"/></g>
-<g title="Berlin"><use xlink:href="#sc" class="Germany" transform="translate(&scBerlin;)"/></g>
-<g title="Kiel"><use xlink:href="#sc" class="Germany" transform="translate(&scKiel;)"/></g>
-<g title="Munich"><use xlink:href="#sc" class="Germany" transform="translate(&scMunich;)"/></g>
-<g title="Naples"><use xlink:href="#sc" class="Italy" transform="translate(&scNaples;)"/></g>
-<g title="Rome"><use xlink:href="#sc" class="Italy" transform="translate(&scRome;)"/></g>
-<g title="Venice"><use xlink:href="#sc" class="Italy" transform="translate(&scVenice;)"/></g>
-<g title="Moscow"><use xlink:href="#sc" class="Russia" transform="translate(&scMoscow;)"/></g>
-<g title="Sevastopol"><use xlink:href="#sc" class="Russia" transform="translate(&scSevastopol;)"/></g>
-<g title="St Petersburg"><use xlink:href="#sc" class="Russia" transform="translate(&scSt_Petersburg;)"/></g>
-<g title="Warsaw"><use xlink:href="#sc" class="Russia" transform="translate(&scWarsaw;)"/></g>
-<g title="Ankara"><use xlink:href="#sc" class="Turkey" transform="translate(&scAnkara;)"/></g>
-<g title="Constantinople"><use xlink:href="#sc" class="Turkey" transform="translate(&scConstantinople;)"/></g>
-<g title="Smyrna"><use xlink:href="#sc" class="Turkey" transform="translate(&scSmyrna;)"/></g>
-<g title="Spain"><use xlink:href="#sc" id="Spain" class="England" transform="translate(&scSpain;)"/></g>
-<g title="Portugal"><use xlink:href="#sc" id="Portugal" class="France" transform="translate(&scPortugal;)"/></g>
-
-<g title="Vienna"><use xlink:href="#A" id="Vienna" class="Austria" transform="translate(&Vienna;)"/></g>
-<g title="Budapest"><use xlink:href="#A" id="Budapest" class="Austria" transform="translate(&Budapest;)"/></g>
-<g title="Trieste"><use xlink:href="#F" id="Trieste" class="Austria" transform="translate(&Trieste;)"/></g>
-<g title="London"><use xlink:href="#F" id="London" class="England" transform="translate(&London;)"/></g>
-<g title="Edinburgh"><use xlink:href="#F" id="Edinburgh" class="England" transform="translate(&Edinburgh;)"/></g>
-<g title="Liverpool"><use xlink:href="#A" id="Liverpool" class="England" transform="translate(&Liverpool;)"/></g>
-<g title="Paris"><use xlink:href="#A" id="Paris" class="France" transform="translate(&Paris;)"/></g>
-<g title="Marseilles"><use xlink:href="#A" id="Marseilles" class="France" transform="translate(&Marseilles;)"/></g>
-<g title="Brest"><use xlink:href="#F" id="Brest" class="France" transform="translate(&Brest;)"/></g>
-<g title="Berlin"><use xlink:href="#A" id="Berlin" class="Germany" transform="translate(&Berlin;)"/></g>
-<g title="Munich"><use xlink:href="#A" id="Munich" class="Germany" transform="translate(&Munich;)"/></g>
-<g title="Kiel"><use xlink:href="#F" id="Kiel" class="Germany" transform="translate(&Kiel;)"/></g>
-<g title="Rome"><use xlink:href="#A" id="Rome" class="Italy" transform="translate(&Rome;)"/></g>
-<g title="Venice"><use xlink:href="#A" id="Venice" class="Italy" transform="translate(&Venice;)"/></g>
-<g title="Naples"><use xlink:href="#F" id="Naples" class="Italy" transform="translate(&Naples;)"/></g>
-<g title="Moscow"><use xlink:href="#A" id="Moscow" class="Russia" transform="translate(&Moscow;)"/></g>
-<g title="Warsaw"><use xlink:href="#A" id="Warsaw" class="Russia" transform="translate(&Warsaw;)"/></g>
-<g title="St Petersburg (sc)"><use xlink:href="#F" id="St_Petersburg" class="Russia" transform="translate(&St_Petersburg__sc;)"/></g>
-<g title="Sevastopol"><use xlink:href="#F" id="Sevastopol" class="Russia" transform="translate(&Sevastopol;)"/></g>
-<g title="Constantinople"><use xlink:href="#A" id="Constantinople" class="Turkey" transform="translate(&Constantinople;)"/></g>
-<g title="Smyrna"><use xlink:href="#A" id="Smyrna" class="Turkey" transform="translate(&Smyrna;)"/></g>
-<g title="Ankara"><use xlink:href="#F" id="Ankara" class="Turkey" transform="translate(&Ankara;)"/></g>
-<g title="Spain"><use xlink:href="#A" id="Spain" class="England" transform="translate(&Spain;)"/></g>
-<g title="Portugal"><use xlink:href="#A" id="Portugal" class="France" transform="translate(&Portugal;)"/></g>
-
-</svg>`;
 
 exports.mapString = mapString;

@@ -4,6 +4,8 @@
 
 Based on the classic board game [Diplomacy](<"https://en.wikipedia.org/wiki/Diplomacy_(game)">)
 
+![Image of SVG Dip Map](https://github.com/kermitjosephlee/diplo/blob/master/currentMap.svg)
+
 I got hooked on this game back in my university days. I'm not sure if it made me any friends but it definitely tested the ones I had and I'm all the better for it.
 
 The SVG map was borrowed from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Diplomacy.svg) with so much gratitude. It kept me from having to figure out how to graphically represent the board after each move. So thank you very much Martin Asal & Wiki Commons.

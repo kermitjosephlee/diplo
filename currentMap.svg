@@ -95,19 +95,31 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 <style type="text/css">
 <![CDATA[
 	.l, .Unowned, .undefined	{fill:#FFFFFF; stroke:black; stroke-linejoin:round}
-	.w		{fill:#99CCFF; stroke:black; stroke-linejoin:round}
-	.s		{fill:#222; stroke:black; stroke-linejoin:round}
+	.w				{fill:#99CCFF; stroke:black; stroke-linejoin:round}
+	.s				{fill:#222; stroke:black; stroke-linejoin:round}
 	.summary 	{fill:#EEE; stroke:black; stroke-linejoin:round}
 
 	:root {
-		--Austria: 	hsl(0, 100%, 50%);
-		--England: 	hsl(240,100%,50%);
-		--France:		hsl(180,100%,50%);
-		--Germany: 	hsl(0,0%,50%);
-		--Italy:		hsl(120,100%,50%);
-		--Russia:		hsl(285,100%,50%);
-		--Turkey: 	hsl(60,100%,50%);
-		--Hover:		hsl(39, 100%, 50%);
+		--highlight_saturation: 	50%;
+		--background_saturation: 	90%;
+
+		--Austria: 	hsl(0, 		100%, var(--highlight_saturation));
+		--England: 	hsl(240,	100%,	var(--highlight_saturation));
+		--France:		hsl(180,	100%,	var(--highlight_saturation));
+		--Germany: 	hsl(0,		0%,		var(--highlight_saturation));
+		--Italy:		hsl(120,	100%,	var(--highlight_saturation));
+		--Russia:		hsl(285,	100%,	var(--highlight_saturation));
+		--Turkey: 	hsl(60,		100%,	var(--highlight_saturation));
+
+		--Hover:		hsl(39, 100%, var(--highlight_saturation));
+
+		--Austria_shade:	hsl(0, 		100%, 	var(--background_saturation));
+		--England_shade:	hsl(240, 	100%, 	var(--background_saturation));
+		--France_shade:		hsl(180, 	100%, 	var(--background_saturation));
+		--Germany_shade: 	hsl(0, 		0%, 		var(--background_saturation));
+		--Italy_shade: 		hsl(120,	100%, 	var(--background_saturation));
+		--Russia_shade:		hsl(285, 	100%, 	var(--background_saturation));
+		--Turkey_shade:		hsl(60, 	100%, 	var(--background_saturation));
 	}
 
 	#map a:hover .unit {fill: var(--Hover)}
@@ -122,13 +134,13 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	.Russia 	{fill:var(--Russia); 	stroke:black}
 	.Turkey 	{fill:var(--Turkey); 	stroke:black}
 
-  .Austria_shade	{fill:#FFA1A1; stroke:black}
-	.England_shade	{fill:#A1A1FF; stroke:black}
-	.France_shade		{fill:#A1FFFF; stroke:black}
-	.Germany_shade	{fill:#C7C7C7; stroke:black}
-	.Italy_shade		{fill:#A1FFA1; stroke:black}
-	.Russia_shade		{fill:#E9A1FF; stroke:black}
-	.Turkey_shade		{fill:#FFFFA1; stroke:black}
+  .Austria_shade	{fill:var(--Austria_shade); stroke:black}
+	.England_shade	{fill:var(--England_shade); stroke:black}
+	.France_shade		{fill:var(--France_shade); 	stroke:black}
+	.Germany_shade	{fill:var(--Germany_shade); stroke:black}
+	.Italy_shade		{fill:var(--Italy_shade); 	stroke:black}
+	.Russia_shade		{fill:var(--Russia_shade); 	stroke:black}
+	.Turkey_shade		{fill:var(--Turkey_shade); 	stroke:black}
 ]]>
 </style>
 </defs>

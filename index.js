@@ -112,21 +112,3 @@ rl.question("What is the location unit? ", function (territory) {
 rl.on("close", () => {
 	process.exit(0);
 });
-
-// inputs
-// const territory = process.argv[2].toUpperCase();
-// const unitType = process.argv[3].toUpperCase();
-// let coast = null;
-
-// if (process.argv.length > 4) {
-// 	coast = process.argv[4].toUpperCase();
-// }
-
-// console.log(
-// 	"territory",
-// 	territory,
-// 	"isValid",
-// 	isTerritoryValid,
-// 	"\navailableMovements",
-// 	availableMovements(territory, unitType, coast)
-// );

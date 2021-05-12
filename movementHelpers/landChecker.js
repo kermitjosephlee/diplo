@@ -8,9 +8,9 @@ const terrestrialTerritoriesShortNames = terrestrialTerritories.map(
 	(item) => item.shortName
 );
 
-const exceptionalCoastTerritoriesShortNames = exceptionalCoastTerritories.map(
-	(each) => each.shortName
-);
+// const exceptionalCoastTerritoriesShortNames = exceptionalCoastTerritories.map(
+// 	(each) => each.shortName
+// );
 
 function landChecker(territory) {
 	return gameMap

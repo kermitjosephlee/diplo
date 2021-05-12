@@ -14,7 +14,6 @@ const ordersTemplates = (actionType) => {
 				origin: null,
 				supportingUnit: null,
 				destination: null,
-				actionType: null,
 				unitType: null,
 				coast: null,
 				actionType: "S",
