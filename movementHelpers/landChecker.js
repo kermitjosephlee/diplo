@@ -1,16 +1,8 @@
-const {
-	gameMap,
-	terrestrialTerritories,
-	exceptionalCoastTerritories,
-} = require("../constants/gameMap");
+const { gameMap, terrestrialTerritories } = require("../constants/gameMap");
 
 const terrestrialTerritoriesShortNames = terrestrialTerritories.map(
 	(item) => item.shortName
 );
-
-// const exceptionalCoastTerritoriesShortNames = exceptionalCoastTerritories.map(
-// 	(each) => each.shortName
-// );
 
 function landChecker(territory) {
 	return gameMap

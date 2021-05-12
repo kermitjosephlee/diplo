@@ -6,6 +6,7 @@ const ordersTemplates = (actionType) => {
 				destination: null,
 				unitType: null,
 				coast: null,
+				supports: 0,
 				actionType: "M",
 			};
 
@@ -24,6 +25,7 @@ const ordersTemplates = (actionType) => {
 				origin: null,
 				unitType: null,
 				coast: null,
+				supports: 0,
 				actionType: "H",
 			};
 
@@ -34,6 +36,7 @@ const ordersTemplates = (actionType) => {
 				destination: null,
 				unitType: null,
 				coast: null,
+				supports: 0,
 				actionType: "C",
 			};
 
