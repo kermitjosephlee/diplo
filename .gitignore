@@ -1,4 +1,5 @@
 .env
 maps/
 turns/currentGames/
+orders/pending/*
 ./currentMap.svg
