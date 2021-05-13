@@ -1,3 +1,4 @@
+const fs = require("fs");
 const { gameMap, exceptionalCoastTerritories } = require("./constants/gameMap");
 const { availableMovements } = require("./movementHelpers/availableMovements");
 const { actionTypes } = require("./movementHelpers/actionTypes");
@@ -22,10 +23,19 @@ const requiresCoastInput = (territory) =>
 
 const isActionValid = (action) => Object.keys(actionTypes).includes(action);
 
+const gameFile = "./turns/currentGames/game1.txt";
+const currentPositions = JSON.parse(fs.readFileSync(gameFile))[0].positions;
+
+// console.log("currentPositions: ", currentPositions);
+
 rl.question("What is the location unit? ", function (territory) {
+	const [currentUnit] = currentPositions.filter(
+		(each) => each.location === territory
+	);
+	const currentType = currentUnit.unitType;
 	rl.question(
-		"What type of unit is it? (A)rmy or (N)avy ",
-		function (unitType) {
+		`What type of unit is it? (A)rmy or (N)avy `,
+		function (unitType = currentType) {
 			if (isTerritoryValid(territory) && !requiresCoastInput(territory)) {
 				rl.question(
 					`What would you like it to do? (M)ove, (H)old, (C)onvoy, (S)upport? `,
@@ -34,7 +44,7 @@ rl.question("What is the location unit? ", function (territory) {
 						if (isActionValid(action.toUpperCase())) {
 							if (action.toUpperCase() === "H") {
 								ordersObj.origin = territory;
-								ordersObj.unitType = unitType;
+								ordersObj.unitType = currentType;
 								ordersValidator(ordersObj);
 								rl.close();
 							}
@@ -50,7 +60,7 @@ rl.question("What is the location unit? ", function (territory) {
 												ordersObj.currentLocation = territory;
 												ordersObj.origin = origin;
 												ordersObj.destination = dest;
-												ordersObj.unitType = unitType;
+												ordersObj.unitType = currentType;
 												ordersObj.coast = null;
 												ordersObj.actionType = "C";
 												ordersValidator(ordersObj);
@@ -67,7 +77,7 @@ rl.question("What is the location unit? ", function (territory) {
 										ordersObj.destination = dest;
 										ordersObj.supportingUnit = supportingUnit;
 										ordersObj.actionType = dest === territory ? "H" : "M";
-										ordersObj.unitType = unitType;
+										ordersObj.unitType = currentType;
 										ordersValidator(ordersObj);
 										rl.close();
 									});
@@ -75,14 +85,14 @@ rl.question("What is the location unit? ", function (territory) {
 							}
 							if (action.toUpperCase() === "M") {
 								rl.question(
-									`Move the ${unitType} where: ${availableMovements(
+									`Move the ${currentType} where: ${availableMovements(
 										territory,
-										unitType
+										currentType
 									)}? `,
 									function (dest) {
 										ordersObj.origin = territory;
 										ordersObj.destination = dest;
-										ordersObj.unitType = unitType;
+										ordersObj.unitType = currentType;
 										ordersValidator(ordersObj);
 										rl.close();
 									}
@@ -95,12 +105,12 @@ rl.question("What is the location unit? ", function (territory) {
 			if (
 				isTerritoryValid(territory) &&
 				requiresCoastInput(territory) &&
-				unitType === "N"
+				currentType === "N"
 			) {
 				rl.question("What coast? ", function (coast) {
 					console.log(
 						"available spaces ",
-						availableMovements(territory, unitType, coast)
+						availableMovements(territory, currentType, coast)
 					);
 					rl.close();
 				});
