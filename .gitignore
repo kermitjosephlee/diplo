@@ -3,3 +3,4 @@ maps/
 turns/currentGames/
 orders/pending/*
 ./currentMap.svg
+node_modules/
