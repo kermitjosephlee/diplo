@@ -1,4 +1,4 @@
-const nations = {
+exports.nations = {
 	ENG: "England",
 	FRA: "France",
 	GER: "Germany",
@@ -7,5 +7,3 @@ const nations = {
 	TUR: "Turkey",
 	RUS: "Russia",
 };
-
-exports.nations = nations;
