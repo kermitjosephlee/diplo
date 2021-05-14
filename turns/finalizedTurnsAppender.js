@@ -30,7 +30,7 @@ function finalizedTurnAppender(finalizedTurn) {
 	const gameId = 1;
 	const currentGameFile = `./turns/currentGames/game${gameId}.txt`;
 	const { year, season } = turnCounter();
-	const previousTurns = JSON.parse(fs.readFileSync(currentGameFile));
+	const previousTurns = JSON.parse(fs.readFileSync(currentGameFile, "utf-8"));
 	const currentTurn = { year, season, positions: finalizedTurn };
 	const updatedTurns = [currentTurn, ...previousTurns];
 
