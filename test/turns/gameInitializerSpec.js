@@ -1,7 +1,7 @@
 const { assert } = require("chai");
 const { gameInitializer } = require("../../turns/gameInitializer");
 
-const result = gameInitializer();
+const results = gameInitializer();
 
 function gameInitializerSpec() {
 	return null;

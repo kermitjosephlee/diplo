@@ -1,5 +1,5 @@
 const ordersTemplates = (actionType) => {
-	switch (actionType.substring(0)) {
+	switch (actionType.substring(0, 1).toUpperCase()) {
 		case "M":
 			return {
 				origin: null,

@@ -1,1 +1,1 @@
-{"gameId":1,"orders":[{"origin":"EDI","destination":"NTH","unitType":"Navy","coast":null,"supports":0,"actionType":"M"},{"origin":"LON","destination":"NTH","unitType":"Navy","coast":null,"supports":0,"actionType":"M"}]}
+{"gameId":1,"orders":[{"origin":"LON","destination":"NTH","unitType":"Navy","coast":null,"supports":0,"actionType":"M"},{"origin":"EDI","destination":"NTH","unitType":"Navy","coast":null,"supports":0,"actionType":"M"}]}
