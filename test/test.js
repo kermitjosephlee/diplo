@@ -5,7 +5,13 @@ const {
 	ordersValidatorSpec,
 	ordersTemplatesSpec,
 } = require("./orders");
-const { landCheckerSpec, waterCheckerSpec } = require("./movementHelpers");
+const {
+	landCheckerSpec,
+	waterCheckerSpec,
+	availableMovementsSpec,
+	sharedCoastCheckerSpec,
+	exceptionalSourceHandlerSpec,
+} = require("./movementHelpers");
 
 // TURNS folder tests
 turnCounterSpec();
@@ -20,3 +26,6 @@ ordersTemplatesSpec();
 // MOVEMENT_HELPERS folder tests
 landCheckerSpec();
 waterCheckerSpec();
+availableMovementsSpec();
+sharedCoastCheckerSpec();
+exceptionalSourceHandlerSpec();

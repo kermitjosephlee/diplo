@@ -4,7 +4,7 @@
 	"description": "node diplomacy clone",
 	"main": "index.js",
 	"scripts": {
-		"test": "mocha || true"
+		"test": "mocha -w || true"
 	},
 	"repository": {
 		"type": "git",
