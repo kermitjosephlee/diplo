@@ -21,12 +21,16 @@ function gameInitializer() {
 
 	fs.writeFileSync(
 		`./orders/pending/game${gameId}.txt`,
-		JSON.stringify(initialPendingOrders)
+		JSON.stringify(initialPendingOrders, null, 2)
 	);
 
 	fs.writeFileSync(
 		`./turns/currentGames/game${gameId}.txt`,
-		JSON.stringify([initialTurn])
+		JSON.stringify([initialTurn], null, 2)
+	);
+
+	console.log(
+		`game id: ${gameId} initialized\n./turns/currentGames/game${gameId}.txt`
 	);
 }
 

@@ -14,10 +14,14 @@ function ordersAppender(orders) {
 		(each) => each.origin !== orders.origin
 	);
 
-	const updatedFileString = JSON.stringify({
-		...pendingOrdersObj,
-		orders: [...filteredOrders, orders],
-	});
+	const updatedFileString = JSON.stringify(
+		{
+			...pendingOrdersObj,
+			orders: [...filteredOrders, orders],
+		},
+		null,
+		2
+	);
 
 	fs.writeFileSync(pendingOrdersFile, updatedFileString);
 }

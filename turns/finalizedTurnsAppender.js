@@ -2,9 +2,9 @@ const fs = require("fs");
 const { turnCounter } = require("./turnCounter");
 
 const testTurn = [
-	{ location: "NTH", unitType: "Navy", nation: "England" },
-	{ location: "LON", unitType: "Army", nation: "England" },
-	{ location: "ENG", unitType: "Navy", nation: "England" },
+	{ location: "EDI", unitType: "Navy", nation: "England" },
+	{ location: "LVP", unitType: "Army", nation: "England" },
+	{ location: "LON", unitType: "Navy", nation: "England" },
 	{ location: "MAO", unitType: "Navy", nation: "France" },
 	{ location: "PIC", unitType: "Army", nation: "France" },
 	{ location: "BUR", unitType: "Army", nation: "France" },
@@ -34,7 +34,7 @@ function finalizedTurnAppender(finalizedTurn) {
 	const currentTurn = { year, season, positions: finalizedTurn };
 	const updatedTurns = [currentTurn, ...previousTurns];
 
-	fs.writeFileSync(currentGameFile, JSON.stringify(updatedTurns));
+	fs.writeFileSync(currentGameFile, JSON.stringify(updatedTurns, null, 2));
 	console.log(
 		`Orders for ${season} ${year} have been written to ${currentGameFile}`
 	);
