@@ -6,13 +6,18 @@ const {
 
 let orders = ordersTemplates("M");
 
-function moveActionHandler(territory, unitType, rl) {
+function moveActionHandler(territory, unitType, rl, coast = null) {
 	rl.question(
-		`Move the ${unitType} where: ${availableMovements(territory, unitType)}? `,
+		`Move the ${unitType} where: ${availableMovements(
+			territory,
+			unitType,
+			coast
+		)}? `,
 		function (destination) {
 			orders.origin = territory;
 			orders.destination = destination;
 			orders.unitType = unitType;
+			orders.coast = coast;
 			ordersValidator(orders);
 			rl.close();
 		}

@@ -1,4 +1,21 @@
 {
   "gameId": 1,
-  "orders": []
+  "orders": [
+    {
+      "origin": "STP",
+      "destination": "BOT",
+      "unitType": "Navy",
+      "coast": "SOUTH",
+      "supports": 0,
+      "actionType": "M"
+    },
+    {
+      "origin": "LON",
+      "destination": "YOR",
+      "unitType": "Navy",
+      "coast": null,
+      "supports": 0,
+      "actionType": "M"
+    }
+  ]
 }

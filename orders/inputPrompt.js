@@ -13,6 +13,7 @@ const {
 	convoyActionHandler,
 	moveActionHandler,
 	supportActionHandler,
+	coastalExceptionHandler,
 } = require("./helpers");
 
 function inputPrompt() {
@@ -31,7 +32,6 @@ function inputPrompt() {
 			rl.question(
 				`What would you like the ${currentType} in ${territory} to do?\n(M)ove, (H)old, (C)onvoy, (S)upport? `,
 				(action) => {
-					// check if action is valid
 					if (isActionValid(action.toUpperCase())) {
 						switch (action.toUpperCase()) {
 							case "H":
@@ -46,16 +46,19 @@ function inputPrompt() {
 					} else {
 						console.log("no orders issued");
 						rl.close();
-					} //closes if isActionValid
-				} // closes action callback
-			); // closes action question prompt
-		} // closes if does not require coast input
-
-		if (requiresCoastInput(territory) && cu) {
+					}
+				}
+			);
 		}
-	}); // closes first prompt and callback
-} // closes function
 
-inputPrompt();
+		if (requiresCoastInput(territory) && currentType === "Navy") {
+			coastalExceptionHandler(territory, currentType, rl);
+		}
+	});
+
+	rl.on("close", () => {
+		process.exit(0);
+	});
+}
 
 exports.inputPrompt = inputPrompt;

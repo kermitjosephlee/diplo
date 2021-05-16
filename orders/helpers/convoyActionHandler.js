@@ -6,7 +6,7 @@ const { ordersValidator } = require("../ordersValidator");
 
 let orders = ordersTemplates("C");
 
-function convoyActionHandler(territory, unitType, rl) {
+function convoyActionHandler(territory, unitType, rl, coast = null) {
 	rl.question(
 		`Which unit needs the convoy ${availableMovements(territory)}? `,
 		(origin) => {
@@ -17,7 +17,7 @@ function convoyActionHandler(territory, unitType, rl) {
 					orders.origin = origin;
 					orders.destination = destination;
 					orders.unitType = unitType;
-					orders.coast = null;
+					orders.coast = coast;
 					orders.actionType = "C";
 					ordersValidator(orders);
 					rl.close();

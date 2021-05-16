@@ -7,11 +7,14 @@ const {
 } = require("../constants/gameMap");
 
 function availableMovements(territory, unitType = null, coast = null) {
+	const unitTypeAbbr = unitType ? unitType.substring(0, 1).toUpperCase() : "Z";
+	const isArmy = unitTypeAbbr === "A";
+	const isNavy = unitTypeAbbr === "N";
 	const isExceptional = exceptionalCoastTerritories
 		.map((each) => each.shortName)
 		.includes(territory);
 
-	if (isExceptional && (unitType === "NAVY" || unitType === "N")) {
+	if (isExceptional && isNavy) {
 		if (!coast) return `Please add in coast`;
 
 		return exceptionalCoastTerritories
@@ -19,8 +22,8 @@ function availableMovements(territory, unitType = null, coast = null) {
 			.coasts.filter((each) => each.location === coast)[0].territories;
 	}
 
-	if (unitType === "ARMY" || unitType === "A") return landChecker(territory);
-	if (unitType === "NAVY" || unitType === "N")
+	if (isArmy) return landChecker(territory);
+	if (isNavy)
 		return [
 			...new Set([
 				...waterChecker(territory),
