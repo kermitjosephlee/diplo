@@ -1,6 +1,7 @@
 const { isActionValid } = require("./isActionValid");
 const { isTerritoryValid } = require("./isTerritoryValid");
 const { requiresCoastInput } = require("./requiresCoastInput");
+const { unitFinder } = require("./unitFinder");
 const { unitTypeFinder } = require("./unitTypeFinder");
 
 const { holdActionHandler } = require("./holdActionHandler");
@@ -11,6 +12,7 @@ const { supportActionHandler } = require("./supportActionHandler");
 exports.isActionValid = isActionValid;
 exports.isTerritoryValid = isTerritoryValid;
 exports.requiresCoastInput = requiresCoastInput;
+exports.unitFinder = unitFinder;
 exports.unitTypeFinder = unitTypeFinder;
 
 exports.holdActionHandler = holdActionHandler;

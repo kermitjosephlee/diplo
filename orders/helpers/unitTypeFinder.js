@@ -1,15 +1,9 @@
-const fs = require("fs");
-
-const gameId = 1;
-const gameFile = `./turns/currentGames/game${gameId}.txt`;
-const currentPositions = JSON.parse(fs.readFileSync(gameFile, "utf-8"))[0]
-	.positions;
+const { unitFinder } = require("./unitFinder");
 
 function unitTypeFinder(territory) {
-	const [currentUnit] = currentPositions.filter(
-		(position) => position.location === territory
-	);
-	return currentUnit.unitType;
+	return unitFinder(territory) ? unitFinder(territory).unitType : null;
 }
+
+console.log(unitTypeFinder("STP"));
 
 exports.unitTypeFinder = unitTypeFinder;

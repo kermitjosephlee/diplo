@@ -1,18 +1,9 @@
-const fs = require("fs");
 const readline = require("readline");
 const rl = readline.createInterface({
 	input: process.stdin,
 	output: process.stdout,
 });
 
-const {
-	gameMap,
-	exceptionalCoastTerritories,
-} = require("../constants/gameMap");
-const { availableMovements } = require("../movementHelpers/availableMovements");
-const { actionTypes } = require("../movementHelpers/actionTypes");
-const { ordersTemplates } = require("../orders/ordersTemplates");
-const { ordersValidator } = require("../orders/ordersValidator");
 const {
 	isTerritoryValid,
 	requiresCoastInput,
@@ -23,14 +14,6 @@ const {
 	moveActionHandler,
 	supportActionHandler,
 } = require("./helpers");
-
-// const names = gameMap.map(({ name }) => name);
-// const shortNames = gameMap.map(({ shortName }) => shortName);
-
-const gameId = 1;
-const gameFile = `./turns/currentGames/game${gameId}.txt`;
-const currentPositions = JSON.parse(fs.readFileSync(gameFile, "utf-8"))[0]
-	.positions;
 
 function inputPrompt() {
 	// prompt for unit in question by territory
@@ -67,6 +50,9 @@ function inputPrompt() {
 				} // closes action callback
 			); // closes action question prompt
 		} // closes if does not require coast input
+
+		if (requiresCoastInput(territory) && cu) {
+		}
 	}); // closes first prompt and callback
 } // closes function
 
