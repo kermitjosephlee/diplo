@@ -46,9 +46,10 @@ function convoyValidator(movements, convoys) {
 		}
 	});
 
-	console.log("convoyValidator", convoyChainChecker(validConvoysArr[0]));
-
-	return { validConvoysArr, invalidConvoys };
+	return convoyChainChecker(validConvoysArr[0], (data) => {
+		console.log("callback", data);
+	});
+	// return { validConvoysArr, invalidConvoys };
 }
 
 exports.convoyValidator = convoyValidator;
@@ -61,22 +62,3 @@ exports.convoyValidator = convoyValidator;
 // if so, and KIE is adjacent to navyB, valid convoy
 // if not, check if navy is adjacent to navyB
 // if not, invalid convoy, all units hold
-
-const gameFile = "./turns/currentGames/game1.txt";
-
-const currentPositions = JSON.parse(fs.readFileSync(gameFile))[0].positions;
-
-function adjacentNavys(location) {
-	const navalPositions = currentPositions.filter(
-		(each) =>
-			each.unitType === N &&
-			availableMovements(location).includes(each.location) &&
-			currentTerritory(each.location).isMaritime
-	);
-
-	return navalPositions;
-}
-
-function isDestination(currentLocation, destination) {
-	return availableMovements(currentLocation, "N").includes(destination);
-}

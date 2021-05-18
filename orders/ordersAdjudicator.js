@@ -23,7 +23,10 @@ function ordersAdjudicator() {
 
 	const nonAdjacentMoves = nonAdjacentMovesFinder(sortedOrders.M);
 
-	convoyValidator(nonAdjacentMoves, sortedOrders.C);
+	console.log(
+		"ordersAdjudicator",
+		convoyValidator(nonAdjacentMoves, sortedOrders.C)
+	);
 
 	// validate move, support and convoy orders
 
