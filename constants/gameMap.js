@@ -55,7 +55,7 @@ const gameMap = [
 		occupyingUnits: [],
 		initialNation: RUS,
 		coasts: [
-			{ location: SOUTH, territories: ["LIV", "BOT", "FIN"] },
+			{ location: SOUTH, territories: ["LVN", "BOT", "FIN"] },
 			{ location: NORTH, territories: ["BAR", "NWY"] },
 		],
 	},
@@ -176,7 +176,7 @@ const gameMap = [
 		id: 13,
 		name: "Yorkshire",
 		shortName: "YOR",
-		borderingTerritories: ["WAL", "LON", "NTH", "EDI", "LIV"],
+		borderingTerritories: ["WAL", "LON", "NTH", "EDI", "LVP"],
 		isMaritime: false,
 		isTerrestrial: true,
 		isLandLocked: false,
@@ -656,7 +656,7 @@ const gameMap = [
 	},
 	{
 		id: 50,
-		name: "Western Mediterranean Sea",
+		name: "Western Mediterranean",
 		shortName: "WES",
 		borderingTerritories: ["MAO", "NAF", "TUN", "TYS", "LYO", "SPA"],
 		isMaritime: true,

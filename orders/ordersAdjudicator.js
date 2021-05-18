@@ -1,13 +1,30 @@
 const fs = require("fs");
+const {
+	missingOrdersAppender,
+	ordersSorterByType,
+	moveOrdersSorterByDest,
+	supportCounter,
+	nonAdjacentMovesFinder,
+} = require("./adjudicationHelpers");
+const { convoyValidator } = require("./convoyValidator");
 
 function ordersAdjudicator() {
 	// receive a list of orders
 	const gameId = 1;
-	const gameFile = `./orders/pending/game${gameId}.txt`;
-	const gameFileObj = JSON.parse(fs.readFileSync(gameFile, "utf-8"));
-	const orders = gameFileObj.gameId === gameId ? gameFileObj.orders : [];
+	const pendingOrdersFile = `./orders/pending/game${gameId}.txt`;
+	const pendingOrdersObj = JSON.parse(
+		fs.readFileSync(pendingOrdersFile, "utf-8")
+	);
+	const orders =
+		pendingOrdersObj.gameId === gameId ? pendingOrdersObj.orders : [];
 
-	console.log("orders", orders);
+	const totalOrders = missingOrdersAppender(orders);
+	const sortedOrders = ordersSorterByType(totalOrders);
+
+	const nonAdjacentMoves = nonAdjacentMovesFinder(sortedOrders.M);
+
+	convoyValidator(nonAdjacentMoves, sortedOrders.C);
+
 	// validate move, support and convoy orders
 
 	// parse orders by type (move, support, hold, convoy)

@@ -2,20 +2,79 @@
   "gameId": 1,
   "orders": [
     {
-      "origin": "STP",
-      "destination": "BOT",
+      "origin": "LON",
+      "destination": "NTH",
       "unitType": "Navy",
+      "nation": "England",
+      "coast": null,
+      "supports": 0,
+      "actionType": "M"
+    },
+    {
+      "origin": "EDI",
+      "destination": "NTH",
+      "unitType": "Navy",
+      "nation": "England",
+      "coast": null,
+      "supports": 0,
+      "actionType": "M"
+    },
+    {
+      "origin": "MOS",
+      "destination": "WAR",
+      "unitType": "Army",
+      "nation": "Russia",
+      "coast": null,
+      "supports": 0,
+      "actionType": "M"
+    },
+    {
+      "origin": "STP",
+      "destination": "LVN",
+      "unitType": "Navy",
+      "nation": "Russia",
       "coast": "SOUTH",
       "supports": 0,
       "actionType": "M"
     },
     {
-      "origin": "LON",
-      "destination": "YOR",
-      "unitType": "Navy",
+      "origin": "WAL",
+      "destination": "TUN",
+      "unitType": "Army",
+      "nation": "England",
       "coast": null,
       "supports": 0,
       "actionType": "M"
+    },
+    {
+      "origin": "MAO",
+      "destination": "TUN",
+      "unitType": "Navy",
+      "nation": "Germany",
+      "coast": null,
+      "convoyingUnitOrigin": "WAL",
+      "supports": 0,
+      "actionType": "C"
+    },
+    {
+      "origin": "WES",
+      "destination": "TUN",
+      "unitType": "Navy",
+      "nation": "Italy",
+      "coast": null,
+      "convoyingUnitOrigin": "WAL",
+      "supports": 0,
+      "actionType": "C"
+    },
+    {
+      "origin": "ENG",
+      "destination": "TUN",
+      "unitType": "Navy",
+      "nation": "France",
+      "coast": null,
+      "convoyingUnitOrigin": "WAL",
+      "supports": 0,
+      "actionType": "C"
     }
   ]
 }

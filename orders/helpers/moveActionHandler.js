@@ -4,19 +4,20 @@ const {
 	availableMovements,
 } = require("../../movementHelpers/availableMovements");
 
+const { nationalAdjectives } = require("../../constants/nationalAdjectives");
+
 let orders = ordersTemplates("M");
 
-function moveActionHandler(territory, unitType, rl, coast = null) {
+function moveActionHandler(territory, unitType, nation, rl, coast = null) {
 	rl.question(
-		`Move the ${unitType} where: ${availableMovements(
-			territory,
-			unitType,
-			coast
-		)}? `,
+		`Move the ${
+			nationalAdjectives[nation]
+		} ${unitType} where: ${availableMovements(territory, unitType, coast)}? `,
 		function (destination) {
 			orders.origin = territory;
 			orders.destination = destination;
 			orders.unitType = unitType;
+			orders.nation = nation;
 			orders.coast = coast;
 			ordersValidator(orders);
 			rl.close();

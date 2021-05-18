@@ -1,41 +1,37 @@
 const ordersTemplates = (actionType) => {
+	const baseObj = {
+		origin: null,
+		destination: null,
+		unitType: null,
+		nation: null,
+		coast: null,
+	};
 	switch (actionType.substring(0, 1).toUpperCase()) {
 		case "M":
 			return {
-				origin: null,
-				destination: null,
-				unitType: null,
-				coast: null,
+				...baseObj,
 				supports: 0,
 				actionType: "M",
 			};
 
 		case "S":
 			return {
-				origin: null,
+				...baseObj,
 				supportingUnit: null,
-				destination: null,
-				unitType: null,
-				coast: null,
 				actionType: "S",
 			};
 
 		case "H":
 			return {
-				origin: null,
-				unitType: null,
-				coast: null,
+				...baseObj,
 				supports: 0,
 				actionType: "H",
 			};
 
 		case "C":
 			return {
-				currentLocation: null,
-				origin: null,
-				destination: null,
-				unitType: null,
-				coast: null,
+				...baseObj, // "origin" in this case is the current location of the convoying navy
+				convoyingUnitOrigin: null, // the origin of the convoyed army
 				supports: 0,
 				actionType: "C",
 			};

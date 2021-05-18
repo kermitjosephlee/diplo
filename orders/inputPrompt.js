@@ -8,7 +8,8 @@ const {
 	isTerritoryValid,
 	requiresCoastInput,
 	isActionValid,
-	unitTypeFinder,
+	unitFinder,
+	// unitTypeFinder,
 	holdActionHandler,
 	convoyActionHandler,
 	moveActionHandler,
@@ -16,32 +17,37 @@ const {
 	coastalExceptionHandler,
 } = require("./helpers");
 
+const { nationalAdjectives } = require("../constants/nationalAdjectives");
+
 function inputPrompt() {
 	// prompt for unit in question by territory
+
 	rl.question("What is the location of the unit? ", (territory) => {
 		if (!isTerritoryValid(territory)) {
 			console.log(`There is no unit available in ${territory} - try again`);
 			rl.close();
 		}
 
-		const currentType = unitTypeFinder(territory);
+		const currentUnit = unitFinder(territory);
+		const { location, unitType, nation } = currentUnit;
+		const nationalAdjective = nationalAdjectives[nation];
 
 		// check if territory entered does not need coast input
 		if (!requiresCoastInput(territory)) {
 			// prompt for action type
 			rl.question(
-				`What would you like the ${currentType} in ${territory} to do?\n(M)ove, (H)old, (C)onvoy, (S)upport? `,
+				`What would you like the ${nationalAdjective} ${unitType} in ${location} to do?\n(M)ove, (H)old, (C)onvoy, (S)upport? `,
 				(action) => {
 					if (isActionValid(action.toUpperCase())) {
 						switch (action.toUpperCase()) {
 							case "H":
-								holdActionHandler(territory, currentType, rl);
+								holdActionHandler(location, unitType, nation, rl);
 							case "C":
-								convoyActionHandler(territory, currentType, rl);
+								convoyActionHandler(location, unitType, nation, rl);
 							case "S":
-								supportActionHandler(territory, currentType, rl);
+								supportActionHandler(location, unitType, nation, rl);
 							case "M":
-								moveActionHandler(territory, currentType, rl);
+								moveActionHandler(location, unitType, nation, rl);
 						}
 					} else {
 						console.log("no orders issued");
@@ -51,8 +57,8 @@ function inputPrompt() {
 			);
 		}
 
-		if (requiresCoastInput(territory) && currentType === "Navy") {
-			coastalExceptionHandler(territory, currentType, rl);
+		if (requiresCoastInput(location) && unitType === "Navy") {
+			coastalExceptionHandler(location, unitType, nation, rl);
 		}
 	});
 
