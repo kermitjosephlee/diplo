@@ -46,10 +46,10 @@ function convoyValidator(movements, convoys) {
 		}
 	});
 
-	return convoyChainChecker(validConvoysArr[0], (data) => {
-		console.log("callback", data);
-	});
-	// return { validConvoysArr, invalidConvoys };
+	return {
+		validConvoysArr: validConvoysArr.map((each) => convoyChainChecker(each)),
+		invalidConvoys,
+	};
 }
 
 exports.convoyValidator = convoyValidator;
