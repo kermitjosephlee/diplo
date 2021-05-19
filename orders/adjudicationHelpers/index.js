@@ -1,6 +1,5 @@
 const { convoyChainChecker } = require("./convoyChainChecker");
 const { convoyInterruptionChecker } = require("./convoyInterruptionChecker");
-const { holdDowngrader } = require("./holdDowngrader");
 const { missingOrdersAppender } = require("./missingOrdersAppender");
 const { moveOrdersSorterByDest } = require("./moveOrdersSorterByDest");
 const { nonAdjacentMovesFinder } = require("./nonAdjacentMovesFinder");
@@ -10,7 +9,6 @@ const { supportingUnitsValidator } = require("./supportingUnitsValidator");
 
 exports.convoyChainChecker = convoyChainChecker;
 exports.convoyInterruptionChecker = convoyInterruptionChecker;
-exports.holdDowngrader = holdDowngrader;
 exports.missingOrdersAppender = missingOrdersAppender;
 exports.moveOrdersSorterByDest = moveOrdersSorterByDest;
 exports.nonAdjacentMovesFinder = nonAdjacentMovesFinder;

@@ -1,4 +1,3 @@
-const { holdDowngrader } = require("./holdDowngrader");
 const { supportingUnitsValidator } = require("./supportingUnitsValidator");
 
 // returns updated list of orders with updated support numbers
@@ -71,9 +70,10 @@ function supportCounter(sortedOrders) {
 
 	// 4. subtract supports for attacked supporting units
 	updatedMovements.forEach((movement) => {
-		if (movement.supports.receivingSupportFrom.length > 0) {
-			supportingUnitsValidator(movement, updatedSupports, updatedHolds);
-		}
+		const [attackedSupport] = updatedSupports.filter(
+			(each) => movement.destination === each.origin
+		);
+		console.log("attackedSupport", attackedSupport);
 	});
 
 	// // removes duplicate holds

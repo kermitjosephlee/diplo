@@ -603,6 +603,7 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 <a xlink:href="https://www.google.com"><g title="Edinburgh"><use xlink:href="#F" id="Edinburgh" class="England unit" transform="translate(&Edinburgh;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Liverpool"><use xlink:href="#A" id="Liverpool" class="England unit" transform="translate(&Liverpool;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="London"><use xlink:href="#F" id="London" class="England unit" transform="translate(&London;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="North Atlantic Ocean"><use xlink:href="#F" id="North Atlantic Ocean" class="France unit" transform="translate(&North_Atlantic_Ocean;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Brest"><use xlink:href="#F" id="Brest" class="France unit" transform="translate(&Brest;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Paris"><use xlink:href="#A" id="Paris" class="France unit" transform="translate(&Paris;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Marseilles"><use xlink:href="#A" id="Marseilles" class="France unit" transform="translate(&Marseilles;)"/></g></a>

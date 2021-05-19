@@ -75,15 +75,27 @@
     },
     {
       "origin": "LVP",
-      "destination": "LVP",
+      "destination": "YOR",
       "unitType": "Army",
       "nation": "England",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": "LON",
+        "receivingSupportFrom": []
+      },
+      "actionType": "S"
+    },
+    {
+      "origin": "CON",
+      "destination": "BUL",
+      "unitType": "Army",
+      "nation": "Turkey",
       "coast": null,
       "supports": {
         "givingSupportTo": null,
         "receivingSupportFrom": []
       },
-      "actionType": "H"
+      "actionType": "M"
     }
   ]
 }

@@ -1,5 +1,7 @@
 function nameUnderscoreReplacer(name = "") {
-	return name.replace(" ", "_");
+	return name.split(" ").join("_");
 }
+
+console.log(nameUnderscoreReplacer("North Atlantic Ocean"));
 
 exports.nameUnderscoreReplacer = nameUnderscoreReplacer;
