@@ -1,6 +1,6 @@
 .env
 maps/
 turns/currentGames/
-orders/pending/*
+orders/pending/
 currentMap.svg
 node_modules/

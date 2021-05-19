@@ -50,18 +50,6 @@
       "actionType": "M"
     },
     {
-      "origin": "LVP",
-      "destination": "YOR",
-      "unitType": "Army",
-      "nation": "England",
-      "coast": null,
-      "supports": {
-        "givingSupportTo": "LON",
-        "receivingSupportFrom": []
-      },
-      "actionType": "S"
-    },
-    {
       "origin": "PAR",
       "destination": "PAR",
       "unitType": "Army",
@@ -78,6 +66,18 @@
       "destination": "BRE",
       "unitType": "Navy",
       "nation": "France",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
+      "actionType": "H"
+    },
+    {
+      "origin": "LVP",
+      "destination": "LVP",
+      "unitType": "Army",
+      "nation": "England",
       "coast": null,
       "supports": {
         "givingSupportTo": null,
