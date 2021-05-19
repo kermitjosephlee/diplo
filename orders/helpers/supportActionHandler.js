@@ -4,6 +4,24 @@ const { nationalAdjectives } = require("../../constants/nationalAdjectives");
 
 let orders = ordersTemplates("S");
 
+function supportReceiptStringGenerator(orders) {
+	const {
+		origin,
+		destination,
+		supports: { givingSupportTo },
+		nation,
+		unitType,
+		coast,
+	} = orders;
+	return `${
+		nationalAdjectives[nation]
+	} ${unitType} in ${origin} to support ${givingSupportTo} ${
+		destination === origin
+			? `hold`
+			: `to move to ${destination} ${coast ? coast : ""}`
+	}`;
+}
+
 function supportActionHandler(territory, unitType, nation, rl, coast = null) {
 	rl.question(`Support what unit? `, (supportingUnit) => {
 		rl.question(
@@ -16,15 +34,7 @@ function supportActionHandler(territory, unitType, nation, rl, coast = null) {
 				orders.nation = nation;
 				orders.unitType = unitType;
 				orders.coast = coast;
-				console.log(
-					`${
-						nationalAdjectives[nation]
-					} ${unitType} in ${territory} to support ${supportingUnit} to ${
-						destination
-							? `move to ${destination} ${coast ? coast : ""}`
-							: `hold at ${supportingUnit}`
-					}`
-				);
+				console.log(supportReceiptStringGenerator(orders));
 				ordersValidator(orders);
 				rl.close();
 			}

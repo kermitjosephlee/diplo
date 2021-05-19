@@ -75,7 +75,7 @@
     },
     {
       "origin": "BRE",
-      "destination": "MAO",
+      "destination": "BRE",
       "unitType": "Navy",
       "nation": "France",
       "coast": null,
@@ -83,8 +83,7 @@
         "givingSupportTo": null,
         "receivingSupportFrom": []
       },
-      "convoyingUnitOrigin": "ENG",
-      "actionType": "C"
+      "actionType": "H"
     }
   ]
 }

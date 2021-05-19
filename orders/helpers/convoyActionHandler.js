@@ -7,6 +7,21 @@ const { nationalAdjectives } = require("../../constants/nationalAdjectives");
 
 let orders = ordersTemplates("C");
 
+function convoyReceiptStringGenerator({
+	convoyingUnitOrigin,
+	origin,
+	destination,
+	unitType,
+	nation,
+	coast,
+}) {
+	return `${
+		nationalAdjectives[nation]
+	} ${unitType} in ${convoyingUnitOrigin} to convoy Army ${origin} to ${destination} ${
+		coast ? coast : ""
+	}`;
+}
+
 function convoyActionHandler(territory, unitType, nation, rl, coast = null) {
 	rl.question(
 		`Which unit needs the convoy ${availableMovements(territory)}? `,
@@ -21,13 +36,7 @@ function convoyActionHandler(territory, unitType, nation, rl, coast = null) {
 					orders.nation = nation;
 					orders.coast = coast;
 					orders.actionType = "C";
-					console.log(
-						`${
-							nationalAdjectives[nation]
-						} ${unitType} in ${territory} to convoy in Army ${origin} to ${destination} ${
-							coast ? coast : ""
-						}`
-					);
+					console.log(convoyReceiptStringGenerator(orders));
 					ordersValidator(orders);
 					rl.close();
 				}
