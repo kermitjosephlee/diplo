@@ -10,7 +10,7 @@ function supportActionHandler(territory, unitType, nation, rl, coast = null) {
 			(destination = null) => {
 				orders.origin = territory;
 				orders.destination = destination ? destination : territory;
-				orders.supportingUnit = supportingUnit;
+				orders.supports.givingSupportTo = supportingUnit;
 				orders.actionType = "S";
 				orders.nation = nation;
 				orders.unitType = unitType;

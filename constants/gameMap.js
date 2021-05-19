@@ -995,9 +995,14 @@ function currentTerritory(territoryShortName) {
 	return current;
 }
 
+function getBorderingTerritories(territoryShortName) {
+	return currentTerritory(territoryShortName).borderingTerritories;
+}
+
 exports.gameMap = gameMap;
 exports.maritimeTerritories = gameMap.filter((each) => each.isMaritime);
 exports.terrestrialTerritories = gameMap.filter((each) => each.isTerrestrial);
 exports.supplyCenters = gameMap.filter((each) => each.isSupplyCenter);
 exports.exceptionalCoastTerritories = gameMap.filter((each) => each.coasts);
 exports.currentTerritory = currentTerritory;
+exports.getBorderingTerritories = getBorderingTerritories;

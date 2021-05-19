@@ -2,24 +2,26 @@ const fs = require("fs");
 const { currentTerritory } = require("../constants/gameMap");
 const { availableMovements } = require("../movementHelpers/availableMovements");
 const { convoyChainChecker } = require("./adjudicationHelpers");
+const { convoyInterruptionChecker } = require("./adjudicationHelpers");
 const { types } = require("../constants/types");
 
 const { N } = types;
 
-function convoyValidator(movements, convoys) {
-	let validConvoysArr = [...movements];
+// Note: convoyMovements are referring to the armies being convoyed
+function convoyValidator(convoyMovements, convoys, allMovements) {
+	let validConvoysArr = [...convoyMovements];
 	let invalidConvoys = [];
 
 	convoys.forEach((convoy) => {
-		const currentMovement = movements.filter(
-			(movement) =>
-				convoy.destination === movement.destination &&
-				convoy.convoyingUnitOrigin === movement.origin
+		const currentMovement = convoyMovements.filter(
+			(convoyMovement) =>
+				convoy.destination === convoyMovement.destination &&
+				convoy.convoyingUnitOrigin === convoyMovement.origin
 		);
-		const otherMovements = movements.filter(
-			(movement) =>
-				!convoy.destination === movement.destination ||
-				!convoy.convoyingUnitOrigin === movement.origin
+		const otherMovements = convoyMovements.filter(
+			(convoyMovement) =>
+				!convoy.destination === convoyMovement.destination ||
+				!convoy.convoyingUnitOrigin === convoyMovement.origin
 		);
 
 		if (currentMovement.length === 0) {
@@ -46,10 +48,17 @@ function convoyValidator(movements, convoys) {
 		}
 	});
 
-	return {
-		validConvoysArr: validConvoysArr.map((each) => convoyChainChecker(each)),
+	const returnConvoyObj = {
+		validConvoys: validConvoysArr.map((each) => convoyChainChecker(each)),
 		invalidConvoys,
 	};
+
+	// console.log(
+	// 	"convoyInterruptionChecker",
+	// 	convoyInterruptionChecker(returnConvoyObj, allMovements)
+	// );
+
+	return returnConvoyObj;
 }
 
 exports.convoyValidator = convoyValidator;

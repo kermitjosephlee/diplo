@@ -2,79 +2,64 @@
   "gameId": 1,
   "orders": [
     {
+      "origin": "BER",
+      "destination": "BER",
+      "unitType": "Army",
+      "nation": "Germany",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": "MUN",
+        "receivingSupportFrom": []
+      },
+      "actionType": "S"
+    },
+    {
+      "origin": "MUN",
+      "destination": "MUN",
+      "unitType": "Army",
+      "nation": "Germany",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": "BER",
+        "receivingSupportFrom": []
+      },
+      "actionType": "S"
+    },
+    {
       "origin": "LON",
-      "destination": "NTH",
+      "destination": "YOR",
       "unitType": "Navy",
       "nation": "England",
       "coast": null,
-      "supports": 0,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
       "actionType": "M"
     },
     {
       "origin": "EDI",
-      "destination": "NTH",
+      "destination": "YOR",
       "unitType": "Navy",
       "nation": "England",
       "coast": null,
-      "supports": 0,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
       "actionType": "M"
     },
     {
-      "origin": "MOS",
-      "destination": "WAR",
-      "unitType": "Army",
-      "nation": "Russia",
-      "coast": null,
-      "supports": 0,
-      "actionType": "M"
-    },
-    {
-      "origin": "STP",
-      "destination": "LVN",
-      "unitType": "Navy",
-      "nation": "Russia",
-      "coast": "SOUTH",
-      "supports": 0,
-      "actionType": "M"
-    },
-    {
-      "origin": "WAL",
-      "destination": "TUN",
+      "origin": "LVP",
+      "destination": "YOR",
       "unitType": "Army",
       "nation": "England",
       "coast": null,
-      "supports": 0,
-      "actionType": "M"
-    },
-    {
-      "origin": "MAO",
-      "destination": "TUN",
-      "unitType": "Navy",
-      "nation": "Germany",
-      "coast": null,
-      "convoyingUnitOrigin": "WAL",
-      "supports": 0,
-      "actionType": "C"
-    },
-    {
-      "origin": "WES",
-      "destination": "TUN",
-      "unitType": "Navy",
-      "nation": "Italy",
-      "coast": null,
-      "convoyingUnitOrigin": "WAL",
-      "supports": 0,
-      "actionType": "C"
-    },
-    {
-      "origin": "ENG",
-      "destination": "TUN",
-      "unitType": "Navy",
-      "nation": "France",
-      "coast": null,
-      "convoyingUnitOrigin": "WAL",
-      "supports": 0,
-      "actionType": "C"
+      "supports": {
+        "givingSupportTo": "LON",
+        "receivingSupportFrom": []
+      },
+      "actionType": "S"
     }
   ]
 }

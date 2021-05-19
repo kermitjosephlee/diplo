@@ -21,12 +21,18 @@ function ordersAdjudicator() {
 	const totalOrders = missingOrdersAppender(orders);
 	const sortedOrders = ordersSorterByType(totalOrders);
 
-	const nonAdjacentMoves = nonAdjacentMovesFinder(sortedOrders.M);
+	const supportUpdateOrders = supportCounter(sortedOrders);
 
-	console.log(
-		"ordersAdjudicator",
-		convoyValidator(nonAdjacentMoves, sortedOrders.C)
+	const nonAdjacentMoves = nonAdjacentMovesFinder(sortedOrders.M); // potential convoys
+
+	const { validConvoys, invalidConvoys } = convoyValidator(
+		nonAdjacentMoves,
+		sortedOrders.C,
+		sortedOrders.M
 	);
+
+	console.log("supportUpdatedOrders", supportUpdateOrders);
+	// console.log("validConvoys", validConvoys, "\ninvalidConvoys", invalidConvoys);
 
 	// validate move, support and convoy orders
 

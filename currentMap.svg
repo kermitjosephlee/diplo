@@ -601,17 +601,17 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 </g>
 
 <a xlink:href="https://www.google.com"><g title="Edinburgh"><use xlink:href="#F" id="Edinburgh" class="England unit" transform="translate(&Edinburgh;)"/></g></a>
-<a xlink:href="https://www.google.com"><g title="Wales"><use xlink:href="#A" id="Wales" class="England unit" transform="translate(&Wales;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Liverpool"><use xlink:href="#A" id="Liverpool" class="England unit" transform="translate(&Liverpool;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="London"><use xlink:href="#F" id="London" class="England unit" transform="translate(&London;)"/></g></a>
-<a xlink:href="https://www.google.com"><g title="English Channel"><use xlink:href="#F" id="English Channel" class="France unit" transform="translate(&English_Channel;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Brest"><use xlink:href="#F" id="Brest" class="France unit" transform="translate(&Brest;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Paris"><use xlink:href="#A" id="Paris" class="France unit" transform="translate(&Paris;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Marseilles"><use xlink:href="#A" id="Marseilles" class="France unit" transform="translate(&Marseilles;)"/></g></a>
-<a xlink:href="https://www.google.com"><g title="Mid-Atlantic Ocean"><use xlink:href="#F" id="Mid-Atlantic Ocean" class="Germany unit" transform="translate(&Mid-Atlantic_Ocean;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Kiel"><use xlink:href="#F" id="Kiel" class="Germany unit" transform="translate(&Kiel;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Berlin"><use xlink:href="#A" id="Berlin" class="Germany unit" transform="translate(&Berlin;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Munich"><use xlink:href="#A" id="Munich" class="Germany unit" transform="translate(&Munich;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Venice"><use xlink:href="#A" id="Venice" class="Italy unit" transform="translate(&Venice;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Rome"><use xlink:href="#A" id="Rome" class="Italy unit" transform="translate(&Rome;)"/></g></a>
-<a xlink:href="https://www.google.com"><g title="Western Mediterranean"><use xlink:href="#F" id="Western Mediterranean" class="Italy unit" transform="translate(&Western_Mediterranean;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Naples"><use xlink:href="#F" id="Naples" class="Italy unit" transform="translate(&Naples;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Trieste"><use xlink:href="#F" id="Trieste" class="Austria unit" transform="translate(&Trieste;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Vienna"><use xlink:href="#A" id="Vienna" class="Austria unit" transform="translate(&Vienna;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Budapest"><use xlink:href="#A" id="Budapest" class="Austria unit" transform="translate(&Budapest;)"/></g></a>

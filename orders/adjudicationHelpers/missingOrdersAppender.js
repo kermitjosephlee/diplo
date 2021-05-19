@@ -16,9 +16,10 @@ function missingOrdersAppender(pendingOrders) {
 	);
 
 	const filteredUnitHoldOrders = filteredUnitPositions.map(
-		({ location, unitType, nation }) => ({
+		({ location, destination, unitType, nation }) => ({
 			...holdTemplate,
 			origin: location,
+			destination: location,
 			unitType,
 			nation,
 		})
