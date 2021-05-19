@@ -19,6 +19,13 @@ function moveActionHandler(territory, unitType, nation, rl, coast = null) {
 			orders.unitType = unitType;
 			orders.nation = nation;
 			orders.coast = coast;
+			console.log(
+				`${
+					nationalAdjectives[nation]
+				} ${unitType} in ${territory} to move to ${destination} ${
+					coast ? coast : ""
+				}`
+			);
 			ordersValidator(orders);
 			rl.close();
 		}

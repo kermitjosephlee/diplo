@@ -60,6 +60,31 @@
         "receivingSupportFrom": []
       },
       "actionType": "S"
+    },
+    {
+      "origin": "PAR",
+      "destination": "PAR",
+      "unitType": "Army",
+      "nation": "France",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": "MAR",
+        "receivingSupportFrom": []
+      },
+      "actionType": "S"
+    },
+    {
+      "origin": "BRE",
+      "destination": "MAO",
+      "unitType": "Navy",
+      "nation": "France",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
+      "convoyingUnitOrigin": "ENG",
+      "actionType": "C"
     }
   ]
 }
