@@ -50,18 +50,6 @@
       "actionType": "M"
     },
     {
-      "origin": "PAR",
-      "destination": "PAR",
-      "unitType": "Army",
-      "nation": "France",
-      "coast": null,
-      "supports": {
-        "givingSupportTo": "MAR",
-        "receivingSupportFrom": []
-      },
-      "actionType": "S"
-    },
-    {
       "origin": "BRE",
       "destination": "BRE",
       "unitType": "Navy",
@@ -96,6 +84,105 @@
         "receivingSupportFrom": []
       },
       "actionType": "M"
+    },
+    {
+      "origin": "NAO",
+      "destination": "LVP",
+      "unitType": "Navy",
+      "nation": "France",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
+      "actionType": "M"
+    },
+    {
+      "origin": "SMY",
+      "destination": "TUN",
+      "unitType": "Army",
+      "nation": "Turkey",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
+      "actionType": "M"
+    },
+    {
+      "origin": "EAS",
+      "destination": "TUN",
+      "unitType": "Navy",
+      "nation": "France",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
+      "convoyingUnitOrigin": "SMY",
+      "actionType": "C"
+    },
+    {
+      "origin": "ION",
+      "destination": "TUN",
+      "unitType": "Navy",
+      "nation": "France",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
+      "convoyingUnitOrigin": "SMY",
+      "actionType": "C"
+    },
+    {
+      "origin": "AEG",
+      "destination": "ION",
+      "unitType": "Navy",
+      "nation": "Turkey",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
+      "actionType": "M"
+    },
+    {
+      "origin": "MAR",
+      "destination": "NAF",
+      "unitType": "Army",
+      "nation": "France",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
+      "actionType": "M"
+    },
+    {
+      "origin": "LYO",
+      "destination": "NAF",
+      "unitType": "Navy",
+      "nation": "Turkey",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
+      "convoyingUnitOrigin": "MAR",
+      "actionType": "C"
+    },
+    {
+      "origin": "PAR",
+      "destination": "PAR",
+      "unitType": "Army",
+      "nation": "France",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
+      "actionType": "H"
     }
   ]
 }

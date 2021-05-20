@@ -60,40 +60,92 @@ function supportCounter(sortedOrders) {
 			const otherHolds = updatedHolds.filter(
 				(each) => each.origin !== hold.supports.givingSupportTo
 			);
-			receivingUnit.supports.receivingSupportFrom = [
-				...receivingUnit.supports.receivingSupportFrom,
-				hold.supports.givingSupportTo,
-			];
+
+			if (receivingUnit !== undefined) {
+				receivingUnit.supports.receivingSupportFrom = [
+					...receivingUnit.supports.receivingSupportFrom,
+					hold.supports.givingSupportTo,
+				];
+			}
 			updatedHolds = [...otherHolds, receivingUnit];
 		}
 	});
 
 	// 4. subtract supports for attacked supporting units
+	// 		a. downgrades attacking movements to holds & removes from movement list & adds to hold list
+	// 		b. removes giving support units from receiving support unit list
+	//		c. downgrades giving support units action from SUPPORT to HOLD
+	// 		d. removes from support list & adds to hold list
 	updatedMovements.forEach((movement) => {
-		const [attackedSupport] = updatedSupports.filter(
+		let [attackedSupport] = updatedSupports.filter(
 			(each) => movement.destination === each.origin
 		);
-		console.log("attackedSupport", attackedSupport);
+
+		if (attackedSupport !== undefined) {
+			let attackingUnit = { ...movement };
+
+			// const otherAttacks = updatedMovements.filter(
+			// 	(each) => attackingUnit.origin !== each.origin
+			// );
+
+			const otherSupports = updatedSupports.filter(
+				(each) => movement.destination !== each.origin
+			);
+
+			const receivingSupportUnitShortName =
+				attackedSupport.supports.givingSupportTo;
+
+			let [receivingSupportUnit] = updatedMovements.filter(
+				(each) => each.origin === receivingSupportUnitShortName
+			);
+
+			const otherMovements = updatedMovements
+				.filter((each) => each.origin !== receivingSupportUnitShortName)
+				.filter((each) => attackingUnit.origin !== each.origin);
+
+			receivingSupportUnit = {
+				...receivingSupportUnit,
+				supports: {
+					...receivingSupportUnit.supports,
+					receivingSupportFrom:
+						receivingSupportUnit.supports.receivingSupportFrom.filter(
+							(each) => each !== attackedSupport.origin
+						),
+				},
+			};
+
+			attackedSupport = {
+				...attackedSupport,
+				supports: {
+					...attackedSupport.supports,
+					givingSupportTo: null,
+				},
+				actionType: "H",
+			};
+
+			attackingUnit = {
+				...attackingUnit,
+				actionType: "H",
+			};
+
+			// removes duplicate movements
+			updatedMovements = [receivingSupportUnit, ...otherMovements].reduce(
+				(unique, item) =>
+					unique.includes({ origin: item.origin }) ? unique : [...unique, item],
+				[]
+			);
+			updatedSupports = [...otherSupports];
+			updatedHolds = [...updatedHolds, attackedSupport, attackingUnit];
+		}
 	});
 
-	// // removes duplicate holds
-	// updatedHolds = updatedHolds.reduce(
-	// 	(unique, item) =>
-	// 		unique.includes(item.origin) ? unique : [...unique, item],
-	// 	[]
-	// );
+	const returnObj = {
+		S: updatedSupports,
+		M: updatedMovements,
+		H: updatedHolds,
+	};
 
-	// console.log(
-	// 	"M",
-	// 	updatedMovements,
-	// 	"\nS",
-	// 	updatedSupports,
-	// 	"\nH",
-	// 	updatedHolds
-	// );
-
-	// return sortedOrders;
-	return null;
+	return returnObj;
 }
 
 exports.supportCounter = supportCounter;

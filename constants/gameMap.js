@@ -948,7 +948,7 @@ const gameMap = [
 	},
 	{
 		id: 72,
-		name: "Eastern Mediterranean Sea",
+		name: "Eastern Mediterranean",
 		shortName: "EAS",
 		borderingTerritories: ["ION", "AEG", "SMY", "SYR"],
 		isMaritime: true,

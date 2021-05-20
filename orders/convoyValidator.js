@@ -3,62 +3,44 @@ const { currentTerritory } = require("../constants/gameMap");
 const { availableMovements } = require("../movementHelpers/availableMovements");
 const { convoyChainChecker } = require("./adjudicationHelpers");
 const { convoyInterruptionChecker } = require("./adjudicationHelpers");
+const { convoyBundler } = require("./adjudicationHelpers");
 const { types } = require("../constants/types");
 
 const { N } = types;
 
 // Note: convoyMovements are referring to the armies being convoyed
-function convoyValidator(convoyMovements, convoys, allMovements) {
-	let validConvoysArr = [...convoyMovements];
-	let invalidConvoys = [];
+// receives potential convoy army movements, all listed unconfirmed convoys, all movements, all holds
+function convoyValidator(convoyMovements, convoys, allMovements, allHolds) {
+	let updatedMovements = [...allMovements];
+	let updatedHolds = [...allHolds];
 
-	convoys.forEach((convoy) => {
-		const currentMovement = convoyMovements.filter(
-			(convoyMovement) =>
-				convoy.destination === convoyMovement.destination &&
-				convoy.convoyingUnitOrigin === convoyMovement.origin
-		);
-		const otherMovements = convoyMovements.filter(
-			(convoyMovement) =>
-				!convoy.destination === convoyMovement.destination ||
-				!convoy.convoyingUnitOrigin === convoyMovement.origin
-		);
+	const bundledConvoys = convoyMovements.map((movement) =>
+		convoyBundler(movement, convoys)
+	);
 
-		if (currentMovement.length === 0) {
-			invalidConvoys = [...invalidConvoys, convoy];
-		}
+	const accountedConvoys = bundledConvoys
+		.map((each) => each.convoy)
+		.flat()
+		.map((convoy) => convoy.origin);
 
-		if (currentMovement.length === 1) {
-			if (currentMovement[0].convoy) {
-				currentMovement[0].convoy = [...currentMovement[0].convoy, convoy];
-			} else {
-				currentMovement[0].convoy = [convoy];
-			}
+	// converts unaccounted convoy movements to holds and adds them to the hold list
+	const remainingConvoys = convoys
+		.filter((each) => !accountedConvoys.includes(each.origin))
+		.map((each) => ({ ...each, destination: each.origin, actionType: "H" }));
 
-			validConvoysArr = [
-				...otherMovements,
-				{
-					...currentMovement[0],
-				},
-			];
-		}
+	updatedHolds = [...updatedHolds, ...remainingConvoys];
 
-		if (currentMovement.length > 1) {
-			return console.log("ERROR: more than one current movement");
-		}
-	});
+	// returns a list of convoys with valid/invalid status
+	const updatedStatusConvoys = bundledConvoys.map((each) =>
+		convoyChainChecker(each)
+	);
 
-	const returnConvoyObj = {
-		validConvoys: validConvoysArr.map((each) => convoyChainChecker(each)),
-		invalidConvoys,
-	};
+	console.log("updatedStatusConvoys", updatedStatusConvoys);
+	// console.log("bundledConvoys", bundledConvoys[0].convoy);
 
-	// console.log(
-	// 	"convoyInterruptionChecker",
-	// 	convoyInterruptionChecker(returnConvoyObj, allMovements)
-	// );
-
-	return returnConvoyObj;
+	// goal is to confirm convoys, and invalid convoys turned to holds
+	// return a list of actions that are all valid for support comparisons
+	return { convoyMovements, convoys, allMovements, allHolds };
 }
 
 exports.convoyValidator = convoyValidator;
