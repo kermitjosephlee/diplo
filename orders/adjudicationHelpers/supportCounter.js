@@ -1,4 +1,4 @@
-const { supportingUnitsValidator } = require("./supportingUnitsValidator");
+// const { supportingUnitsValidator } = require("./supportingUnitsValidator");
 
 // returns updated list of orders with updated support numbers
 
@@ -83,10 +83,6 @@ function supportCounter(sortedOrders) {
 
 		if (attackedSupport !== undefined) {
 			let attackingUnit = { ...movement };
-
-			// const otherAttacks = updatedMovements.filter(
-			// 	(each) => attackingUnit.origin !== each.origin
-			// );
 
 			const otherSupports = updatedSupports.filter(
 				(each) => movement.destination !== each.origin

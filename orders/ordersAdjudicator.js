@@ -2,9 +2,10 @@ const fs = require("fs");
 const {
 	missingOrdersAppender,
 	ordersSorterByType,
-	moveOrdersSorterByDest,
+	// moveOrdersSorterByDest,
 	supportCounter,
 	nonAdjacentMovesFinder,
+	conflictResolver,
 } = require("./adjudicationHelpers");
 const { convoyValidator } = require("./convoyValidator");
 
@@ -38,10 +39,35 @@ function ordersAdjudicator() {
 		supportUpdatedHolds
 	);
 
-	console.log("convoyValidated Orders", {
-		convoyValidatedMovements,
-		convoyValidatedHolds,
+	const resolvedMovements = conflictResolver(convoyValidatedMovements).flat();
+
+	const successfulMovements = resolvedMovements.filter(
+		(each) => each.isMovementSuccessful === true
+	);
+	const failedMovements = resolvedMovements
+		.filter((each) => each.isMovementSuccessful === false)
+		.map((each) => ({ destination: each.origin, actionType: "H", ...each }));
+
+	const postResolutionHolds = [...failedMovements, ...convoyValidatedHolds];
+
+	const postResolutionPositions = [
+		...successfulMovements,
+		...postResolutionHolds,
+	].map((each) => {
+		if (each.isMovementSuccessful) {
+			return {
+				location: each.destination,
+				unitType: each.unitType,
+				nation: each.nation,
+			};
+		}
+		return {
+			location: each.origin,
+			unitType: each.unitType,
+			nation: each.nation,
+		};
 	});
+	console.log("postResolutionPositions", postResolutionPositions);
 
 	//// validate move, support and convoy orders
 
@@ -50,7 +76,8 @@ function ordersAdjudicator() {
 	//// validate support orders
 	//// append support orders to move/hold orders
 
-	// evaluate which support orders are cancelled by move orders
+	//// evaluate which support orders are cancelled by move orders
+
 	// score move orders
 	// evaluate successful move results
 	// evaluate if possible retreat spaces are open

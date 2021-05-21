@@ -1,3 +1,4 @@
+const { conflictResolver } = require("./conflictResolver");
 const { convoyBundler } = require("./convoyBundler");
 const { convoyChainChecker } = require("./convoyChainChecker");
 const { convoyInterruptionChecker } = require("./convoyInterruptionChecker");
@@ -7,8 +8,9 @@ const { moveOrdersSorterByDest } = require("./moveOrdersSorterByDest");
 const { nonAdjacentMovesFinder } = require("./nonAdjacentMovesFinder");
 const { ordersSorterByType } = require("./ordersSorterByType");
 const { supportCounter } = require("./supportCounter");
-const { supportingUnitsValidator } = require("./supportingUnitsValidator");
+const { supportInterruptionChecker } = require("./supportInterruptionChecker");
 
+exports.conflictResolver = conflictResolver;
 exports.convoyBundler = convoyBundler;
 exports.convoyChainChecker = convoyChainChecker;
 exports.convoyInterruptionChecker = convoyInterruptionChecker;
@@ -18,4 +20,4 @@ exports.moveOrdersSorterByDest = moveOrdersSorterByDest;
 exports.nonAdjacentMovesFinder = nonAdjacentMovesFinder;
 exports.ordersSorterByType = ordersSorterByType;
 exports.supportCounter = supportCounter;
-exports.supportingUnitsValidator = supportingUnitsValidator;
+exports.supportInterruptionChecker = supportInterruptionChecker;

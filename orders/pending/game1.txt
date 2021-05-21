@@ -62,34 +62,10 @@
       "actionType": "H"
     },
     {
-      "origin": "LVP",
-      "destination": "YOR",
-      "unitType": "Army",
-      "nation": "England",
-      "coast": null,
-      "supports": {
-        "givingSupportTo": "LON",
-        "receivingSupportFrom": []
-      },
-      "actionType": "S"
-    },
-    {
       "origin": "CON",
       "destination": "BUL",
       "unitType": "Army",
       "nation": "Turkey",
-      "coast": null,
-      "supports": {
-        "givingSupportTo": null,
-        "receivingSupportFrom": []
-      },
-      "actionType": "M"
-    },
-    {
-      "origin": "NAO",
-      "destination": "LVP",
-      "unitType": "Navy",
-      "nation": "France",
       "coast": null,
       "supports": {
         "givingSupportTo": null,
@@ -176,6 +152,30 @@
       "origin": "PAR",
       "destination": "PAR",
       "unitType": "Army",
+      "nation": "France",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": null,
+        "receivingSupportFrom": []
+      },
+      "actionType": "H"
+    },
+    {
+      "origin": "LVP",
+      "destination": "YOR",
+      "unitType": "Army",
+      "nation": "England",
+      "coast": null,
+      "supports": {
+        "givingSupportTo": "LON",
+        "receivingSupportFrom": []
+      },
+      "actionType": "S"
+    },
+    {
+      "origin": "NAO",
+      "destination": "NAO",
+      "unitType": "Navy",
       "nation": "France",
       "coast": null,
       "supports": {
