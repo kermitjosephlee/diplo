@@ -9,21 +9,26 @@ function missingOrdersAppender(pendingOrders) {
 	const unitPositions = JSON.parse(fs.readFileSync(unitPositionsFile, "utf-8"));
 	const latestUnitPositions = unitPositions[0].positions;
 
+	// console.log("latestUnitPositions", latestUnitPositions);
+
 	const locationsWithPendingOrders = pendingOrders.map((each) => each.origin);
+
+	// console.log("locationsWithPendingOrders", locationsWithPendingOrders);
 
 	const filteredUnitPositions = latestUnitPositions.filter(
 		(each) => !locationsWithPendingOrders.includes(each.location)
 	);
 
-	const filteredUnitHoldOrders = filteredUnitPositions.map(
-		({ location, destination, unitType, nation }) => ({
-			...holdTemplate,
-			origin: location,
-			destination: location,
-			unitType,
-			nation,
-		})
-	);
+	// console.log("filteredUnitPositions", filteredUnitPositions);
+
+	const filteredUnitHoldOrders = filteredUnitPositions.map((each) => ({
+		...holdTemplate,
+		origin: each.location,
+		destination: each.location,
+		unitType: each.unitType,
+		nation: each.nation,
+		coast: each.coast,
+	}));
 
 	return [...pendingOrders, ...filteredUnitHoldOrders];
 }

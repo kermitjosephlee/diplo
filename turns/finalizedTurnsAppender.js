@@ -40,6 +40,4 @@ function finalizedTurnAppender(finalizedTurn) {
 	);
 }
 
-finalizedTurnAppender(testTurn);
-
 exports.finalizedTurnAppender = finalizedTurnAppender;

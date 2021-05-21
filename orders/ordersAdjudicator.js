@@ -8,6 +8,7 @@ const {
 	conflictResolver,
 } = require("./adjudicationHelpers");
 const { convoyValidator } = require("./convoyValidator");
+const { finalizedTurnAppender } = require("../turns/finalizedTurnsAppender");
 
 function ordersAdjudicator() {
 	// receive a list of orders
@@ -19,10 +20,14 @@ function ordersAdjudicator() {
 	const orders =
 		pendingOrdersObj.gameId === gameId ? pendingOrdersObj.orders : [];
 
-	const totalOrders = missingOrdersAppender(orders);
-	const sortedOrders = ordersSorterByType(totalOrders);
+	const totalOrders = missingOrdersAppender(orders); // adds in generic hold orders for units without orders
+	const sortedOrders = ordersSorterByType(totalOrders); // returns orders by action type
 
-	const supportUpdatedOrders = supportCounter(sortedOrders);
+	// console.log("sortedOrders", sortedOrders);
+
+	const supportUpdatedOrders = supportCounter(sortedOrders); // handles additions and subtractions of supports
+
+	// console.log("supportUpdatedOrders", supportUpdatedOrders);
 
 	const {
 		M: supportUpdatedMoves,
@@ -32,6 +37,7 @@ function ordersAdjudicator() {
 
 	const nonAdjacentMoves = nonAdjacentMovesFinder(supportUpdatedMoves); // potential convoys
 
+	// returns with validated chain convoys and holds converted from invalid or interruped convoys
 	const { convoyValidatedMovements, convoyValidatedHolds } = convoyValidator(
 		nonAdjacentMoves,
 		sortedOrders.C,
@@ -39,17 +45,23 @@ function ordersAdjudicator() {
 		supportUpdatedHolds
 	);
 
+	// returns with labelled successful or failed movements
 	const resolvedMovements = conflictResolver(convoyValidatedMovements).flat();
 
 	const successfulMovements = resolvedMovements.filter(
 		(each) => each.isMovementSuccessful === true
 	);
+
+	// converts failed movements into holds
+	// TODO: will have to check for displacements
 	const failedMovements = resolvedMovements
 		.filter((each) => each.isMovementSuccessful === false)
 		.map((each) => ({ destination: each.origin, actionType: "H", ...each }));
 
+	// updated list of holds
 	const postResolutionHolds = [...failedMovements, ...convoyValidatedHolds];
 
+	// returns with a list of positions for resulting movements and holds
 	const postResolutionPositions = [
 		...successfulMovements,
 		...postResolutionHolds,
@@ -61,13 +73,24 @@ function ordersAdjudicator() {
 				nation: each.nation,
 			};
 		}
+		if (each.coast) {
+			return {
+				location: each.origin,
+				unitType: each.unitType,
+				nation: each.nation,
+				coast: each.coast,
+			};
+		}
 		return {
 			location: each.origin,
 			unitType: each.unitType,
 			nation: each.nation,
 		};
 	});
-	console.log("postResolutionPositions", postResolutionPositions);
+
+	finalizedTurnAppender(postResolutionPositions);
+
+	// console.log("postResolutionPositions", postResolutionPositions);
 
 	//// validate move, support and convoy orders
 
