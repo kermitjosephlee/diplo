@@ -1,12 +1,10 @@
-const fs = require("fs");
-const { currentTerritory } = require("../constants/gameMap");
-const { availableMovements } = require("../movementHelpers/availableMovements");
-const { convoyChainChecker } = require("./adjudicationHelpers");
-const { convoyInterruptionChecker } = require("./adjudicationHelpers");
+const {
+	convoyChainChecker,
+	invalidConvoyHandler,
+	convoyInterruptionChecker,
+} = require("./adjudicationHelpers");
 const { convoyBundler } = require("./adjudicationHelpers");
 const { types } = require("../constants/types");
-
-const { N } = types;
 
 // Note: convoyMovements are referring to the armies being convoyed
 // receives potential convoy army movements, all listed unconfirmed convoys, all movements, all holds
@@ -35,21 +33,71 @@ function convoyValidator(convoyMovements, convoys, allMovements, allHolds) {
 		convoyChainChecker(each)
 	);
 
-	console.log("updatedStatusConvoys", updatedStatusConvoys);
-	// console.log("bundledConvoys", bundledConvoys[0].convoy);
+	const validConvoys = updatedStatusConvoys.filter(
+		(each) => each.isConvoyValid
+	);
 
-	// goal is to confirm convoys, and invalid convoys turned to holds
-	// return a list of actions that are all valid for support comparisons
-	return { convoyMovements, convoys, allMovements, allHolds };
+	// removes stale convoy movements
+	updatedMovements = [...validConvoys, ...updatedMovements].reduce(
+		(unique, item) =>
+			unique.map(({ origin }) => origin).includes(item.origin)
+				? unique
+				: [...unique, item],
+		[]
+	);
+
+	const invalidConvoys = updatedStatusConvoys.filter(
+		(each) => each.isConvoyValid === false
+	);
+
+	const newHolds = invalidConvoys
+		.map((each) => invalidConvoyHandler(each))
+		.flat();
+
+	updatedHolds = [...newHolds, ...updatedHolds];
+
+	// removes stale invalid convoys
+	updatedMovements = updatedMovements.filter(
+		(each) => !updatedHolds.map(({ origin }) => origin).includes(each.origin)
+	);
+
+	const [interuptedConvoysCheckedOrders] = updatedMovements
+		.filter((each) => each.isConvoyValid)
+		.map((each) => convoyInterruptionChecker(each, updatedMovements));
+
+	const interuptedConvoysCheckedMovements =
+		interuptedConvoysCheckedOrders.filter((each) => each.actionType === "M");
+
+	const interuptedConvoysCheckedHolds = interuptedConvoysCheckedOrders.filter(
+		(each) => each.actionType === "H"
+	);
+
+	// updates holds and removes older duplicates
+	updatedHolds = [...interuptedConvoysCheckedHolds, ...updatedHolds].reduce(
+		(unique, item) =>
+			unique.map(({ origin }) => origin).includes(item.origin)
+				? unique
+				: [...unique, item],
+		[]
+	);
+
+	// removes stale convoy movements
+	updatedMovements = [...interuptedConvoysCheckedMovements, ...updatedMovements]
+		.filter(
+			(each) => !updatedHolds.map((hold) => hold.origin).includes(each.origin)
+		)
+		.reduce(
+			(unique, item) =>
+				unique.map(({ origin }) => origin).includes(item.origin)
+					? unique
+					: [...unique, item],
+			[]
+		);
+
+	return {
+		convoyValidatedMovements: updatedMovements,
+		convoyValidatedHolds: updatedHolds,
+	};
 }
 
 exports.convoyValidator = convoyValidator;
-
-// army movement - ie. LON - KIE
-// check if navy is adjacent
-// if navy A is adjacent to LON, check to see if KIE is adjacent to navyA
-// if so, valid convoy
-// if not, check if navy is adjacent to navyA
-// if so, and KIE is adjacent to navyB, valid convoy
-// if not, check if navy is adjacent to navyB
-// if not, invalid convoy, all units hold

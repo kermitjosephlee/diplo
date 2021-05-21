@@ -31,12 +31,17 @@ function ordersAdjudicator() {
 
 	const nonAdjacentMoves = nonAdjacentMovesFinder(supportUpdatedMoves); // potential convoys
 
-	convoyValidator(
+	const { convoyValidatedMovements, convoyValidatedHolds } = convoyValidator(
 		nonAdjacentMoves,
 		sortedOrders.C,
 		supportUpdatedMoves,
 		supportUpdatedHolds
 	);
+
+	console.log("convoyValidated Orders", {
+		convoyValidatedMovements,
+		convoyValidatedHolds,
+	});
 
 	// validate move, support and convoy orders
 
