@@ -11,7 +11,12 @@ function convoyInterruptionChecker(convoy, movements) {
 		rest.destination,
 	];
 
-	const attackedConvoy = movements.filter(
+	// filter out self movement to remove error of self attack own convoy
+	const otherMovements = movements.filter(
+		(each) => each.origin !== convoy.origin
+	);
+
+	const attackedConvoy = otherMovements.filter(
 		(each) =>
 			each.origin !== each.destination &&
 			each.actionType === "M" &&
@@ -37,7 +42,7 @@ function convoyInterruptionChecker(convoy, movements) {
 		return [...dismantledConvoy, updatedConvoyAttacker];
 	}
 
-	return [...convoy];
+	return convoy;
 }
 
 exports.convoyInterruptionChecker = convoyInterruptionChecker;

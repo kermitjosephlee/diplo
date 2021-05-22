@@ -12,8 +12,21 @@ function mapBuilder() {
 
 	const currentPositions = currentUnitPositions();
 	const positions = mapPositionMaker() + mapUnitPlacer(currentPositions);
+	const directoryName = `./maps`;
 	const fileName = `./maps/${Date.now()}.svg`;
 	const mapWithPositionsAndShades = mapShader(mapString(positions));
+
+	const removeOldFiles = true;
+
+	if (removeOldFiles) {
+		const oldFiles = fs.readdirSync(directoryName);
+		oldFiles.forEach((oldFile) => {
+			fs.unlink(`${directoryName}/${oldFile}`, (err) => {
+				if (err) console.log(err);
+				console.log(`removed ${oldFile}`);
+			});
+		});
+	}
 
 	return fs.writeFile(fileName, mapWithPositionsAndShades, "UTF-8", (err) => {
 		if (err) console.log("Error while writing file: ", err);
@@ -22,6 +35,6 @@ function mapBuilder() {
 	});
 }
 
-mapBuilder();
+// mapBuilder();
 
 exports.mapBuilder = mapBuilder;

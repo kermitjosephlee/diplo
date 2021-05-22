@@ -17,7 +17,7 @@ function convoyReceiptStringGenerator({
 }) {
 	return `${
 		nationalAdjectives[nation]
-	} ${unitType} in ${convoyingUnitOrigin} to convoy Army ${origin} to ${destination} ${
+	} ${unitType} in ${origin} to convoy Army ${convoyingUnitOrigin} to ${destination} ${
 		coast ? coast : ""
 	}`;
 }

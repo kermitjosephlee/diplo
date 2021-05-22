@@ -61,38 +61,55 @@ function convoyValidator(convoyMovements, convoys, allMovements, allHolds) {
 		(each) => !updatedHolds.map(({ origin }) => origin).includes(each.origin)
 	);
 
-	const [interuptedConvoysCheckedOrders] = updatedMovements
+	const interuptedConvoysCheckedOrders = updatedMovements
 		.filter((each) => each.isConvoyValid)
 		.map((each) => convoyInterruptionChecker(each, updatedMovements));
 
-	const interuptedConvoysCheckedMovements =
-		interuptedConvoysCheckedOrders.filter((each) => each.actionType === "M");
+	if (interuptedConvoysCheckedOrders.length > 0) {
+		const interuptedConvoysCheckedMovements =
+			interuptedConvoysCheckedOrders.filter((each) => each.actionType === "M");
 
-	const interuptedConvoysCheckedHolds = interuptedConvoysCheckedOrders.filter(
-		(each) => each.actionType === "H"
-	);
+		const spentConvoys = interuptedConvoysCheckedMovements
+			.map((each) => each.convoy)
+			.flat()
+			.map((each) => ({
+				origin: each.origin,
+				destination: each.origin,
+				actionType: "H",
+				...each,
+			}));
 
-	// updates holds and removes older duplicates
-	updatedHolds = [...interuptedConvoysCheckedHolds, ...updatedHolds].reduce(
-		(unique, item) =>
-			unique.map(({ origin }) => origin).includes(item.origin)
-				? unique
-				: [...unique, item],
-		[]
-	);
-
-	// removes stale convoy movements
-	updatedMovements = [...interuptedConvoysCheckedMovements, ...updatedMovements]
-		.filter(
-			(each) => !updatedHolds.map((hold) => hold.origin).includes(each.origin)
-		)
-		.reduce(
+		const interuptedConvoysCheckedHolds = interuptedConvoysCheckedOrders.filter(
+			(each) => each.actionType === "H"
+		);
+		// updates holds and removes older duplicates
+		updatedHolds = [
+			...interuptedConvoysCheckedHolds,
+			...spentConvoys,
+			...updatedHolds,
+		].reduce(
 			(unique, item) =>
 				unique.map(({ origin }) => origin).includes(item.origin)
 					? unique
 					: [...unique, item],
 			[]
 		);
+		// removes stale convoy movements
+		updatedMovements = [
+			...interuptedConvoysCheckedMovements,
+			...updatedMovements,
+		]
+			.filter(
+				(each) => !updatedHolds.map((hold) => hold.origin).includes(each.origin)
+			)
+			.reduce(
+				(unique, item) =>
+					unique.map(({ origin }) => origin).includes(item.origin)
+						? unique
+						: [...unique, item],
+				[]
+			);
+	}
 
 	return {
 		convoyValidatedMovements: updatedMovements,

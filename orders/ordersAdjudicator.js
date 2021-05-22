@@ -6,6 +6,7 @@ const {
 	supportCounter,
 	nonAdjacentMovesFinder,
 	conflictResolver,
+	processedOrdersAppender,
 } = require("./adjudicationHelpers");
 const { convoyValidator } = require("./convoyValidator");
 const { finalizedTurnAppender } = require("../turns/finalizedTurnsAppender");
@@ -23,11 +24,7 @@ function ordersAdjudicator() {
 	const totalOrders = missingOrdersAppender(orders); // adds in generic hold orders for units without orders
 	const sortedOrders = ordersSorterByType(totalOrders); // returns orders by action type
 
-	// console.log("sortedOrders", sortedOrders);
-
 	const supportUpdatedOrders = supportCounter(sortedOrders); // handles additions and subtractions of supports
-
-	// console.log("supportUpdatedOrders", supportUpdatedOrders);
 
 	const {
 		M: supportUpdatedMoves,
@@ -61,21 +58,17 @@ function ordersAdjudicator() {
 	// updated list of holds
 	const postResolutionHolds = [...failedMovements, ...convoyValidatedHolds];
 
-	// returns with a list of positions for resulting movements and holds
-	const postResolutionPositions = [
+	const finalResultingOrders = [
 		...successfulMovements,
+		...supportUpdatedSupports,
 		...postResolutionHolds,
-	].map((each) => {
+	];
+
+	// returns with a list of positions for resulting movements and holds
+	const postResolutionPositions = finalResultingOrders.map((each) => {
 		if (each.isMovementSuccessful) {
 			return {
 				location: each.destination,
-				unitType: each.unitType,
-				nation: each.nation,
-			};
-		}
-		if (each.coast) {
-			return {
-				location: each.origin,
 				unitType: each.unitType,
 				nation: each.nation,
 				coast: each.coast,
@@ -85,21 +78,15 @@ function ordersAdjudicator() {
 			location: each.origin,
 			unitType: each.unitType,
 			nation: each.nation,
+			coast: each.coast,
 		};
 	});
 
+	// logs received orders and resulting orders
+	processedOrdersAppender(totalOrders, finalResultingOrders);
+
+	// updates positions file and resets for next turn
 	finalizedTurnAppender(postResolutionPositions);
-
-	// console.log("postResolutionPositions", postResolutionPositions);
-
-	//// validate move, support and convoy orders
-
-	//// parse orders by type (move, support, hold, convoy)
-	//// bundle move orders and hold orders
-	//// validate support orders
-	//// append support orders to move/hold orders
-
-	//// evaluate which support orders are cancelled by move orders
 
 	// score move orders
 	// evaluate successful move results
