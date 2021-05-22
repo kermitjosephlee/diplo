@@ -2,5 +2,6 @@
 maps/
 turns/currentGames/
 orders/pending/
+building/scores/
 currentMap.svg
 node_modules/
