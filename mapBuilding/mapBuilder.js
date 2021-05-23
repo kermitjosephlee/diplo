@@ -35,6 +35,6 @@ function mapBuilder() {
 	});
 }
 
-// mapBuilder();
+mapBuilder();
 
 exports.mapBuilder = mapBuilder;

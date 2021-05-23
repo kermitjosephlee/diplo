@@ -1,11 +1,24 @@
 const { gameMap } = require("../constants/gameMap");
+const fs = require("fs");
 
 function mapShader(positionalMap) {
+	const gameID = 1;
+	const scoreFile = `./building/scores/game${gameID}.txt`;
+	const currentSupplyCenters = JSON.parse(fs.readFileSync(scoreFile));
+
+	const { supplyCenters } = currentSupplyCenters[0];
+
 	let map = positionalMap;
 
-	const ownershipMap = gameMap.map(({ name, initialNation }) => ({
+	const combinedMap = gameMap.map((each) => {
+		return supplyCenters.map((sc) => sc.name).includes(each.name)
+			? supplyCenters.filter((sc) => sc.name === each.name)[0]
+			: each;
+	});
+
+	const ownershipMap = combinedMap.map(({ name, occupyingNations }) => ({
 		name,
-		nation: initialNation,
+		nation: occupyingNations[0],
 	}));
 
 	ownershipMap.forEach(({ name, nation }) => {

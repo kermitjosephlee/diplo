@@ -63,9 +63,9 @@ function supplyCentersCounter() {
 
 	const updatedScoreFileArr = [
 		{
-			gameId: gameFileObj.gameId,
-			year: gameFileObj.year,
-			season: gameFileObj.season,
+			gameId: gameFileObj[0].gameId,
+			year: gameFileObj[0].year,
+			season: gameFileObj[0].season,
 			supplyCenters: updatedSupplyCenters,
 		},
 		...scoreFileArr,
@@ -73,9 +73,7 @@ function supplyCentersCounter() {
 
 	fs.writeFileSync(scoreFile, JSON.stringify(updatedScoreFileArr, null, 2));
 
-	return updatedSupplyCenters;
+	return updatedScoreFileArr;
 }
-
-console.log("updatedSupplyCenters", supplyCentersCounter());
 
 exports.supplyCentersCounter = supplyCentersCounter;

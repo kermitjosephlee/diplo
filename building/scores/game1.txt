@@ -1,5 +1,8 @@
 [
   {
+    "gameId": 1,
+    "year": 1901,
+    "season": "Fall",
     "supplyCenters": [
       {
         "id": 4,
@@ -261,7 +264,9 @@
         "shortName": "GRE",
         "isSupplyCenter": true,
         "initialNation": null,
-        "occupyingNations": []
+        "occupyingNations": [
+          "Austria"
+        ]
       },
       {
         "id": 63,
@@ -279,7 +284,9 @@
         "shortName": "RUM",
         "isSupplyCenter": true,
         "initialNation": null,
-        "occupyingNations": []
+        "occupyingNations": [
+          "Russia"
+        ]
       },
       {
         "id": 66,

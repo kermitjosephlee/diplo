@@ -868,7 +868,7 @@ const gameMap = [
 		isTerrestrial: true,
 		isLandLocked: true,
 		isSupplyCenter: false,
-		occupyingNations: [],
+		occupyingNations: [RUS],
 		initialNation: RUS,
 	},
 	{
@@ -984,6 +984,20 @@ const gameMap = [
 		isSupplyCenter: true,
 		occupyingNations: [TUR],
 		initialNation: TUR,
+		coasts: null,
+	},
+
+	{
+		id: 75,
+		name: "Albania",
+		shortName: "ALB",
+		borderingTerritories: ["TRI", "SER", "GRE", "ION", "ADR"],
+		isMaritime: false,
+		isTerrestrial: true,
+		isLandLocked: false,
+		isSupplyCenter: false,
+		occupyingNations: [],
+		initialNation: null,
 		coasts: null,
 	},
 ];

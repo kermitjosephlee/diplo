@@ -1,13 +1,17 @@
-const { supplyCenters } = require("../constants/gameMap");
+// const { supplyCenters } = require("../constants/gameMap");
 // const { turnCounter } = require("../turns/turnCounter");
 const fs = require("fs");
 
 function mapSummaryMaker() {
-	const gameId = 1; // TODO: update gameId tracker
-	const gameFile = `turns/currentGames/game${gameId}.txt`;
+	const gameID = 1; // TODO: update gameId tracker
+	const gameFile = `turns/currentGames/game${gameID}.txt`;
 	const gameStatesList = JSON.parse(fs.readFileSync(gameFile), "utf-8");
 
-	const { year, season } = gameStatesList[0];
+	const scoreFile = `./building/scores/game${gameID}.txt`;
+	const currentSupplyCenters = JSON.parse(fs.readFileSync(scoreFile))[0];
+	const { year, season, supplyCenters } = currentSupplyCenters;
+
+	// const { year, season } = gameStatesList[0];
 
 	let summaryString = "\n";
 
@@ -23,11 +27,14 @@ function mapSummaryMaker() {
 	};
 
 	// TODO: update SC's from post-Fall results instead of hardcoded initial Game Map
-	supplyCenters.forEach(
-		(each) =>
-			(ownershipList[each.initialNation] =
-				ownershipList[each.initialNation] + 1)
-	);
+	supplyCenters.forEach((each) => {
+		if (each.occupyingNations.length > 0) {
+			ownershipList[each.occupyingNations[0]] =
+				ownershipList[each.occupyingNations[0]] + 1;
+		} else {
+			ownershipList.null = ownershipList.null + 1;
+		}
+	});
 
 	Object.entries(ownershipList).forEach(([key, value], index) => {
 		summaryString =

@@ -3,6 +3,7 @@ const {
 	pendingOrdersResetter,
 } = require("../orders/adjudicationHelpers/pendingOrdersResetter");
 const { mapBuilder } = require("../mapBuilding/mapBuilder");
+const { supplyCentersCounter } = require("../building/supplyCentersCounter");
 const { turnCounter } = require("./turnCounter");
 
 function finalizedTurnAppender(finalizedTurn) {
@@ -24,6 +25,7 @@ function finalizedTurnAppender(finalizedTurn) {
 			);
 
 			pendingOrdersResetter(); // will only fire if writeFile is non-error
+			supplyCentersCounter();
 			mapBuilder();
 		}
 	);

@@ -7,10 +7,34 @@
       "season": "Summer",
       "receivedOrders": [
         {
-          "origin": "SER",
-          "destination": "SER",
-          "unitType": "Army",
+          "origin": "SEV",
+          "destination": "RUM",
+          "unitType": "Navy",
+          "nation": "Russia",
+          "coast": null,
+          "supports": {
+            "givingSupportTo": null,
+            "receivingSupportFrom": []
+          },
+          "actionType": "M"
+        },
+        {
+          "origin": "ALB",
+          "destination": "GRE",
+          "unitType": "Navy",
           "nation": "Austria",
+          "coast": null,
+          "supports": {
+            "givingSupportTo": null,
+            "receivingSupportFrom": []
+          },
+          "actionType": "M"
+        },
+        {
+          "origin": "BUL",
+          "destination": "BUL",
+          "unitType": "Army",
+          "nation": "Turkey",
           "coast": null,
           "supports": {
             "givingSupportTo": null,
@@ -19,10 +43,10 @@
           "actionType": "H"
         },
         {
-          "origin": "BUL",
-          "destination": "BUL",
+          "origin": "SER",
+          "destination": "SER",
           "unitType": "Army",
-          "nation": "Turkey",
+          "nation": "Austria",
           "coast": null,
           "supports": {
             "givingSupportTo": null,
@@ -163,17 +187,6 @@
           "actionType": "H"
         },
         {
-          "origin": "TRI",
-          "destination": "TRI",
-          "unitType": "Navy",
-          "nation": "Austria",
-          "supports": {
-            "givingSupportTo": null,
-            "receivingSupportFrom": []
-          },
-          "actionType": "H"
-        },
-        {
           "origin": "VIE",
           "destination": "VIE",
           "unitType": "Army",
@@ -221,17 +234,6 @@
           "origin": "MOS",
           "destination": "MOS",
           "unitType": "Army",
-          "nation": "Russia",
-          "supports": {
-            "givingSupportTo": null,
-            "receivingSupportFrom": []
-          },
-          "actionType": "H"
-        },
-        {
-          "origin": "SEV",
-          "destination": "SEV",
-          "unitType": "Navy",
           "nation": "Russia",
           "supports": {
             "givingSupportTo": null,
@@ -254,10 +256,36 @@
       ],
       "finalizedOrders": [
         {
-          "origin": "SER",
-          "destination": "SER",
-          "unitType": "Army",
+          "origin": "SEV",
+          "destination": "RUM",
+          "unitType": "Navy",
+          "nation": "Russia",
+          "coast": null,
+          "supports": {
+            "givingSupportTo": null,
+            "receivingSupportFrom": []
+          },
+          "actionType": "M",
+          "isMovementSuccessful": true
+        },
+        {
+          "origin": "ALB",
+          "destination": "GRE",
+          "unitType": "Navy",
           "nation": "Austria",
+          "coast": null,
+          "supports": {
+            "givingSupportTo": null,
+            "receivingSupportFrom": []
+          },
+          "actionType": "M",
+          "isMovementSuccessful": true
+        },
+        {
+          "origin": "BUL",
+          "destination": "BUL",
+          "unitType": "Army",
+          "nation": "Turkey",
           "coast": null,
           "supports": {
             "givingSupportTo": null,
@@ -266,10 +294,10 @@
           "actionType": "H"
         },
         {
-          "origin": "BUL",
-          "destination": "BUL",
+          "origin": "SER",
+          "destination": "SER",
           "unitType": "Army",
-          "nation": "Turkey",
+          "nation": "Austria",
           "coast": null,
           "supports": {
             "givingSupportTo": null,
@@ -410,17 +438,6 @@
           "actionType": "H"
         },
         {
-          "origin": "TRI",
-          "destination": "TRI",
-          "unitType": "Navy",
-          "nation": "Austria",
-          "supports": {
-            "givingSupportTo": null,
-            "receivingSupportFrom": []
-          },
-          "actionType": "H"
-        },
-        {
           "origin": "VIE",
           "destination": "VIE",
           "unitType": "Army",
@@ -468,17 +485,6 @@
           "origin": "MOS",
           "destination": "MOS",
           "unitType": "Army",
-          "nation": "Russia",
-          "supports": {
-            "givingSupportTo": null,
-            "receivingSupportFrom": []
-          },
-          "actionType": "H"
-        },
-        {
-          "origin": "SEV",
-          "destination": "SEV",
-          "unitType": "Navy",
           "nation": "Russia",
           "supports": {
             "givingSupportTo": null,
@@ -506,6 +512,18 @@
       "season": "Spring",
       "receivedOrders": [
         {
+          "origin": "CON",
+          "destination": "BUL",
+          "unitType": "Army",
+          "nation": "Turkey",
+          "coast": null,
+          "supports": {
+            "givingSupportTo": null,
+            "receivingSupportFrom": []
+          },
+          "actionType": "M"
+        },
+        {
           "origin": "BUD",
           "destination": "SER",
           "unitType": "Army",
@@ -518,10 +536,10 @@
           "actionType": "M"
         },
         {
-          "origin": "CON",
-          "destination": "BUL",
-          "unitType": "Army",
-          "nation": "Turkey",
+          "origin": "TRI",
+          "destination": "ALB",
+          "unitType": "Navy",
+          "nation": "Austria",
           "coast": null,
           "supports": {
             "givingSupportTo": null,
@@ -655,17 +673,6 @@
           "destination": "NAP",
           "unitType": "Navy",
           "nation": "Italy",
-          "supports": {
-            "givingSupportTo": null,
-            "receivingSupportFrom": []
-          },
-          "actionType": "H"
-        },
-        {
-          "origin": "TRI",
-          "destination": "TRI",
-          "unitType": "Navy",
-          "nation": "Austria",
           "supports": {
             "givingSupportTo": null,
             "receivingSupportFrom": []
@@ -753,6 +760,19 @@
       ],
       "finalizedOrders": [
         {
+          "origin": "CON",
+          "destination": "BUL",
+          "unitType": "Army",
+          "nation": "Turkey",
+          "coast": null,
+          "supports": {
+            "givingSupportTo": null,
+            "receivingSupportFrom": []
+          },
+          "actionType": "M",
+          "isMovementSuccessful": true
+        },
+        {
           "origin": "BUD",
           "destination": "SER",
           "unitType": "Army",
@@ -766,10 +786,10 @@
           "isMovementSuccessful": true
         },
         {
-          "origin": "CON",
-          "destination": "BUL",
-          "unitType": "Army",
-          "nation": "Turkey",
+          "origin": "TRI",
+          "destination": "ALB",
+          "unitType": "Navy",
+          "nation": "Austria",
           "coast": null,
           "supports": {
             "givingSupportTo": null,
@@ -904,17 +924,6 @@
           "destination": "NAP",
           "unitType": "Navy",
           "nation": "Italy",
-          "supports": {
-            "givingSupportTo": null,
-            "receivingSupportFrom": []
-          },
-          "actionType": "H"
-        },
-        {
-          "origin": "TRI",
-          "destination": "TRI",
-          "unitType": "Navy",
-          "nation": "Austria",
           "supports": {
             "givingSupportTo": null,
             "receivingSupportFrom": []
