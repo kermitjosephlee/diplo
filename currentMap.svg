@@ -227,11 +227,11 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	<use xlink:href="#SC" transform="translate(&scBudapest;)"/>
 </g>
 <g title="Bulgaria (ec)">
-	<polyline class="l Turkey_shade" points="413,464 412,454 420,451 426,450 422,441 425,427 429,426 430,423 422,420 410,420 404,422 398,427 390,425 382,427 375,423 370,425 367,421 365,425 368,433 371,438"/>
+	<polyline class="l" points="413,464 412,454 420,451 426,450 422,441 425,427 429,426 430,423 422,420 410,420 404,422 398,427 390,425 382,427 375,423 370,425 367,421 365,425 368,433 371,438"/>
 	<text x="395" y="443">Bul</text>
 </g>
 <g title="Bulgaria (sc)">
-	<polyline class="l Turkey_shade" points="371,438 366,439 371,456 365,461 369,464 376,464 388,460 392,472 400,468 408,470 413,464 412,454"/>
+	<polyline class="l" points="371,438 366,439 371,456 365,461 369,464 376,464 388,460 392,472 400,468 408,470 413,464 412,454"/>
 	<use xlink:href="#SC" transform="translate(&scBulgaria;)"/>
 </g>
 <g title="Burgundy">
@@ -249,7 +249,7 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	<use xlink:href="#SC" transform="translate(&scConstantinople;)"/>
 </g>
 <g title="Denmark">
-	<polygon class="l" points="279,243 275,242 269,243 266,240 267,234 266,221 263,223 248,224 245,237 243,247 244,254 254,255 266,255 271,260 278,254 277,250 280,248 "/>
+	<polygon class="l England_shade" points="279,243 275,242 269,243 266,240 267,234 266,221 263,223 248,224 245,237 243,247 244,254 254,255 266,255 271,260 278,254 277,250 280,248 "/>
 	<polygon class="w" points="269,243 268,246 263,247 266,255 254,255 257,247 266,240"/>
 	<text x="250" y="235">Den</text>
 	<use xlink:href="#SC" transform="translate(&scDenmark;)"/>
@@ -282,7 +282,7 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	<text x="130" y="400">Gas</text>
 </g>
 <g title="Greece">
-	<polygon class="l Austria_shade" points="339,487 346,498 350,498 347,500 352,508 367,507 371,511 355,510 350,514 357,521 359,533 360,528 367,536 368,531 376,537 371,520 378,521 377,513 386,516 385,509 370,494
+	<polygon class="l" points="339,487 346,498 350,498 347,500 352,508 367,507 371,511 355,510 350,514 357,521 359,533 360,528 367,536 368,531 376,537 371,520 378,521 377,513 386,516 385,509 370,494
 		371,491 378,494 368,483 371,477 379,484 382,483 381,477 386,478 380,472 392,472 388,460 376,464 369,464 361,467 356,471 350,471 350,477"/>
 	<text x="352" y="490">Gre</text>
 	<use xlink:href="#SC" transform="translate(&scGreece;)"/>
@@ -415,13 +415,13 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	<text x="215" y="330">Ruh</text>
 </g>
 <g title="Rumania">
-	<polygon class="l Russia_shade" points="403,360 404,371 394,376 395,382 401,385 406,396 401,402 387,402 367,406 365,412 367,421 370,425 375,423 382,427 390,425 398,427 404,422 410,420 422,420 430,423 432,409
+	<polygon class="l" points="403,360 404,371 394,376 395,382 401,385 406,396 401,402 387,402 367,406 365,412 367,421 370,425 375,423 382,427 390,425 398,427 404,422 410,420 422,420 430,423 432,409
 		439,404 438,397 427,399 422,382 423,376 414,372 411,361"/>
 	<text x="410" y="415">Rum</text>
 	<use xlink:href="#SC" transform="translate(&scRumania;)"/>
 </g>
 <g title="Serbia">
-	<polygon class="l Austria_shade" points="365,412 360,413 342,410 338,412 335,410 332,410 330,416 331,424 327,429 330,437 337,446 346,452 346,466 350,471 356,471 361,467 369,464 365,461 371,456 366,439 371,438
+	<polygon class="l" points="365,412 360,413 342,410 338,412 335,410 332,410 330,416 331,424 327,429 330,437 337,446 346,452 346,466 350,471 356,471 361,467 369,464 365,461 371,456 366,439 371,438
 		368,433 365,425 367,421"/>
 	<text x="350" y="450">Ser</text>
 	<use xlink:href="#SC" transform="translate(&scSerbia;)"/>
@@ -468,7 +468,7 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	<use xlink:href="#SC" transform="translate(&scSt_Petersburg;)"/>
 </g>
 <g title="Sweden">
-	<polygon class="l" points="275,203 277,218 276,224 282,236 279,240 279,243 282,253 289,254 294,245 305,244 312,229 311,220 314,209 322,206 328,203 331,193 326,183 320,182 321,161 330,146 343,138
+	<polygon class="l England_shade" points="275,203 277,218 276,224 282,236 279,240 279,243 282,253 289,254 294,245 305,244 312,229 311,220 314,209 322,206 328,203 331,193 326,183 320,182 321,161 330,146 343,138
 		351,128 347,121 349,112 355,104 362,107 356,71 342,61 341,65 330,64 332,74 324,71 311,101 308,104 309,115 300,126 301,132 292,133 290,164 285,170 287,177 279,204"/>
 	<text x="300" y="170">Swe</text>
 	<use xlink:href="#SC" transform="translate(&scSweden;)"/>
@@ -553,14 +553,14 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 
 
 <g title="St Petersburg"><use xlink:href="#sc" class="Russia" transform="translate(&scSt_Petersburg;)"/></g>
-<g title="Sweden"><use xlink:href="#sc" class="undefined" transform="translate(&scSweden;)"/></g>
+<g title="Sweden"><use xlink:href="#sc" class="England" transform="translate(&scSweden;)"/></g>
 <g title="Norway"><use xlink:href="#sc" class="undefined" transform="translate(&scNorway;)"/></g>
 <g title="Edinburgh"><use xlink:href="#sc" class="England" transform="translate(&scEdinburgh;)"/></g>
 <g title="Liverpool"><use xlink:href="#sc" class="England" transform="translate(&scLiverpool;)"/></g>
 <g title="London"><use xlink:href="#sc" class="England" transform="translate(&scLondon;)"/></g>
 <g title="Belgium"><use xlink:href="#sc" class="undefined" transform="translate(&scBelgium;)"/></g>
 <g title="Holland"><use xlink:href="#sc" class="undefined" transform="translate(&scHolland;)"/></g>
-<g title="Denmark"><use xlink:href="#sc" class="undefined" transform="translate(&scDenmark;)"/></g>
+<g title="Denmark"><use xlink:href="#sc" class="England" transform="translate(&scDenmark;)"/></g>
 <g title="Moscow"><use xlink:href="#sc" class="Russia" transform="translate(&scMoscow;)"/></g>
 <g title="Warsaw"><use xlink:href="#sc" class="Russia" transform="translate(&scWarsaw;)"/></g>
 <g title="Berlin"><use xlink:href="#sc" class="Germany" transform="translate(&scBerlin;)"/></g>
@@ -578,35 +578,31 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 <g title="Trieste"><use xlink:href="#sc" class="Austria" transform="translate(&scTrieste;)"/></g>
 <g title="Vienna"><use xlink:href="#sc" class="Austria" transform="translate(&scVienna;)"/></g>
 <g title="Budapest"><use xlink:href="#sc" class="Austria" transform="translate(&scBudapest;)"/></g>
-<g title="Serbia"><use xlink:href="#sc" class="Austria" transform="translate(&scSerbia;)"/></g>
-<g title="Greece"><use xlink:href="#sc" class="Austria" transform="translate(&scGreece;)"/></g>
-<g title="Bulgaria"><use xlink:href="#sc" class="Turkey" transform="translate(&scBulgaria;)"/></g>
-<g title="Rumania"><use xlink:href="#sc" class="Russia" transform="translate(&scRumania;)"/></g>
+<g title="Serbia"><use xlink:href="#sc" class="undefined" transform="translate(&scSerbia;)"/></g>
+<g title="Greece"><use xlink:href="#sc" class="undefined" transform="translate(&scGreece;)"/></g>
+<g title="Bulgaria"><use xlink:href="#sc" class="undefined" transform="translate(&scBulgaria;)"/></g>
+<g title="Rumania"><use xlink:href="#sc" class="undefined" transform="translate(&scRumania;)"/></g>
 <g title="Sevastopol"><use xlink:href="#sc" class="Russia" transform="translate(&scSevastopol;)"/></g>
 <g title="Constantinople"><use xlink:href="#sc" class="Turkey" transform="translate(&scConstantinople;)"/></g>
 <g title="Ankara"><use xlink:href="#sc" class="Turkey" transform="translate(&scAnkara;)"/></g>
 <g title="Smyrna"><use xlink:href="#sc" class="Turkey" transform="translate(&scSmyrna;)"/></g>
 <g title="Summary">
 	<rect class="summary" width="148" height="100"/>
-	<text x="10" y="12">Fall 1901</text>
+	<text x="10" y="12">Spring 1902</text>
 
-	<text x="10" y="22">England: 3</text>
+	<text x="10" y="22">England: 5</text>
 	<text x="10" y="32">France: 3</text>
 	<text x="10" y="42">Germany: 3</text>
 	<text x="10" y="52">Italy: 3</text>
-	<text x="10" y="62">Austria: 5</text>
-	<text x="10" y="72">Russia: 5</text>
-	<text x="10" y="82">Turkey: 4</text>
-	<text x="10" y="92">unclaimed: 8</text>
+	<text x="10" y="62">Austria: 3</text>
+	<text x="10" y="72">Russia: 4</text>
+	<text x="10" y="82">Turkey: 3</text>
+	<text x="10" y="92">unclaimed: 10</text>
 </g>
 
-<a xlink:href="https://www.google.com"><g title="Rumania"><use xlink:href="#F" id="Rumania" class="Russia unit" transform="translate(&Rumania;)"/></g></a>
-<a xlink:href="https://www.google.com"><g title="Greece"><use xlink:href="#F" id="Greece" class="Austria unit" transform="translate(&Greece;)"/></g></a>
-<a xlink:href="https://www.google.com"><g title="Bulgaria"><use xlink:href="#A" id="Bulgaria" class="Turkey unit" transform="translate(&Bulgaria;)"/></g></a>
-<a xlink:href="https://www.google.com"><g title="Serbia"><use xlink:href="#A" id="Serbia" class="Austria unit" transform="translate(&Serbia;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Sweden"><use xlink:href="#F" id="Sweden" class="England unit" transform="translate(&Sweden;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Edinburgh"><use xlink:href="#F" id="Edinburgh" class="England unit" transform="translate(&Edinburgh;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Liverpool"><use xlink:href="#A" id="Liverpool" class="England unit" transform="translate(&Liverpool;)"/></g></a>
-<a xlink:href="https://www.google.com"><g title="London"><use xlink:href="#F" id="London" class="England unit" transform="translate(&London;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Brest"><use xlink:href="#F" id="Brest" class="France unit" transform="translate(&Brest;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Paris"><use xlink:href="#A" id="Paris" class="France unit" transform="translate(&Paris;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Marseilles"><use xlink:href="#A" id="Marseilles" class="France unit" transform="translate(&Marseilles;)"/></g></a>
@@ -616,11 +612,15 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 <a xlink:href="https://www.google.com"><g title="Venice"><use xlink:href="#A" id="Venice" class="Italy unit" transform="translate(&Venice;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Rome"><use xlink:href="#A" id="Rome" class="Italy unit" transform="translate(&Rome;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Naples"><use xlink:href="#F" id="Naples" class="Italy unit" transform="translate(&Naples;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Trieste"><use xlink:href="#F" id="Trieste" class="Austria unit" transform="translate(&Trieste;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Vienna"><use xlink:href="#A" id="Vienna" class="Austria unit" transform="translate(&Vienna;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Budapest"><use xlink:href="#A" id="Budapest" class="Austria unit" transform="translate(&Budapest;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Constantinople"><use xlink:href="#A" id="Constantinople" class="Turkey unit" transform="translate(&Constantinople;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Smyrna"><use xlink:href="#A" id="Smyrna" class="Turkey unit" transform="translate(&Smyrna;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Ankara"><use xlink:href="#F" id="Ankara" class="Turkey unit" transform="translate(&Ankara;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Warsaw"><use xlink:href="#A" id="Warsaw" class="Russia unit" transform="translate(&Warsaw;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Moscow"><use xlink:href="#A" id="Moscow" class="Russia unit" transform="translate(&Moscow;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Sevastopol"><use xlink:href="#F" id="Sevastopol" class="Russia unit" transform="translate(&Sevastopol;)"/></g></a>
 <a xlink:href="https://www.google.com">
 					<g title="St Petersburg (sc)"><use xlink:href="#F" id="St_Petersburg" class="Russia unit" transform="translate(&St_Petersburg__sc;)"/></g></a>
 

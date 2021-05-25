@@ -13,16 +13,19 @@ function supplyCentersCounter() {
 		(each) => each.season === "Fall"
 	);
 
-	const isFirstFall =
-		fallFilteredPositions[0].year === 1901 &&
-		fallFilteredPositions.length === 1;
+	// const isFirstFall = fallFilteredPositions.length > 0;
 
-	const currentPositions = fallFilteredPositions[0].positions;
-	const olderPositions = isFirstFall
-		? gameFileObj.filter((each) => each.season === "Spring")[0].positions
-		: fallFilteredPositions[1].positions;
+	const currentPositions = gameFileObj[0].positions;
+	const olderSupplyCenters = scoreFileArr[0].supplyCenters;
 
-	const updatedSupplyCenters = supplyCenters.map((sc) => {
+	console.log(
+		"currentPositions",
+		currentPositions,
+		"\nolderSupplyCenters",
+		olderSupplyCenters
+	);
+
+	const updatedSupplyCenters = olderSupplyCenters.map((sc) => {
 		const currentPosition = currentPositions.filter(
 			(position) => position.location === sc.shortName
 		);
@@ -38,7 +41,7 @@ function supplyCentersCounter() {
 
 		if (
 			currentPosition.length > 0 &&
-			currentPosition[0].nation !== occupyingNations[0]
+			currentPosition[0].nation !== occupyingNations[0] // grabs current one
 		) {
 			const updatedSupplyCenter = {
 				id,
@@ -48,6 +51,7 @@ function supplyCentersCounter() {
 				initialNation,
 				occupyingNations: [currentPosition[0].nation, ...sc.occupyingNations],
 			};
+			console.log("updatedSupplyCenter", updatedSupplyCenter);
 			return updatedSupplyCenter;
 		}
 

@@ -1,6 +1,5 @@
 const fs = require("fs");
 const { mapUnitPlacer } = require("./mapUnitPlacer");
-// const { initialUnits } = require("../orders/initialUnits");
 const { mapString } = require("./mapTemplate");
 const { currentMapMaker } = require("./currentMapMaker");
 const { currentUnitPositions } = require("./currentUnitPositions");
@@ -35,6 +34,6 @@ function mapBuilder() {
 	});
 }
 
-mapBuilder();
+// mapBuilder();
 
 exports.mapBuilder = mapBuilder;
