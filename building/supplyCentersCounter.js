@@ -1,5 +1,4 @@
 const fs = require("fs");
-const { supplyCenters } = require("../constants/gameMap");
 
 function supplyCentersCounter() {
 	const gameID = 1;
@@ -9,21 +8,8 @@ function supplyCentersCounter() {
 	const gameFileObj = JSON.parse(fs.readFileSync(gameFile));
 	const scoreFileArr = JSON.parse(fs.readFileSync(scoreFile));
 
-	const fallFilteredPositions = gameFileObj.filter(
-		(each) => each.season === "Fall"
-	);
-
-	// const isFirstFall = fallFilteredPositions.length > 0;
-
 	const currentPositions = gameFileObj[0].positions;
 	const olderSupplyCenters = scoreFileArr[0].supplyCenters;
-
-	console.log(
-		"currentPositions",
-		currentPositions,
-		"\nolderSupplyCenters",
-		olderSupplyCenters
-	);
 
 	const updatedSupplyCenters = olderSupplyCenters.map((sc) => {
 		const currentPosition = currentPositions.filter(
@@ -51,7 +37,6 @@ function supplyCentersCounter() {
 				initialNation,
 				occupyingNations: [currentPosition[0].nation, ...sc.occupyingNations],
 			};
-			console.log("updatedSupplyCenter", updatedSupplyCenter);
 			return updatedSupplyCenter;
 		}
 
