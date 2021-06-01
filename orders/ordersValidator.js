@@ -16,6 +16,8 @@ function ordersValidator(orders) {
 
 	if (!isOrdersOriginValid) return null;
 
+	console.log("orders", orders);
+
 	return ordersAppender(orders);
 }
 
