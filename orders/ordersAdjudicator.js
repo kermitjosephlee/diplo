@@ -43,7 +43,10 @@ function ordersAdjudicator() {
 	);
 
 	// returns with labelled successful or failed movements
-	const resolvedMovements = conflictResolver(convoyValidatedMovements).flat();
+	const resolvedMovements = conflictResolver(
+		convoyValidatedMovements,
+		convoyValidatedHolds
+	).flat();
 
 	const successfulMovements = resolvedMovements.filter(
 		(each) => each.isMovementSuccessful === true

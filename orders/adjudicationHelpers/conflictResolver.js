@@ -1,9 +1,9 @@
-const { moveOrdersSorterByDest } = require("./moveOrdersSorterByDest");
+const { ordersSorterByDest } = require("./ordersSorterByDest");
 
-function conflictResolver(movements) {
-	const sortedMovements = Object.values(moveOrdersSorterByDest(movements));
+function conflictResolver(movements, holds) {
+	const sortedOrders = Object.values(ordersSorterByDest(movements, holds));
 
-	const evalutatedMovements = sortedMovements.map((conflict) => {
+	const evalutatedMovements = sortedOrders.map((conflict) => {
 		const isThereJustOneConflictedUnit = conflict.length === 1;
 
 		// if there is only one unit involved

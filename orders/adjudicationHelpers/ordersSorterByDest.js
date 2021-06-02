@@ -1,7 +1,9 @@
-function moveOrdersSorterByDest(moveOrders) {
+function ordersSorterByDest(movements, holds) {
+	const orders = [...movements, ...holds];
+
 	const destinationObj = {};
 
-	moveOrders.forEach((order) => {
+	orders.forEach((order) => {
 		if (!destinationObj[order.destination]) {
 			destinationObj[order.destination] = [order];
 		} else {
@@ -12,4 +14,4 @@ function moveOrdersSorterByDest(moveOrders) {
 	return destinationObj;
 }
 
-exports.moveOrdersSorterByDest = moveOrdersSorterByDest;
+exports.ordersSorterByDest = ordersSorterByDest;

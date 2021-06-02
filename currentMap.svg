@@ -588,7 +588,7 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 <g title="Smyrna"><use xlink:href="#sc" class="Turkey" transform="translate(&scSmyrna;)"/></g>
 <g title="Summary">
 	<rect class="summary" width="148" height="100"/>
-	<text x="10" y="12">Spring 1901</text>
+	<text x="10" y="12">Summer 1901</text>
 
 	<text x="10" y="22">England: 3</text>
 	<text x="10" y="32">France: 3</text>
@@ -600,8 +600,30 @@ Created for Diplomap (http://www.games2relax.net/diplomap/)
 	<text x="10" y="92">unclaimed: 12</text>
 </g>
 
-<a xlink:href="https://www.google.com"><g title="Edinburgh"><use xlink:href="#F" id="Edinburgh" class="England unit" transform="translate(&Edinburgh;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="London"><use xlink:href="#F" id="London" class="England unit" transform="translate(&London;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Brest"><use xlink:href="#F" id="Brest" class="France unit" transform="translate(&Brest;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Paris"><use xlink:href="#A" id="Paris" class="France unit" transform="translate(&Paris;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Marseilles"><use xlink:href="#A" id="Marseilles" class="France unit" transform="translate(&Marseilles;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Kiel"><use xlink:href="#F" id="Kiel" class="Germany unit" transform="translate(&Kiel;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Berlin"><use xlink:href="#A" id="Berlin" class="Germany unit" transform="translate(&Berlin;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Munich"><use xlink:href="#A" id="Munich" class="Germany unit" transform="translate(&Munich;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Venice"><use xlink:href="#A" id="Venice" class="Italy unit" transform="translate(&Venice;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Rome"><use xlink:href="#A" id="Rome" class="Italy unit" transform="translate(&Rome;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Naples"><use xlink:href="#F" id="Naples" class="Italy unit" transform="translate(&Naples;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Trieste"><use xlink:href="#F" id="Trieste" class="Austria unit" transform="translate(&Trieste;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Vienna"><use xlink:href="#A" id="Vienna" class="Austria unit" transform="translate(&Vienna;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Budapest"><use xlink:href="#A" id="Budapest" class="Austria unit" transform="translate(&Budapest;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Constantinople"><use xlink:href="#A" id="Constantinople" class="Turkey unit" transform="translate(&Constantinople;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Smyrna"><use xlink:href="#A" id="Smyrna" class="Turkey unit" transform="translate(&Smyrna;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Ankara"><use xlink:href="#F" id="Ankara" class="Turkey unit" transform="translate(&Ankara;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Warsaw"><use xlink:href="#A" id="Warsaw" class="Russia unit" transform="translate(&Warsaw;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Moscow"><use xlink:href="#A" id="Moscow" class="Russia unit" transform="translate(&Moscow;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Sevastopol"><use xlink:href="#F" id="Sevastopol" class="Russia unit" transform="translate(&Sevastopol;)"/></g></a>
+<a xlink:href="https://www.google.com">
+					<g title="St Petersburg (sc)"><use xlink:href="#F" id="St_Petersburg" class="Russia unit" transform="translate(&St_Petersburg__sc;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Liverpool"><use xlink:href="#A" id="Liverpool" class="England unit" transform="translate(&Liverpool;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Edinburgh"><use xlink:href="#F" id="Edinburgh" class="England unit" transform="translate(&Edinburgh;)"/></g></a>
+<a xlink:href="https://www.google.com"><g title="Edinburgh"><use xlink:href="#F" id="Edinburgh" class="England unit" transform="translate(&Edinburgh;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="London"><use xlink:href="#F" id="London" class="England unit" transform="translate(&London;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Brest"><use xlink:href="#F" id="Brest" class="France unit" transform="translate(&Brest;)"/></g></a>
 <a xlink:href="https://www.google.com"><g title="Paris"><use xlink:href="#A" id="Paris" class="France unit" transform="translate(&Paris;)"/></g></a>
