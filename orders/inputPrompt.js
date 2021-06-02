@@ -9,7 +9,6 @@ const {
 	requiresCoastInput,
 	isActionValid,
 	unitFinder,
-	// unitTypeFinder,
 	holdActionHandler,
 	convoyActionHandler,
 	moveActionHandler,

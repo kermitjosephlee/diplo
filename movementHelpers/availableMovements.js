@@ -23,15 +23,6 @@ function availableMovements(territory, unitType = null, coast = null) {
 
 	const isBorderingExceptional = exceptionalBorderingTerritories.length > 0;
 
-	console.log(
-		"isExceptional",
-		isExceptional,
-		"isNavy",
-		isNavy,
-		"isBorderingExceptional",
-		isBorderingExceptional
-	);
-
 	if (isExceptional && isNavy) {
 		if (!coast) return `Please add in coast`;
 

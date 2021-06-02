@@ -33,8 +33,6 @@ function moveReceiptStringGenerator({
 }
 
 function moveActionHandler(territory, unitType, nation, rl, coast = null) {
-	console.log("terr", territory, "coast", coast);
-
 	const exceptionalBorderingTerritories = currentTerritory(
 		territory
 	).borderingTerritories.filter((ea) =>
