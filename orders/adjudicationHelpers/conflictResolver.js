@@ -30,7 +30,7 @@ function conflictResolver(movements, holds) {
 			sortedUnits[1].supports.receivingSupportFrom.length;
 
 		// are there at least two conflicted Units, and is the largest supported unit larger than the second largest supported unit
-		// then movement succeeds
+		// then movement succeeds, losing unit is flagged for retreat or disbanding
 		if (
 			isThereMoreThanOneConflictedUnit &&
 			isLargestSupportedUnitMoreThanSecondLargestSupportedUnit
@@ -43,6 +43,8 @@ function conflictResolver(movements, holds) {
 			const losingUnit = {
 				...secondUnit,
 				isMovementSuccessful: false,
+				isDisplaced: true,
+				defeatedBy: firstUnit,
 			};
 
 			return [

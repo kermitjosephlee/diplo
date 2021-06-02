@@ -1,12 +1,14 @@
 const fs = require("fs");
 const {
-	missingOrdersAppender,
-	ordersSorterByType,
-	// moveOrdersSorterByDest,
-	supportCounter,
-	nonAdjacentMovesFinder,
 	conflictResolver,
+	displacementsOrdersHandler,
+	displacementPositionHandler,
+	displacementsPositionsHandler,
+	missingOrdersAppender,
+	nonAdjacentMovesFinder,
+	ordersSorterByType,
 	processedOrdersAppender,
+	supportCounter,
 } = require("./adjudicationHelpers");
 const { convoyValidator } = require("./convoyValidator");
 const { finalizedTurnAppender } = require("../turns/finalizedTurnsAppender");
@@ -42,24 +44,33 @@ function ordersAdjudicator() {
 		supportUpdatedHolds
 	);
 
-	// returns with labelled successful or failed movements
-	const resolvedMovements = conflictResolver(
+	// returns with labelled successful or failed movements, and labelled for displacement handling
+	const resolvedOrders = conflictResolver(
 		convoyValidatedMovements,
 		convoyValidatedHolds
 	).flat();
 
-	const successfulMovements = resolvedMovements.filter(
+	const successfulMovements = resolvedOrders.filter(
 		(each) => each.isMovementSuccessful === true
 	);
 
+	const displacedUnits = resolvedOrders.filter((each) => each.isDisplaced);
+
 	// converts failed movements into holds
-	// TODO: will have to check for displacements
-	const failedMovements = resolvedMovements
-		.filter((each) => each.isMovementSuccessful === false)
+	const failedMovements = resolvedOrders
+		.filter((each) => each.isMovementSuccessful === false && !each.isDisplaced)
 		.map((each) => ({ destination: each.origin, actionType: "H", ...each }));
 
+	// filters out any convoy validated displaced holds
+	const filteredHolds = convoyValidatedHolds.filter(
+		(each) =>
+			!displacedUnits
+				.map((displacement) => displacement.origin)
+				.includes(each.origin)
+	);
+
 	// updated list of holds
-	const postResolutionHolds = [...failedMovements, ...convoyValidatedHolds];
+	const postResolutionHolds = [...failedMovements, ...filteredHolds];
 
 	const finalResultingOrders = [
 		...successfulMovements,
@@ -67,8 +78,13 @@ function ordersAdjudicator() {
 		...postResolutionHolds,
 	];
 
+	const postDisplacementOrders = displacementsOrdersHandler(
+		displacedUnits,
+		finalResultingOrders
+	);
+
 	// returns with a list of positions for resulting movements and holds
-	const postResolutionPositions = finalResultingOrders.map((each) => {
+	const postDisplacementPositions = postDisplacementOrders.map((each) => {
 		if (each.isMovementSuccessful) {
 			return {
 				location: each.destination,
@@ -77,6 +93,7 @@ function ordersAdjudicator() {
 				coast: each.coast,
 			};
 		}
+
 		return {
 			location: each.origin,
 			unitType: each.unitType,
@@ -86,15 +103,10 @@ function ordersAdjudicator() {
 	});
 
 	// logs received orders and resulting orders
-	processedOrdersAppender(totalOrders, finalResultingOrders);
+	processedOrdersAppender(totalOrders, postDisplacementOrders);
 
 	// updates positions file and resets for next turn
-	finalizedTurnAppender(postResolutionPositions);
-
-	// score move orders
-	// evaluate successful move results
-	// evaluate if possible retreat spaces are open
-	// if more than one, list spaces for prompt
+	finalizedTurnAppender(postDisplacementPositions);
 }
 
 ordersAdjudicator();
