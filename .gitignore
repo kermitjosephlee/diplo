@@ -4,5 +4,5 @@ turns/currentGames/
 orders/pending/
 orders/processed/
 building/scores/
-currentMap
+currentMap.svg
 node_modules/
