@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { gameInitializer } = require("./turns/gameInitializer");
+// const { gameInitializer } = require("./turns/gameInitializer");
 
 function eraser(dir) {
 	return fs.readdirSync(dir).forEach((each) => {
@@ -16,9 +16,7 @@ function reset() {
 	const processed = `./orders/processed`;
 	const currentGame = `./turns/currentGames`;
 
-	[scores, pending, processed, currentGame].forEach((dir) => eraser(dir));
-
-	// gameInitializer();
+	[(scores, pending, processed, currentGame)].forEach((dir) => eraser(dir));
 }
 
 reset();
