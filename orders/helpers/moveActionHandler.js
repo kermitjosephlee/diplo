@@ -46,6 +46,10 @@ function moveActionHandler(territory, unitType, nation, rl, coast = null) {
 			nationalAdjectives[nation]
 		} ${unitType} where: ${availableMovements(territory, unitType, coast)}? `,
 		function (destination) {
+			if (!availableMovements(territory, unitType, coast).includes(destination)) {
+				console.log("Your destination is invalid")
+				rl.close()
+			}
 			orders.origin = territory;
 			orders.destination = destination;
 			orders.unitType = unitType;

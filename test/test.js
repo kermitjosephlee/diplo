@@ -4,6 +4,7 @@ const {
 	mapStatesSpec,
 	ordersValidatorSpec,
 	ordersTemplatesSpec,
+	missingOrdersAppenderSpec,
 } = require("./orders");
 const {
 	landCheckerSpec,
@@ -12,6 +13,7 @@ const {
 	sharedCoastCheckerSpec,
 	exceptionalSourceHandlerSpec,
 } = require("./movementHelpers");
+const { missingOrdersAppender } = require("../orders/adjudicationHelpers");
 
 // TURNS folder tests
 turnCounterSpec();
@@ -22,6 +24,7 @@ initialUnitsSpec();
 mapStatesSpec();
 ordersValidatorSpec();
 ordersTemplatesSpec();
+missingOrdersAppenderSpec();
 
 // MOVEMENT_HELPERS folder tests
 landCheckerSpec();

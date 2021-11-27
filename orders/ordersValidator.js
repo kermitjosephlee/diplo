@@ -14,7 +14,7 @@ function ordersValidator(orders) {
 		.map((each) => each.location)
 		.includes(orders.origin);
 
-	if (!isOrdersOriginValid) return null;
+	if (!isOrdersOriginValid) return null
 
 	console.log("orders", orders);
 

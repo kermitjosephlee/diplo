@@ -4,52 +4,52 @@
 <!ENTITY Adriatic_Sea "296,441">
 <!ENTITY Aegean_Sea "403,524">
 <!ENTITY Albania "339,469">
-<!ENTITY Ankara "500,460">						<!ENTITY scAnkara "482,469">
+<!ENTITY Ankara "500,460">	<!ENTITY scAnkara "482,469">
 <!ENTITY Apulia "302,472">
 <!ENTITY Armenia "576,456">
 <!ENTITY Baltic_Sea "323,250">
 <!ENTITY Barents_Sea "445,41">
-<!ENTITY Belgium "197,317">						<!ENTITY scBelgium "186,305">
-<!ENTITY Berlin "279,283">						<!ENTITY scBerlin "281,298">
+<!ENTITY Belgium "197,317">	<!ENTITY scBelgium "186,305">
+<!ENTITY Berlin "279,283">	<!ENTITY scBerlin "281,298">
 <!ENTITY Black_Sea "484,420">
 <!ENTITY Bohemia "289,336">
-<!ENTITY Brest "125,334">							<!ENTITY scBrest "106,322">
-<!ENTITY Budapest "353,378">					<!ENTITY scBudapest "326,376">
-<!ENTITY Bulgaria "395,443">					<!ENTITY scBulgaria "377,444">
+<!ENTITY Brest "125,334">	<!ENTITY scBrest "106,322">
+<!ENTITY Budapest "353,378">	<!ENTITY scBudapest "326,376">
+<!ENTITY Bulgaria "395,443">	<!ENTITY scBulgaria "377,444">
 <!ENTITY Bulgaria__ec "410,440">
 <!ENTITY Bulgaria__sc "399,462">
 <!ENTITY Burgundy "191,360">
 <!ENTITY Clyde "139,188">
-<!ENTITY Constantinople "439,473">		<!ENTITY scConstantinople "429,460">
-<!ENTITY Denmark "256,245">						<!ENTITY scDenmark "272,252">
+<!ENTITY Constantinople "439,473">	<!ENTITY scConstantinople "429,460">
+<!ENTITY Denmark "256,245">	<!ENTITY scDenmark "272,252">
 <!ENTITY Eastern_Mediterranean "474,546">
-<!ENTITY Edinburgh "157,210">					<!ENTITY scEdinburgh "154,219">
+<!ENTITY Edinburgh "157,210">	<!ENTITY scEdinburgh "154,219">
 <!ENTITY English_Channel "119,307">
 <!ENTITY Finland "385,143">
 <!ENTITY Galicia "377,343">
 <!ENTITY Gascony "137,388">
-<!ENTITY Greece "366,515">						<!ENTITY scGreece "378,507">
+<!ENTITY Greece "366,515">	<!ENTITY scGreece "378,507">
 <!ENTITY Gulf_of_Lyon "180,444">
 <!ENTITY Gulf_of_Bothnia "348,199">
 <!ENTITY Helgoland_Bight "226,252">
-<!ENTITY Holland "205,297">						<!ENTITY scHolland "205,284">
+<!ENTITY Holland "205,297">	<!ENTITY scHolland "205,284">
 <!ENTITY Ionian_Sea "324,540">
 <!ENTITY Irish_Sea "90,276">
-<!ENTITY Kiel "243,295">							<!ENTITY scKiel "254,278">
-<!ENTITY Liverpool "142,241">					<!ENTITY scLiverpool "144,257">
+<!ENTITY Kiel "243,295">	<!ENTITY scKiel "254,278">
+<!ENTITY Liverpool "142,241">	<!ENTITY scLiverpool "144,257">
 <!ENTITY Livonia "382,245">
-<!ENTITY London "162,281">						<!ENTITY scLondon "162,290">
-<!ENTITY Marseilles "184,402">				<!ENTITY scMarseilles "186,417">
+<!ENTITY London "162,281">	<!ENTITY scLondon "162,290">
+<!ENTITY Marseilles "184,402">	<!ENTITY scMarseilles "186,417">
 <!ENTITY Mid-Atlantic_Ocean "23,355">
-<!ENTITY Moscow "505,226">						<!ENTITY scMoscow "481,234">
-<!ENTITY Munich "243,347">						<!ENTITY scMunich "258,359">
-<!ENTITY Naples "299,505">						<!ENTITY scNaples "278,469">
+<!ENTITY Moscow "505,226">	<!ENTITY scMoscow "481,234">
+<!ENTITY Munich "243,347">	<!ENTITY scMunich "258,359">
+<!ENTITY Naples "299,505">	<!ENTITY scNaples "278,469">
 <!ENTITY North_Atlantic_Ocean "65,140">
 <!ENTITY North_Africa "100,536">
 <!ENTITY North_Sea "204,215">
-<!ENTITY Norway "264,160">						<!ENTITY scNorway "270,187">
+<!ENTITY Norway "264,160">	<!ENTITY scNorway "270,187">
 <!ENTITY Norwegian_Sea "220,90">
-<!ENTITY Paris "162,346">							<!ENTITY scParis "173,334">
+<!ENTITY Paris "162,346">	<!ENTITY scParis "173,334">
 <!ENTITY Picardy "168,319">
 <!ENTITY Piedmont "220,399">
 <!ENTITY Portugal "34,417">	<!ENTITY scPortugal "15,434">
