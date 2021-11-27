@@ -20,7 +20,7 @@ TODO: as of Nov 2021
 
 #### Maintenance
 
-- [ ] fill out testing suite files to maximize reasonable coverage
+- [ ] fill out testing suite files to maximize reasonable coverage **IN PROGRESS**
 - [ ] write test code outlined in [DATC](http://web.inter.nl.net/users/L.B.Kruijswijk/) and better illustrated in [WebDiplomacy](https://webdiplomacy.net/datc.php)
 - [ ] comment code to get up-to-speed faster between long pauses
 
