@@ -26,9 +26,9 @@ TODO: as of Nov 2021
 
 #### Core Features
 
-[ ] - Persistent data storage, currently a Postgres JSONB, could be a redis cache-as-db, could be something else
-[ ] - chat bot for receiving and returning submitted order receipts, also for showing current map (svg)
-[ ] - authentication of some sort (passport js?)
+- [ ] Persistent data storage, currently a Postgres JSONB, could be a redis cache-as-db, could be something else
+- [ ] chat bot for receiving and returning submitted order receipts, also for showing current map (svg)
+- [ ] authentication of some sort (passport js?)
 
 #### Extended Features
 
