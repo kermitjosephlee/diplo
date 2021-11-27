@@ -51,6 +51,15 @@ function gameInitializer() {
 		),
 	};
 
+	// function makeDirectory(directory) {
+	// 	if (!fs.existsSync(directory)){
+	// 		fs.mkdirSync(directory)
+	// 	}
+	// 	return
+	// }
+
+	// ["../orders/pending", "../orders/processed", "../turns/currentGames", "../building/scores"].forEach((each) => makeDirectory(each))
+
 	fs.writeFileSync(
 		`./orders/pending/game${gameId}.txt`,
 		JSON.stringify(initialPendingOrders, null, 2)
