@@ -45,3 +45,12 @@ TODO: as of Nov 2021
 - GraphQL / Webhooks service to persistent Front-end interactions
 - FE built in something other than React (writing React code is my FT job, would like to try something else)
 - Re-write whole BE in elixir and have FE in liveview?
+
+---
+
+### First Start Up procedure
+
+- if not cloned, download repo using `$ git clone GIT_HUB_REPO_LINK`
+- install packages, yarn is preferred `$ yarn install`
+- run initial folders script `$ node folderInitializer`
+- run game initializer script `$ node turns/gameInitializer`
