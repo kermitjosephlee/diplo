@@ -6,6 +6,90 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model User {
+  id            Int         @id @default(autoincrement())
+  uuid          String      @unique
+  name          String
+  userName      String      @unique
+  email         String      @unique
+  chatServiceId Int
+  chatService   ChatService @relation(fields: [chatServiceId], references: [id])
+  startDate     DateTime    @default(now())
+  endDate       DateTime?
+  isActive      Boolean     @default(true)
+  Player        Player[]
+}
+
+model Game {
+  id        Int       @id @default(autoincrement())
+  uuid      String    @unique
+  name      String
+  startDate DateTime  @default(now())
+  endDate   DateTime?
+  gameLog   String[]
+  mapId     Int       @unique
+  Player    Player[]
+  Orders    Orders[]
+  Map       Map[]
+}
+
+model Country {
+  id           Int    @id @default(autoincrement())
+  name         String
+  abbreviation String
+  adjective    String
+}
+
+model Player {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id])
+  countryId Int
+  gameId    Int
+  game      Game    @relation(fields: [gameId], references: [id])
+  isActive  Boolean
+  isWinner  Boolean
+}
+
+model Orders {
+  id          Int        @id @default(autoincrement())
+  gameId      Int
+  game        Game       @relation(fields: [gameId], references: [id])
+  createdAt   DateTime
+  updatedAt   DateTime[]
+  finalizedAt DateTime
+  year        Int
+  phase       Phase      @relation(fields: [phaseId], references: [id])
+  orders      String
+  mapId       Int
+  map         Map        @relation(fields: [mapId], references: [id])
+  phaseId     Int
+}
+
+model Map {
+  id       Int      @id @default(autoincrement())
+  gameId   Int
+  game     Game     @relation(fields: [gameId], references: [id])
+  ordersId Int      @unique
+  svg      String
+  Orders   Orders[]
+}
+
+model Phase {
+  id     Int      @id @default(autoincrement())
+  phase  String
+  Orders Orders[]
+}
+
+model ChatService {
+  id                    Int    @id @default(autoincrement())
+  serviceProvider       String
+  serviceProviderUserId String
+  userId                Int    @unique
+  User                  User[]
 }
