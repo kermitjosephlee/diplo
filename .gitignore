@@ -5,4 +5,4 @@ orders/pending/*
 orders/processed/*
 building/scores/
 # /currentMap.svg
-node_modules/
+node_modules
