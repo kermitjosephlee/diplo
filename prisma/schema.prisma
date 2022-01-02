@@ -52,15 +52,15 @@ model Player {
   countryId Int
   gameId    Int
   game      Game    @relation(fields: [gameId], references: [id])
-  isActive  Boolean
-  isWinner  Boolean
+  isActive  Boolean @default(false)
+  isWinner  Boolean @default(false)
 }
 
 model Orders {
   id          Int        @id @default(autoincrement())
   gameId      Int
   game        Game       @relation(fields: [gameId], references: [id])
-  createdAt   DateTime
+  createdAt   DateTime   @default(now())
   updatedAt   DateTime[]
   finalizedAt DateTime
   year        Int
@@ -72,12 +72,13 @@ model Orders {
 }
 
 model Map {
-  id       Int      @id @default(autoincrement())
-  gameId   Int
-  game     Game     @relation(fields: [gameId], references: [id])
-  ordersId Int      @unique
-  svg      String
-  Orders   Orders[]
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  gameId    Int
+  game      Game     @relation(fields: [gameId], references: [id])
+  ordersId  Int      @unique
+  svg       String
+  Orders    Orders[]
 }
 
 model Phase {
@@ -87,9 +88,10 @@ model Phase {
 }
 
 model ChatService {
-  id                    Int    @id @default(autoincrement())
+  id                    Int      @id @default(autoincrement())
   serviceProvider       String
   serviceProviderUserId String
-  userId                Int    @unique
+  userId                Int      @unique
   User                  User[]
+  createdAt             DateTime @default(now())
 }
