@@ -35,45 +35,95 @@ model Game {
   gameLog   String[]
   mapId     Int       @unique
   player    Player[]
-  orders    Orders[]
   map       Map[]
+  Turn      Turn[]
+
 }
 
 model Country {
   id           Int                 @id @default(autoincrement())
-  name         String
+  name         CountryName
   abbreviation CountryAbbreviation
-  adjective    String
+  adjective    CountryAdjective
+  player       Player[]
 }
 
 model Player {
-  id       Int                 @id @default(autoincrement())
-  userId   Int
-  user     User                @relation(fields: [userId], references: [id])
-  country  CountryAbbreviation
-  gameId   Int
-  game     Game                @relation(fields: [gameId], references: [id])
-  isActive Boolean             @default(false)
-  isWinner Boolean             @default(false)
-  orders   Orders[]
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id])
+  countryId Int
+  country   Country @relation(fields: [countryId], references: [id])
+  gameId    Int
+  game      Game    @relation(fields: [gameId], references: [id])
+  isActive  Boolean @default(false)
+  isWinner  Boolean @default(false)
+  orders    Order[]
 }
 
-model Orders {
-  id          Int        @id @default(autoincrement())
-  gameId      Int
-  game        Game       @relation(fields: [gameId], references: [id])
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime[]
+// turn has many orders
+model Turn {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
   finalizedAt DateTime
+  game        Game?    @relation(fields: [gameId], references: [id])
+  gameId      Int?
+  order       Order[]
   year        Int
-  phase       Phase      @relation(fields: [phaseId], references: [id])
-  orders      String
-  mapId       Int
-  map         Map        @relation(fields: [mapId], references: [id])
   phaseId     Int
-  player      Player?    @relation(fields: [playerId], references: [id])
-  playerId    Int?
+  phase       Phase    @relation(fields: [phaseId], references: [id])
+  mapId       Int
+  map         Map      @relation(fields: [mapId], references: [id])
 }
+
+model Order {
+  id               Int        @id @default(autoincrement())
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime[]
+  orders           String
+  player           Player?    @relation(fields: [playerId], references: [id])
+  playerId         Int?
+  turnId           Int
+  turn             Turn       @relation(fields: [turnId], references: [id])
+  originId         Int
+  destinationId    Int
+  unitType         Unit
+  coast            Coast?
+  actionType       ActionType @default(HOLD)
+  supportingUnitId Int?
+}
+
+enum Unit {
+  ARMY
+  NAVY
+}
+
+enum ActionType {
+  MOVE
+  HOLD
+  SUPPORT
+  CONVOY
+}
+
+// {
+//       "origin": "LON",
+//       "destination": "YOR",
+//       "unitType": "Navy",
+//       "nation": "England",
+//       "coast": null,
+//       "supports": {
+//         "givingSupportTo": null,
+//         "receivingSupportFrom": []
+//       },
+//       "actionType": "M"
+//     }
+// model Border {
+//   id         Int     @id @default(autoincrement())
+//   country1Id Int
+//   country1   Country @relation(name: "country1", fields: [country1Id], references: [id])
+//   country2Id Int
+//   country2   Country @relation(fields: [country2Id], references: [id])
+// }
 
 model Map {
   id        Int      @id @default(autoincrement())
@@ -82,13 +132,13 @@ model Map {
   game      Game     @relation(fields: [gameId], references: [id])
   ordersId  Int      @unique
   svg       String
-  orders    Orders[]
+  turn      Turn[]
 }
 
 model Phase {
-  id     Int      @id @default(autoincrement())
-  phase  String
-  orders Orders[]
+  id    Int    @id @default(autoincrement())
+  phase String
+  turn  Turn[]
 }
 
 model ChatService {
@@ -108,4 +158,111 @@ enum CountryAbbreviation {
   ITA
   RUS
   TUR
+}
+
+enum CountryName {
+  England
+  France
+  Germany
+  Austria
+  Italy
+  Russia
+  Turkey
+}
+
+enum CountryAdjective {
+  English
+  French
+  Germany
+  Austrian
+  Italian
+  Russian
+  Turkish
+}
+
+enum Coast {
+  NORTH
+  SOUTH
+  EAST
+}
+
+enum LocationType {
+  Maritime
+  Terrestrial
+}
+
+enum LocationAbbreviation {
+  NAO
+  NWG
+  BAR
+  STP
+  FIN
+  BOT
+  SWE
+  NWY
+  NTH
+  EDI
+  CLY
+  LVP
+  YOR
+  IRI
+  WAL
+  LON
+  ENG
+  BEL
+  HOL
+  HEL
+  DEN
+  SKA
+  BAL
+  LVN
+  MOS
+  WAR
+  PRU
+  BER
+  KIE
+  RUH
+  MUN
+  BUR
+  PIC
+  PAR
+  BRE
+  GAS
+  MAO
+  POR
+  SPA
+  MAR
+  LYO
+  PIE
+  TYR
+  VEN
+  TUS
+  ROM
+  APU
+  NAP
+  TYS
+  WES
+  NAF
+  TUN
+  ION
+  ADR
+  TRI
+  VIE
+  BOH
+  SIL
+  GAL
+  BUD
+  GRE
+  BUL
+  RUM
+  SEV
+  BLA
+  CON
+  ANK
+  ARM
+  SYR
+  EAS
+  AEG
+  SMY
+  ALB
 }
