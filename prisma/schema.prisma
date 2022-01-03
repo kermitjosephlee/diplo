@@ -17,12 +17,13 @@ model User {
   name          String
   userName      String      @unique
   email         String      @unique
+  password      String
   chatServiceId Int
   chatService   ChatService @relation(fields: [chatServiceId], references: [id])
   startDate     DateTime    @default(now())
   endDate       DateTime?
   isActive      Boolean     @default(true)
-  Player        Player[]
+  player        Player[]
 }
 
 model Game {
@@ -33,27 +34,28 @@ model Game {
   endDate   DateTime?
   gameLog   String[]
   mapId     Int       @unique
-  Player    Player[]
-  Orders    Orders[]
-  Map       Map[]
+  player    Player[]
+  orders    Orders[]
+  map       Map[]
 }
 
 model Country {
-  id           Int    @id @default(autoincrement())
+  id           Int                 @id @default(autoincrement())
   name         String
-  abbreviation String
+  abbreviation CountryAbbreviation
   adjective    String
 }
 
 model Player {
-  id        Int     @id @default(autoincrement())
-  userId    Int
-  user      User    @relation(fields: [userId], references: [id])
-  countryId Int
-  gameId    Int
-  game      Game    @relation(fields: [gameId], references: [id])
-  isActive  Boolean @default(false)
-  isWinner  Boolean @default(false)
+  id       Int                 @id @default(autoincrement())
+  userId   Int
+  user     User                @relation(fields: [userId], references: [id])
+  country  CountryAbbreviation
+  gameId   Int
+  game     Game                @relation(fields: [gameId], references: [id])
+  isActive Boolean             @default(false)
+  isWinner Boolean             @default(false)
+  orders   Orders[]
 }
 
 model Orders {
@@ -69,6 +71,8 @@ model Orders {
   mapId       Int
   map         Map        @relation(fields: [mapId], references: [id])
   phaseId     Int
+  player      Player?    @relation(fields: [playerId], references: [id])
+  playerId    Int?
 }
 
 model Map {
@@ -78,13 +82,13 @@ model Map {
   game      Game     @relation(fields: [gameId], references: [id])
   ordersId  Int      @unique
   svg       String
-  Orders    Orders[]
+  orders    Orders[]
 }
 
 model Phase {
   id     Int      @id @default(autoincrement())
   phase  String
-  Orders Orders[]
+  orders Orders[]
 }
 
 model ChatService {
@@ -92,6 +96,16 @@ model ChatService {
   serviceProvider       String
   serviceProviderUserId String
   userId                Int      @unique
-  User                  User[]
+  user                  User[]
   createdAt             DateTime @default(now())
+}
+
+enum CountryAbbreviation {
+  ENG
+  FRA
+  GER
+  AUS
+  ITA
+  RUS
+  TUR
 }
