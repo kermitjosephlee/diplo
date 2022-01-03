@@ -37,7 +37,6 @@ model Game {
   player    Player[]
   map       Map[]
   Turn      Turn[]
-
 }
 
 model Country {
@@ -45,7 +44,6 @@ model Country {
   name         CountryName
   abbreviation CountryAbbreviation
   adjective    CountryAdjective
-  player       Player[]
 }
 
 model Player {
@@ -53,7 +51,6 @@ model Player {
   userId    Int
   user      User    @relation(fields: [userId], references: [id])
   countryId Int
-  country   Country @relation(fields: [countryId], references: [id])
   gameId    Int
   game      Game    @relation(fields: [gameId], references: [id])
   isActive  Boolean @default(false)
@@ -105,18 +102,6 @@ enum ActionType {
   CONVOY
 }
 
-// {
-//       "origin": "LON",
-//       "destination": "YOR",
-//       "unitType": "Navy",
-//       "nation": "England",
-//       "coast": null,
-//       "supports": {
-//         "givingSupportTo": null,
-//         "receivingSupportFrom": []
-//       },
-//       "actionType": "M"
-//     }
 // model Border {
 //   id         Int     @id @default(autoincrement())
 //   country1Id Int
@@ -151,30 +136,30 @@ model ChatService {
 }
 
 enum CountryAbbreviation {
+  AUS
   ENG
   FRA
   GER
-  AUS
   ITA
   RUS
   TUR
 }
 
 enum CountryName {
+  Austria
   England
   France
   Germany
-  Austria
   Italy
   Russia
   Turkey
 }
 
 enum CountryAdjective {
+  Austrian
   English
   French
   Germany
-  Austrian
   Italian
   Russian
   Turkish
@@ -192,77 +177,77 @@ enum LocationType {
 }
 
 enum LocationAbbreviation {
-  NAO
-  NWG
-  BAR
-  STP
-  FIN
-  BOT
-  SWE
-  NWY
-  NTH
-  EDI
-  CLY
-  LVP
-  YOR
-  IRI
-  WAL
-  LON
-  ENG
-  BEL
-  HOL
-  HEL
-  DEN
-  SKA
-  BAL
-  LVN
-  MOS
-  WAR
-  PRU
-  BER
-  KIE
-  RUH
-  MUN
-  BUR
-  PIC
-  PAR
-  BRE
-  GAS
-  MAO
-  POR
-  SPA
-  MAR
-  LYO
-  PIE
-  TYR
-  VEN
-  TUS
-  ROM
-  APU
-  NAP
-  TYS
-  WES
-  NAF
-  TUN
-  ION
   ADR
-  TRI
-  VIE
+  AEG
+  ALB
+  ANK
+  APU
+  ARM
+  BAL
+  BAR
+  BEL
+  BER
+  BLA
   BOH
-  SIL
-  GAL
+  BOT
+  BRE
   BUD
-  GRE
   BUL
+  BUR
+  CLY
+  CON
+  DEN
+  EAS
+  EDI
+  ENG
+  FIN
+  GAL
+  GAS
+  GRE
+  HEL
+  HOL
+  ION
+  IRI
+  KIE
+  LON
+  LVN
+  LVP
+  LYO
+  MAO
+  MAR
+  MOS
+  MUN
+  NAF
+  NAO
+  NAP
+  NTH
+  NWG
+  NWY
+  PAR
+  PIC
+  PIE
+  POR
+  PRU
+  ROM
+  RUH
   RUM
   SEV
-  BLA
-  CON
-  ANK
-  ARM
-  SYR
-  EAS
-  AEG
+  SIL
+  SKA
   SMY
-  ALB
+  SPA
+  STP
+  SWE
+  SYR
+  TRI
+  TUN
+  TUS
+  TYR
+  TYS
+  VEN
+  VIE
+  WAL
+  WAR
+  WES
+  YOR
 }
