@@ -34,9 +34,9 @@ model Game {
   endDate   DateTime?
   gameLog   String[]
   mapId     Int       @unique
-  player    Player[]
   map       Map[]
-  Turn      Turn[]
+  player    Player[]
+  turn      Turn[]
 }
 
 model Country {
@@ -44,6 +44,8 @@ model Country {
   name         CountryName
   abbreviation CountryAbbreviation
   adjective    CountryAdjective
+  locationId   Int?
+  location     Location?           @relation(fields: [locationId], references: [id])
 }
 
 model Player {
@@ -60,17 +62,16 @@ model Player {
 
 // turn has many orders
 model Turn {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
   finalizedAt DateTime
-  game        Game?    @relation(fields: [gameId], references: [id])
+  game        Game?     @relation(fields: [gameId], references: [id])
   gameId      Int?
   order       Order[]
   year        Int
-  phaseId     Int
-  phase       Phase    @relation(fields: [phaseId], references: [id])
+  phase       PhaseEnum
   mapId       Int
-  map         Map      @relation(fields: [mapId], references: [id])
+  map         Map       @relation(fields: [mapId], references: [id])
 }
 
 model Order {
@@ -90,25 +91,21 @@ model Order {
   supportingUnitId Int?
 }
 
-enum Unit {
-  ARMY
-  NAVY
+model Location {
+  id                         Int                  @id @default(autoincrement())
+  name                       String
+  shortName                  LocationAbbreviation
+  isMaritime                 Boolean
+  isTerrestrial              Boolean
+  isLandLocked               Boolean
+  isSupplyCenter             Boolean
+  occupyingNationsId         Int
+  occupyingNations           Country[]
+  initialNation              CountryName?
+  coasts                     Coast[]
+  borderingLocations         Location[]           @relation("borderingLocations")
+  borderingLocationsRelation Location[]           @relation("borderingLocations")
 }
-
-enum ActionType {
-  MOVE
-  HOLD
-  SUPPORT
-  CONVOY
-}
-
-// model Border {
-//   id         Int     @id @default(autoincrement())
-//   country1Id Int
-//   country1   Country @relation(name: "country1", fields: [country1Id], references: [id])
-//   country2Id Int
-//   country2   Country @relation(fields: [country2Id], references: [id])
-// }
 
 model Map {
   id        Int      @id @default(autoincrement())
@@ -118,12 +115,6 @@ model Map {
   ordersId  Int      @unique
   svg       String
   turn      Turn[]
-}
-
-model Phase {
-  id    Int    @id @default(autoincrement())
-  phase String
-  turn  Turn[]
 }
 
 model ChatService {
@@ -250,4 +241,29 @@ enum LocationAbbreviation {
   WAR
   WES
   YOR
+}
+
+enum Unit {
+  ARMY
+  NAVY
+}
+
+enum ActionType {
+  CONVOY
+  HOLD
+  MOVE
+  SUPPORT
+}
+
+enum PhaseEnum {
+  BUILD
+  MOVEMENT
+  RETREAT
+}
+
+enum SeasonEnum {
+  FALL
+  SPRING
+  SUMMER
+  WINTER
 }
