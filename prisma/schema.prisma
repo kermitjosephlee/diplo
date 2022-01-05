@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,22 +10,22 @@ datasource db {
 
 model User {
   id            Int         @id @default(autoincrement())
-  uuid          String      @unique
+  // uuid          String      @unique
   name          String
   userName      String      @unique
   email         String      @unique
-  password      String
   chatServiceId Int
-  chatService   ChatService @relation(fields: [chatServiceId], references: [id])
   startDate     DateTime    @default(now())
   endDate       DateTime?
   isActive      Boolean     @default(true)
+  password      String
+  chatService   ChatService @relation(fields: [chatServiceId], references: [id])
   player        Player[]
 }
 
 model Game {
   id        Int       @id @default(autoincrement())
-  uuid      String    @unique
+  // uuid      String    @unique
   name      String
   startDate DateTime  @default(now())
   endDate   DateTime?
@@ -41,37 +38,37 @@ model Game {
 
 model Country {
   id           Int                 @id @default(autoincrement())
-  name         CountryName
   abbreviation CountryAbbreviation
+  name         CountryName
   adjective    CountryAdjective
+  Location     Location?           @relation(fields: [locationId], references: [id])
   locationId   Int?
-  location     Location?           @relation(fields: [locationId], references: [id])
 }
 
 model Player {
   id        Int     @id @default(autoincrement())
   userId    Int
-  user      User    @relation(fields: [userId], references: [id])
-  countryId Int
   gameId    Int
-  game      Game    @relation(fields: [gameId], references: [id])
   isActive  Boolean @default(false)
   isWinner  Boolean @default(false)
+  countryId Int
+  game      Game    @relation(fields: [gameId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
   orders    Order[]
 }
 
-// turn has many orders
 model Turn {
-  id          Int       @id @default(autoincrement())
-  createdAt   DateTime  @default(now())
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
   finalizedAt DateTime
-  game        Game?     @relation(fields: [gameId], references: [id])
   gameId      Int?
-  order       Order[]
+  game        Game?      @relation(fields: [gameId], references: [id])
   year        Int
   phase       PhaseEnum
+  season      SeasonEnum
   mapId       Int
-  map         Map       @relation(fields: [mapId], references: [id])
+  map         Map        @relation(fields: [mapId], references: [id])
+  orders      Order[]
 }
 
 model Order {
@@ -79,16 +76,16 @@ model Order {
   createdAt        DateTime   @default(now())
   updatedAt        DateTime[]
   orders           String
-  player           Player?    @relation(fields: [playerId], references: [id])
-  playerId         Int?
   turnId           Int
-  turn             Turn       @relation(fields: [turnId], references: [id])
   originId         Int
   destinationId    Int
   unitType         Unit
   coast            Coast?
   actionType       ActionType @default(HOLD)
   supportingUnitId Int?
+  playerId         Int
+  player           Player     @relation(fields: [playerId], references: [id])
+  turn             Turn       @relation(fields: [turnId], references: [id])
 }
 
 model Location {
@@ -109,11 +106,11 @@ model Location {
 
 model Map {
   id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
   gameId    Int
-  game      Game     @relation(fields: [gameId], references: [id])
   ordersId  Int      @unique
   svg       String
+  createdAt DateTime @default(now())
+  game      Game     @relation(fields: [gameId], references: [id])
   turn      Turn[]
 }
 
@@ -122,35 +119,47 @@ model ChatService {
   serviceProvider       String
   serviceProviderUserId String
   userId                Int      @unique
-  user                  User[]
   createdAt             DateTime @default(now())
+  user                  User[]
+}
+
+enum Unit {
+  ARMY
+  NAVY
+}
+
+enum ActionType {
+  MOVE
+  HOLD
+  SUPPORT
+  CONVOY
 }
 
 enum CountryAbbreviation {
-  AUS
   ENG
   FRA
   GER
+  AUS
   ITA
   RUS
   TUR
 }
 
 enum CountryName {
-  Austria
   England
   France
   Germany
+  Austria
   Italy
   Russia
   Turkey
 }
 
 enum CountryAdjective {
-  Austrian
   English
   French
   German
+  Austrian
   Italian
   Russian
   Turkish
@@ -241,18 +250,6 @@ enum LocationAbbreviation {
   WAR
   WES
   YOR
-}
-
-enum Unit {
-  ARMY
-  NAVY
-}
-
-enum ActionType {
-  CONVOY
-  HOLD
-  MOVE
-  SUPPORT
 }
 
 enum PhaseEnum {
