@@ -41,8 +41,8 @@ model Country {
   abbreviation CountryAbbreviation
   name         CountryName
   adjective    CountryAdjective
-  Location     Location?           @relation(fields: [locationId], references: [id])
-  locationId   Int?
+  Location     Location            @relation(fields: [locationId], references: [id])
+  locationId   Int
 }
 
 model Player {
@@ -98,7 +98,7 @@ model Location {
   isSupplyCenter             Boolean
   occupyingNationsId         Int
   occupyingNations           Country[]
-  initialNation              CountryName?
+  initialNation              CountryAbbreviation?
   coasts                     Coast[]
   borderingLocations         Location[]           @relation("borderingLocations")
   borderingLocationsRelation Location[]           @relation("borderingLocations")
@@ -129,10 +129,23 @@ enum Unit {
 }
 
 enum ActionType {
-  MOVE
-  HOLD
-  SUPPORT
   CONVOY
+  HOLD
+  MOVE
+  SUPPORT
+}
+
+enum PhaseEnum {
+  BUILD
+  MOVEMENT
+  RETREAT
+}
+
+enum SeasonEnum {
+  FALL
+  SPRING
+  SUMMER
+  WINTER
 }
 
 enum CountryAbbreviation {
@@ -250,17 +263,4 @@ enum LocationAbbreviation {
   WAR
   WES
   YOR
-}
-
-enum PhaseEnum {
-  BUILD
-  MOVEMENT
-  RETREAT
-}
-
-enum SeasonEnum {
-  FALL
-  SPRING
-  SUMMER
-  WINTER
 }
