@@ -10,7 +10,6 @@ datasource db {
 
 model User {
   id            Int         @id @default(autoincrement())
-  // uuid          String      @unique
   name          String
   userName      String      @unique
   email         String      @unique
@@ -25,7 +24,6 @@ model User {
 
 model Game {
   id        Int       @id @default(autoincrement())
-  // uuid      String    @unique
   name      String
   startDate DateTime  @default(now())
   endDate   DateTime?
@@ -41,8 +39,6 @@ model Country {
   abbreviation CountryAbbreviation
   name         CountryName
   adjective    CountryAdjective
-  Location     Location            @relation(fields: [locationId], references: [id])
-  locationId   Int
 }
 
 model Player {
@@ -62,11 +58,11 @@ model Turn {
   createdAt   DateTime   @default(now())
   finalizedAt DateTime
   gameId      Int?
-  game        Game?      @relation(fields: [gameId], references: [id])
   year        Int
+  mapId       Int
   phase       PhaseEnum
   season      SeasonEnum
-  mapId       Int
+  game        Game?      @relation(fields: [gameId], references: [id])
   map         Map        @relation(fields: [mapId], references: [id])
   orders      Order[]
 }
@@ -76,6 +72,7 @@ model Order {
   createdAt        DateTime   @default(now())
   updatedAt        DateTime[]
   orders           String
+  playerId         Int
   turnId           Int
   originId         Int
   destinationId    Int
@@ -83,25 +80,23 @@ model Order {
   coast            Coast?
   actionType       ActionType @default(HOLD)
   supportingUnitId Int?
-  playerId         Int
   player           Player     @relation(fields: [playerId], references: [id])
   turn             Turn       @relation(fields: [turnId], references: [id])
 }
 
 model Location {
-  id                         Int                  @id @default(autoincrement())
-  name                       String
-  shortName                  LocationAbbreviation
-  isMaritime                 Boolean
-  isTerrestrial              Boolean
-  isLandLocked               Boolean
-  isSupplyCenter             Boolean
-  occupyingNationsId         Int
-  occupyingNations           Country[]
-  initialNation              CountryAbbreviation?
-  coasts                     Coast[]
-  borderingLocations         Location[]           @relation("borderingLocations")
-  borderingLocationsRelation Location[]           @relation("borderingLocations")
+  id              Int                  @id @default(autoincrement())
+  name            String
+  shortName       LocationAbbreviation
+  isMaritime      Boolean
+  isTerrestrial   Boolean
+  isLandLocked    Boolean
+  isSupplyCenter  Boolean
+  coasts          Coast[]
+  initialNation   CountryAbbreviation?
+  occupyingNation CountryAbbreviation?
+  Location_B      Location[]           @relation("borderingLocations")
+  Location_A      Location[]           @relation("borderingLocations")
 }
 
 model Map {
@@ -129,10 +124,10 @@ enum Unit {
 }
 
 enum ActionType {
-  CONVOY
-  HOLD
   MOVE
+  HOLD
   SUPPORT
+  CONVOY
 }
 
 enum PhaseEnum {
@@ -244,6 +239,7 @@ enum LocationAbbreviation {
   ROM
   RUH
   RUM
+  SER
   SEV
   SIL
   SKA
@@ -257,6 +253,7 @@ enum LocationAbbreviation {
   TUS
   TYR
   TYS
+  UKR
   VEN
   VIE
   WAL
