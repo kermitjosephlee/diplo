@@ -28,8 +28,6 @@ model Game {
   startDate DateTime  @default(now())
   endDate   DateTime?
   gameLog   String[]
-  mapId     Int       @unique
-  map       Map[]
   player    Player[]
   turn      Turn[]
 }
@@ -57,14 +55,13 @@ model Turn {
   id          Int        @id @default(autoincrement())
   createdAt   DateTime   @default(now())
   finalizedAt DateTime
-  gameId      Int?
+  gameId      Int
   year        Int
-  mapId       Int
   phase       PhaseEnum
   season      SeasonEnum
-  game        Game?      @relation(fields: [gameId], references: [id])
-  map         Map        @relation(fields: [mapId], references: [id])
+  game        Game       @relation(fields: [gameId], references: [id])
   orders      Order[]
+  svg         String
 }
 
 model Order {
@@ -82,31 +79,25 @@ model Order {
   supportingUnitId Int?
   player           Player     @relation(fields: [playerId], references: [id])
   turn             Turn       @relation(fields: [turnId], references: [id])
+  origin           Location   @relation("origin", fields: [originId], references: [id])
+  destination      Location   @relation("destination", fields: [destinationId], references: [id])
 }
 
 model Location {
-  id              Int                  @id @default(autoincrement())
-  name            String
-  shortName       LocationAbbreviation
-  isMaritime      Boolean
-  isTerrestrial   Boolean
-  isLandLocked    Boolean
-  isSupplyCenter  Boolean
-  coasts          Coast[]
-  initialNation   CountryAbbreviation?
-  occupyingNation CountryAbbreviation?
-  Location_B      Location[]           @relation("borderingLocations")
-  Location_A      Location[]           @relation("borderingLocations")
-}
-
-model Map {
-  id        Int      @id @default(autoincrement())
-  gameId    Int
-  ordersId  Int      @unique
-  svg       String
-  createdAt DateTime @default(now())
-  game      Game     @relation(fields: [gameId], references: [id])
-  turn      Turn[]
+  id                Int                  @id @default(autoincrement())
+  name              String
+  shortName         LocationAbbreviation
+  isMaritime        Boolean
+  isTerrestrial     Boolean
+  isLandLocked      Boolean
+  isSupplyCenter    Boolean
+  coasts            Coast[]
+  initialNation     CountryAbbreviation?
+  occupyingNation   CountryAbbreviation?
+  Location_B        Location[]           @relation("borderingLocations")
+  Location_A        Location[]           @relation("borderingLocations")
+  OrderOrigin       Order[]              @relation("origin")
+  OrderDesitination Order[]              @relation("destination")
 }
 
 model ChatService {

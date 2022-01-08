@@ -5,9 +5,9 @@ const { gameMap } = require("./constants/gameMap")
 const prisma = new PrismaClient()
 
 async function firstPing() {
-  // await prisma.$connect()
-  console.log("LocationAbbreviation", isEqual(Object.values(LocationAbbreviation).sort().map(each => each.toString()), gameMap.map(each => each.shortName)))
-  // console.log("game map length", gameMap.filter((each) => !Object.values(LocationAbbreviation).includes(each.shortName)))
+  await prisma.$connect()
+  const allCountries = await prisma.country.findMany()
+  console.log("all countries", allCountries)
 }
 
-firstPing()
+firstPing().catch(e => console.log(e)).finally(async () => {await prisma.$disconnect()})

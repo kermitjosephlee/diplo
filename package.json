@@ -8,6 +8,9 @@
 		"migrate": "yarn prisma migrate dev",
 		"test": "mocha -w --recursive || true"
 	},
+	"prisma": {
+		"seed": "ts-node prisma/seed.ts"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/kermitjosephlee/diplo.git"
