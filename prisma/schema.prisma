@@ -94,10 +94,20 @@ model Location {
   coasts            Coast[]
   initialNation     CountryAbbreviation?
   occupyingNation   CountryAbbreviation?
-  Location_B        Location[]           @relation("borderingLocations")
-  Location_A        Location[]           @relation("borderingLocations")
   OrderOrigin       Order[]              @relation("origin")
   OrderDesitination Order[]              @relation("destination")
+  LocationA         Border[]             @relation("locationA")
+  LocationB         Border[]             @relation("locationB")
+}
+
+model Border {
+  locationAId Int
+  locationA   Location @relation("locationA", fields: [locationAId], references: [id])
+  locationBId Int
+  locationB   Location @relation("locationB", fields: [locationBId], references: [id])
+
+  @@id([locationAId, locationBId])
+  @@unique([locationAId, locationBId])
 }
 
 model ChatService {
