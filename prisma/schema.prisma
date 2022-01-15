@@ -33,10 +33,12 @@ model Game {
 }
 
 model Country {
-  id           Int                 @id @default(autoincrement())
-  abbreviation CountryAbbreviation
-  name         CountryName
-  adjective    CountryAdjective
+  id                Int                 @id @default(autoincrement())
+  abbreviation      CountryAbbreviation
+  name              CountryName
+  adjective         CountryAdjective
+  LocationInit      Location[]          @relation("initialNation")
+  LocationOccupying Location[]          @relation("occupyingNation")
 }
 
 model Player {
@@ -74,7 +76,8 @@ model Order {
   originId         Int
   destinationId    Int
   unitType         Unit
-  coast            Coast?
+  coastId          Int?
+  coast            Coast?     @relation(fields: [coastId], references: [id])
   actionType       ActionType @default(HOLD)
   supportingUnitId Int?
   player           Player     @relation(fields: [playerId], references: [id])
@@ -91,13 +94,16 @@ model Location {
   isTerrestrial     Boolean
   isLandLocked      Boolean
   isSupplyCenter    Boolean
-  coasts            Coast[]
-  initialNation     CountryAbbreviation?
-  occupyingNation   CountryAbbreviation?
+  initialNationId   Int?
+  occupyingNationId Int?
   OrderOrigin       Order[]              @relation("origin")
   OrderDesitination Order[]              @relation("destination")
   LocationA         Border[]             @relation("locationA")
   LocationB         Border[]             @relation("locationB")
+  initialNation     Country?             @relation("initialNation", fields: [initialNationId], references: [id])
+  occupyingNation   Country?             @relation("occupyingNation", fields: [occupyingNationId], references: [id])
+  Coast             Coast[]
+  CoastLocation     CoastLocation[]
 }
 
 model Border {
@@ -108,6 +114,23 @@ model Border {
 
   @@id([locationAId, locationBId])
   @@unique([locationAId, locationBId])
+}
+
+model Coast {
+  id            Int             @id @default(autoincrement())
+  locationId    Int
+  location      Location        @relation(fields: [locationId], references: [id])
+  coastName     CoastEnum
+  Order         Order[]
+  CoastLocation CoastLocation[]
+}
+
+model CoastLocation {
+  id         Int      @id @default(autoincrement())
+  coastId    Int
+  locationId Int
+  coast      Coast    @relation(fields: [coastId], references: [id])
+  location   Location @relation(fields: [locationId], references: [id])
 }
 
 model ChatService {
@@ -174,7 +197,7 @@ enum CountryAdjective {
   Turkish
 }
 
-enum Coast {
+enum CoastEnum {
   NORTH
   SOUTH
   EAST

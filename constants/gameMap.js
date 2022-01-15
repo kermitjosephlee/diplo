@@ -43,7 +43,7 @@ const gameMap = [
 		initialNation: null,
 		coasts: null,
 	},
-	{
+	{ 
 		id: 4,
 		name: "St Petersburg",
 		shortName: "STP",
@@ -488,8 +488,7 @@ const gameMap = [
 			"ENG",
 			"BRE",
 			"GAS",
-			"SPAnc",
-			"SPAsc",
+			"SPA",
 			"POR",
 			"NAF",
 			"WES",
