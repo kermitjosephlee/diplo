@@ -54,16 +54,16 @@ model Player {
 }
 
 model Turn {
-  id          Int        @id @default(autoincrement())
-  createdAt   DateTime   @default(now())
-  finalizedAt DateTime
-  gameId      Int
-  year        Int
-  phase       PhaseEnum
-  season      SeasonEnum
-  game        Game       @relation(fields: [gameId], references: [id])
-  orders      Order[]
-  svg         String
+  id            Int        @id @default(autoincrement())
+  createdAt     DateTime   @default(now())
+  finalizedAt   DateTime
+  gameId        Int
+  year          Int
+  phase         PhaseEnum
+  season        SeasonEnum
+  game          Game       @relation(fields: [gameId], references: [id])
+  resultsOrders Order[]
+  svg           String
 }
 
 model Order {

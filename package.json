@@ -5,11 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "nodemon app.js",
-		"migrate": "yarn prisma migrate dev",
 		"test": "mocha -w --recursive || true"
-	},
-	"prisma": {
-		"seed": "ts-node prisma/seed.ts"
 	},
 	"repository": {
 		"type": "git",
@@ -22,7 +18,6 @@
 	},
 	"homepage": "https://github.com/kermitjosephlee/diplo#readme",
 	"dependencies": {
-		"@prisma/client": "3.7.0",
 		"dotenv": "10.0.0",
 		"express": "4.17.2",
 		"lodash": "4.17.21",
@@ -34,7 +29,6 @@
 		"chai": "4.3.4",
 		"mocha": "8.4.0",
 		"nodemon": "2.0.7",
-		"prisma": "3.7.0",
 		"ts-node": "10.4.0",
 		"typescript": "4.5.4"
 	}
