@@ -962,7 +962,7 @@ const gameMap = [
 		id: 73,
 		name: "Aegean Sea",
 		shortName: "AEG",
-		borderingTerritories: ["ION", "AEG", "SMY", "SYR"],
+		borderingTerritories: ["ION", "GRE", "BUL", "CON", "SMY", "EAS"],
 		isMaritime: true,
 		isTerrestrial: false,
 		isLandLocked: false,

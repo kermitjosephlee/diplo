@@ -1,4 +1,4 @@
 exports.types = {
-	A: "Army",
-	N: "Navy",
+	A: "ARMY",
+	N: "NAVY",
 };
