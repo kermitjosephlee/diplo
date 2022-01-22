@@ -23,11 +23,9 @@
 	"dependencies": {
 		"dotenv": "10.0.0",
 		"express": "4.17.2",
-		"lodash": "^4.17.21",
+		"lodash": "4.17.21",
 		"passport": "0.4.1",
-		"pg": "8.7.1",const fs = require('fs');
-
-		const sql = fs.readFileSync('./db/schema.sql').toString()
+		"pg": "8.7.1",
 		"uuid": "8.3.2"
 	},
 	"devDependencies": {
