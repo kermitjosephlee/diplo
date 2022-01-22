@@ -1,6 +1,11 @@
+const { Pool } = require("pg")
+require('dotenv').config()
 
-// const createTableString = `
-//   CREATE
-// `
+const pool = new Pool({
+  connectionString: process.env.LOCAL_DATABASE_URL
+})
 
-// pg.runsql(createTableString)
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
+})
