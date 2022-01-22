@@ -6,8 +6,9 @@
 	"scripts": {
 		"start": "nodemon app.js",
 		"test": "mocha -w --recursive || true",
-		"schema:drop": "node dropSchema.js",
-		"schema:seed": "node seedDb.js"
+		"db:drop": "node dropSchema.js",
+		"db:seed": "node dbSeed.js",
+		"db:initialize": "node dbInitialize.js"
 	},
 	"repository": {
 		"type": "git",
@@ -24,7 +25,9 @@
 		"express": "4.17.2",
 		"lodash": "^4.17.21",
 		"passport": "0.4.1",
-		"pg": "8.7.1",
+		"pg": "8.7.1",const fs = require('fs');
+
+		const sql = fs.readFileSync('./db/schema.sql').toString()
 		"uuid": "8.3.2"
 	},
 	"devDependencies": {
