@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "nodemon app.js",
-		"test": "mocha -w --recursive || true"
+		"test": "mocha -w --recursive || true",
+		"schema:drop": "node dropSchema.js",
+		"schema:seed": "node seedDb.js"
 	},
 	"repository": {
 		"type": "git",

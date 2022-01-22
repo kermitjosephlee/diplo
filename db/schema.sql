@@ -1,26 +1,26 @@
 DROP TABLE
-    IF EXISTS unit_types;
+    IF EXISTS unit_types CASCADE;
 
 DROP TABLE
-    IF EXISTS actions;
+    IF EXISTS actions CASCADE;
 
 DROP TABLE
-    IF EXISTS phases;
+    IF EXISTS phases CASCADE;
 
 DROP TABLE
-    IF EXISTS seasons;
+    IF EXISTS seasons CASCADE;
 
 DROP TABLE
-    IF EXISTS users;
+    IF EXISTS users CASCADE;
 
 DROP TABLE
-    IF EXISTS games;
+    IF EXISTS games CASCADE;
 
 DROP TABLE
-    IF EXISTS countries;
+    IF EXISTS countries CASCADE;
 
 DROP TABLE
-    IF EXISTS maps;
+    IF EXISTS maps CASCADE;
 
 DROP TABLE
     IF EXISTS locations CASCADE;
@@ -215,6 +215,23 @@ CREATE TABLE
         CONSTRAINT fk_locations_id FOREIGN KEY (locations_id) REFERENCES locations (id)
         ON DELETE NO ACTION,
         CONSTRAINT fk_current_ownership_country_id FOREIGN KEY (current_ownership_country_id) REFERENCES countries (id)
+        ON DELETE NO ACTION
+    );
+
+CREATE TABLE
+    IF NOT EXISTS initial_units (
+        id SERIAL PRIMARY KEY,
+        unit_type_id INTEGER NOT NULL,
+        location_id INTEGER NOT NULL,
+        country_id INTEGER NOT NULL,
+        coast_id INTEGER,
+        CONSTRAINT fk_unit_type_id FOREIGN KEY (unit_type_id) REFERENCES unit_types (id)
+        ON DELETE NO ACTION,
+        CONSTRAINT fk_location_id FOREIGN KEY (location_id) REFERENCES locations (id)
+        ON DELETE NO ACTION,
+        CONSTRAINT fk_country_id FOREIGN KEY (country_id) REFERENCES countries (id)
+        ON DELETE NO ACTION,
+        CONSTRAINT fk_coast_id FOREIGN KEY (coast_id) REFERENCES coasts (id)
         ON DELETE NO ACTION
     );
 

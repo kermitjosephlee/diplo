@@ -1,19 +1,3 @@
-const dotenv = require('dotenv').config()
-const { nations } = require("../constants/nations");
-const { types } = require("../constants/types");
-const { RUS, FRA, GER, ENG, ITA, TUR, AUS } = nations;
-const { A, N } = types;
-const connectionString = process.env.DATABASE_URL;
-const { Pool } = require("pg")
-const { gameMap } = require("../constants/gameMap")
-
-const pool = new Pool({
-  connectionString,
-  ssl: {
-    rejectUnauthorized: false
-  }
-})
-
 const initialUnits = [
 	{ location: 'EDI', unitType: 'NAVY', nation: 'England', coast: null },
 	{ location: 'LVP', unitType: 'ARMY', nation: 'England', coast: null },
@@ -36,21 +20,31 @@ const initialUnits = [
 	{ location: 'WAR', unitType: 'ARMY', nation: 'Russia', coast: null },
 	{ location: 'MOS', unitType: 'ARMY', nation: 'Russia', coast: null },
 	{ location: 'SEV', unitType: 'NAVY', nation: 'Russia', coast: null },
-	{ location: 'STP', unitType: 'NAVY', nation: 'Russia', coast: 'SOUTH' },
+	{ location: 'STP', unitType: 'NAVY', nation: 'Russia', coast: 'SOUTH' }
 ]
 
-const unitsString = initialUnits.map(({location, unitType, nation}) => `(
-  '${unitType}',
+const stPetersbergUpdateString = `
+	UPDATE initial_units SET 
+		coast_id = (
+			SELECT id FROM coasts WHERE location_id = (
+				SELECT id FROM locations WHERE short_name = 'STP' AND position = 'SOUTH'
+			)
+		)
+		WHERE location_id = (SELECT id FROM locations WHERE short_name = 'STP')
+	;
+`
+
+const unitsString = initialUnits.map(({location, unitType, nation, coast = null}) => `(
+(SELECT id FROM unit_types WHERE unit_type = '${unitType}'),
 (SELECT id FROM locations WHERE short_name = '${location}'), 
-(SELECT id FROM countries WHERE name = '${nation}')
-)
-`).join()
+(SELECT id FROM countries WHERE name = '${nation}'),
+NULL
+)`).join()
 
-const insertionString = `INSERT INTO units (unit_type, location_id, country_id) VALUES ${unitsString};`
 
-console.log(insertionString)
-pool.query(insertionString, (err, res) => {
-  console.log('err', err, '\nres:', res)
-  pool.end()
-})
 
+
+const insertUnitsString = `INSERT INTO initial_units (unit_type_id, location_id, country_id, coast_id) VALUES ${unitsString}; ${stPetersbergUpdateString}`
+
+
+exports.insertUnitsString = insertUnitsString;
