@@ -20,6 +20,27 @@ INSERT INTO
 VALUES ('MOVEMENT'), ('RETREAT'), ('DISBAND'), ('BUILD');
 
 CREATE TABLE
+    unit_types (id SERIAL PRIMARY KEY, unit_type CHAR(4) NOT NULL);
+
+INSERT INTO
+    unit_types (unit_type)
+VALUES ('ARMY'), ('NAVY');
+
+CREATE TABLE
+    actions (id SERIAL PRIMARY KEY, "action" VARCHAR(12) NOT NULL);
+
+INSERT INTO
+    actions ("action")
+VALUES ('HOLD'), ('MOVE'), ('SUPPORT'), ('CONVOY');
+
+CREATE TABLE
+    phases (id SERIAL PRIMARY KEY, phase VARCHAR(12) NOT NULL);
+
+INSERT INTO
+    phases (phase)
+VALUES ('MOVEMENT'), ('RETREAT'), ('DISBAND'), ('BUILD');
+
+CREATE TABLE
     seasons (id SERIAL PRIMARY KEY, season VARCHAR(12) NOT NULL);
 
 INSERT INTO
@@ -45,7 +66,7 @@ CREATE TABLE
         created_on TIMESTAMPTZ DEFAULT CURRENT_TIME,
         started_on TIMESTAMPTZ,
         next_turn_due_on TIMESTAMPTZ,
-        ended_on TIMESTAMPTZ,
+        ended_on TIMESTAMPTZ
     );
 
 CREATE TABLE
@@ -172,7 +193,7 @@ CREATE TABLE
             CONSTRAINT fk_season_id FOREIGN KEY (season_id) REFERENCES seasons (id)
             ON DELETE NO ACTION,
             CONSTRAINT fk_map_id FOREIGN KEY (map_id) REFERENCES maps (id)
-            ON DELETE NO ACTION,
+            ON DELETE NO ACTION
     );
 
 CREATE TABLE
@@ -227,5 +248,5 @@ CREATE TABLE
         CONSTRAINT fk_supporting_unit_id FOREIGN KEY (supporting_unit_id) REFERENCES units (id)
         ON DELETE NO ACTION,
         CONSTRAINT fk_action_id FOREIGN KEY (action_id) REFERENCES actions (id)
-        ON DELETE NO ACTION,
+        ON DELETE NO ACTION
     );
