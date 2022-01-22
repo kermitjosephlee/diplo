@@ -79,14 +79,14 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS borders (
-        ID SERIAL PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         location_a INTEGER NOT NULL,
         location_b INTEGER NOT NULL,
         CONSTRAINT fk_location_a FOREIGN KEY (location_a) REFERENCES locations (id)
         ON DELETE NO ACTION,
         CONSTRAINT fk_location_b FOREIGN KEY (location_b) REFERENCES locations (id)
         ON DELETE NO ACTION,
-        CHECK (location_a < location_b)
+        UNIQUE(location_a, location_b)
     );
 
 CREATE TABLE
@@ -140,17 +140,11 @@ CREATE TABLE
         ended_at TIMESTAMPTZ,
         is_winner BOOLEAN,
         CONSTRAINT fk_user_id FOREIGN KEY ("user_id") REFERENCES users (id)
-        ON DELETE
-        SET
-            NULL,
-            CONSTRAINT fk_country_id FOREIGN KEY (country_id) REFERENCES countries (id)
-            ON DELETE
-        SET
-            NULL,
-            CONSTRAINT fk_game_id FOREIGN KEY (game_id) REFERENCES games (id)
-            ON DELETE
-        SET
-            NULL
+        ON DELETE NO ACTION,
+        CONSTRAINT fk_country_id FOREIGN KEY (country_id) REFERENCES countries (id)
+        ON DELETE NO ACTION,
+        CONSTRAINT fk_game_id FOREIGN KEY (game_id) REFERENCES games (id)
+        ON DELETE NO ACTION
     );
 
 CREATE TABLE
@@ -164,15 +158,13 @@ CREATE TABLE
         season_id INTEGER NOT NULL,
         map_id INTEGER NOT NULL,
         CONSTRAINT fk_game_id FOREIGN KEY (game_id) REFERENCES games (id)
-        ON DELETE
-        SET
-            NULL,
-            CONSTRAINT fk_phase_id FOREIGN KEY (phase_id) REFERENCES phases (id)
-            ON DELETE NO ACTION,
-            CONSTRAINT fk_season_id FOREIGN KEY (season_id) REFERENCES seasons (id)
-            ON DELETE NO ACTION,
-            CONSTRAINT fk_map_id FOREIGN KEY (map_id) REFERENCES maps (id)
-            ON DELETE NO ACTION
+        ON DELETE NO ACTION,
+        CONSTRAINT fk_phase_id FOREIGN KEY (phase_id) REFERENCES phases (id)
+        ON DELETE NO ACTION,
+        CONSTRAINT fk_season_id FOREIGN KEY (season_id) REFERENCES seasons (id)
+        ON DELETE NO ACTION,
+        CONSTRAINT fk_map_id FOREIGN KEY (map_id) REFERENCES maps (id)
+        ON DELETE NO ACTION
     );
 
 CREATE TABLE
