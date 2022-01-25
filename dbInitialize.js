@@ -3,6 +3,7 @@ const { Pool } = require("pg")
 const fs = require('fs');
 const sql = fs.readFileSync('./db/schema.sql').toString()
 const { insertSeedString } = require('./db/seedInserts');
+const testData = fs.readFileSync('./db/testSeeder.sql').toString()
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -11,7 +12,7 @@ const pool = new Pool({
   },
 })
 
-pool.query(`${sql} ${insertSeedString}`, (err, res) => {
+pool.query(`${sql} ${insertSeedString} ${testData}`, (err, res) => {
   console.log(err, res)
   pool.end()
 })

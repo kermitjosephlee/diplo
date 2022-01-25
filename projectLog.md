@@ -14,6 +14,12 @@ Something in the doing is that I have an idea of what this could be and it tends
 
 ---
 
+2022-01-24
+
+- [x] - create a seed file with test data for users, players, game
+
+---
+
 2022-01-23
 
 #### Next day goals:
