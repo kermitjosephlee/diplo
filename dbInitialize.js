@@ -5,7 +5,10 @@ const sql = fs.readFileSync('./db/schema.sql').toString()
 const { insertSeedString } = require('./db/seedInserts');
 
 const pool = new Pool({
-  connectionString: process.env.LOCAL_DATABASE_URL
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 })
 
 pool.query(`${sql} ${insertSeedString}`, (err, res) => {
