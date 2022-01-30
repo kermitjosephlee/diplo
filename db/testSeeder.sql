@@ -33,10 +33,17 @@ VALUES (
     ), ('golf', 'golf', 'golf', '123qweasd', 'golf@golf.com');
 
 INSERT INTO
-    games ("name", created_at, started_on, next_turn_due_on)
+    games (
+        "name",
+        created_at,
+        started_on,
+        next_turn_due_on,
+        admin_id
+    )
 VALUES (
         'first', (NOW() - INTERVAL '1 day'),
-        NOW(), (NOW() + INTERVAL '1 hour')
+        NOW(), (NOW() + INTERVAL '1 hour'),
+        1
     );
 
 INSERT INTO

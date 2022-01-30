@@ -83,10 +83,13 @@ CREATE TABLE
     IF NOT EXISTS games (
         id SERIAL PRIMARY KEY,
         "name" TEXT NOT NULL,
+        admin_id INTEGER NOT NULL,
         created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
         started_on TIMESTAMPTZ,
         next_turn_due_on TIMESTAMPTZ,
-        ended_on TIMESTAMPTZ
+        ended_on TIMESTAMPTZ,
+        CONSTRAINT fk_admin_id FOREIGN KEY (admin_id) REFERENCES users (id)
+        ON DELETE NO ACTION
     );
 
 CREATE TABLE
