@@ -6,21 +6,9 @@ const rl = readline.createInterface({
 	output: process.stdout,
 });
 
-// const {
-// 	isTerritoryValid,
-// 	requiresCoastInput,
-// 	isActionValid,
-// 	unitFinder,
-// 	holdActionHandler,
-// 	convoyActionHandler,
-// 	moveActionHandler,
-// 	supportActionHandler,
-// 	coastalExceptionHandler,
-// } = require("./helpers");
 
-// const { nationalAdjectives } = require("../constants/nationalAdjectives");
 
-function inputPrompt(){
+async function inputPrompt(){
 	rl.question("What is the location of your unit? ", 
 		(territory) => {
 			const selectQuery = `SELECT * FROM locations WHERE name = $1 OR short_name = $1;`
@@ -39,7 +27,12 @@ function inputPrompt(){
 						db.query(destinationQuery, destinationVariables)
 						.then(data => {
 							console.log("data...", data)
+							if (data.rowsCount !== 1) {
+								rl.question("Error. Try again")
+								rl.close()
+							}
 						})
+						.catch(error => console.log("error", error))
 					})
 				}
 			})
