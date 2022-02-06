@@ -6,8 +6,6 @@ const rl = readline.createInterface({
 	output: process.stdout,
 });
 
-
-
 async function inputPrompt(){
 	rl.question("What is the location of your unit? ", 
 		(territory) => {
@@ -22,7 +20,6 @@ async function inputPrompt(){
 
 						const destinationQuery = `SELECT * FROM locations WHERE name = $1 or short_name = $1;`
 						const destinationVariables = [destination]
-
 
 						db.query(destinationQuery, destinationVariables)
 						.then(data => {
