@@ -14,6 +14,16 @@ Something in the doing is that I have an idea of what this could be and it tends
 
 ---
 
+2022-02-06
+
+Had a chat with Tim and was feeling I was hitting a bit of a wall. With this new db setup, all the node code I wrote around a year ago is very antiquated and in need of a serious rewrite. I am feeling like it is precious and that in order to move forward, I have to shed it and move forward with a courage I haven't come up with yet.
+
+Something that is coming up is whether to write postgres functions to keep the business logic more towards the db layer. Or at least some of the more common requests abstracted out from the server code. May be helpful. May just be something that I have to keep in sync with server code. The bike shedding is not helping matters.
+
+Something else - I'm going to try to write more of this code exclusively in vim to get my vim skills up. I've already fiddled with setup and plugins, so now it's getting on with the task of grokking the commands and getting used to the experience.
+
+---
+
 2022-01-24
 
 - [x] - create a seed file with test data for users, players, game
