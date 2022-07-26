@@ -101,4 +101,17 @@ This might not seem like a huge paradigm shift but it does change how one shapes
 
 ---
 
+2022-07-26
+
+Finally getting back into this. I have GitHub Co-pilot turned on right now and the suggestions are hilarious.
+
+Updates:
+- ditched primsa and wrote the DB schema and seedings from scratch.
+- pretty happy with how it turned out but it's been so long since I've dug into this project (again) that I need some time to look around and get familiar
+- got sucked into another side project but this time with old code friends so it's was less of a solitary task
+
+Next Steps:
+- the next thing to do is to update the CLI prompts to accept valid orders and write them to the DB
+- might have to spin up an instance of Postgres on my local or maybe use Supabase in light of the changes to Heroku
+
 // **_ End of File _**
