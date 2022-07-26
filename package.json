@@ -21,6 +21,7 @@
 	},
 	"homepage": "https://github.com/kermitjosephlee/diplo#readme",
 	"dependencies": {
+		"@supabase/supabase-js": "^1.35.4",
 		"dotenv": "10.0.0",
 		"express": "4.17.2",
 		"lodash": "4.17.21",
